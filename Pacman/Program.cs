@@ -19,6 +19,8 @@ namespace Pacman
             Application.Run(new Form1());
 
             //oernvigeahv
+
+            //change added by stefan
         }
     }
 }
