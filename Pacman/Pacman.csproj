@@ -46,14 +46,62 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EnemyController.cs" />
+    <Compile Include="EnemyModel.cs" />
+    <Compile Include="EnemyUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EnemyUI.Designer.cs">
+      <DependentUpon>EnemyUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="LivesController.cs" />
+    <Compile Include="LivesModel.cs" />
+    <Compile Include="LivesUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LivesUI.Designer.cs">
+      <DependentUpon>LivesUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MessageBoxController.cs" />
+    <Compile Include="MessageBoxModel.cs" />
+    <Compile Include="MessageBoxUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MessageBoxUI.Designer.cs">
+      <DependentUpon>MessageBoxUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlayerController.cs" />
+    <Compile Include="PlayerModel.cs" />
+    <Compile Include="PlayerUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PlayerUI.Designer.cs">
+      <DependentUpon>PlayerUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScoreController.cs" />
+    <Compile Include="ScoreModel.cs" />
+    <Compile Include="ScoreUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ScoreUI.Designer.cs">
+      <DependentUpon>ScoreUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TileController.cs" />
+    <Compile Include="TileModel.cs" />
+    <Compile Include="TileUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TileUI.Designer.cs">
+      <DependentUpon>TileUI.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
