@@ -8,5 +8,12 @@ namespace Pacman
 {
     class MessageBoxModel
     {
+        string mMessage;
+
+        public string Message
+        {
+            get{ return mMessage; }
+            set{ mMessage = value; }
+        }
     }
 }
