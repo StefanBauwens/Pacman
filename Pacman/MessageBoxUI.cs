@@ -12,8 +12,11 @@ namespace Pacman
 {
     public partial class MessageBoxUI : UserControl
     {
-        public MessageBoxUI()
+        MessageBoxController messageBoxController;
+
+        public MessageBoxUI(MessageBoxController controller)
         {
+            messageBoxController = controller;
             InitializeComponent();
         }
     }

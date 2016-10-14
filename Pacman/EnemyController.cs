@@ -6,7 +6,21 @@ using System.Threading.Tasks;
 
 namespace Pacman
 {
-    class EnemyController
+    public class EnemyController
     {
+        EnemyModel enemyModel;
+        EnemyUI enemyUI;
+
+        public EnemyController(PlayerController player, TileController beginTile) //constructor
+        {
+            this.enemyModel = new EnemyModel();
+            this.enemyUI = new EnemyUI(this);
+        }
+
+        public EnemyUI View
+        {
+            get { return enemyUI; }
+        }
+
     }
 }

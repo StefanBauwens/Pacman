@@ -12,9 +12,17 @@ namespace Pacman
 {
     public partial class TileUI : UserControl
     {
-        public TileUI()
+        TileController tileController;
+
+        public TileUI(TileController controller)
         {
+            tileController = controller;
             InitializeComponent();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

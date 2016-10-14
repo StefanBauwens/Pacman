@@ -6,7 +6,20 @@ using System.Threading.Tasks;
 
 namespace Pacman
 {
-    class MessageBoxController
+    public class MessageBoxController
     {
+        MessageBoxModel messageBoxModel;
+        MessageBoxUI messageUI;
+
+        public MessageBoxController()
+        {
+            messageBoxModel = new MessageBoxModel();
+            messageUI = new MessageBoxUI(this);
+        }
+
+        public MessageBoxUI View
+        {
+            get { return messageUI; }
+        }
     }
 }

@@ -12,9 +12,17 @@ namespace Pacman
 {
     public partial class EnemyUI : UserControl
     {
-        public EnemyUI()
+        EnemyController enemyController;
+
+        public EnemyUI(EnemyController controller)
         {
+            enemyController = controller;
             InitializeComponent();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

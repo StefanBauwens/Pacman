@@ -8,5 +8,12 @@ namespace Pacman
 {
     class TileModel
     {
+        bool mCanWalkThrough;
+
+        public bool CanWakThrough
+        {
+            get { return mCanWalkThrough; }
+            set { mCanWalkThrough = value; }
+        }
     }
 }
