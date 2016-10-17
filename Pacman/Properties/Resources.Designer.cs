@@ -63,6 +63,13 @@ namespace Pacman.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap pacmanLives
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("pacmanLives", resourceCulture);
+            }
+        }
         internal static System.Drawing.Bitmap black {
             get {
                 object obj = ResourceManager.GetObject("black", resourceCulture);

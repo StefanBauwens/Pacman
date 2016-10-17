@@ -8,5 +8,13 @@ namespace Pacman
 {
     class ScoreModel
     {
+        protected int _score;
+
+        public int score
+        {
+            get { return _score; }
+            set { _score = value; }
+        }
+
     }
 }
