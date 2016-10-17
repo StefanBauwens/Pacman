@@ -12,9 +12,27 @@ namespace Pacman
 {
     public partial class PlayerUI : UserControl
     {
-        public PlayerUI()
+        PlayerController playerController;
+
+        public PlayerUI(PlayerController controller)
         {
+            playerController = controller;
             InitializeComponent();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            playerController.movePlayer();
+        }
+
+        /*private void PlayerUI_KeyDown(object sender, KeyEventArgs e)
+        {
+           // playerController.checkKey(e);
+        }*/
+
+        private void PlayerUI_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            playerController.checkKey(e);
         }
     }
 }

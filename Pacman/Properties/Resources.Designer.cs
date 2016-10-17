@@ -68,6 +68,7 @@ namespace Pacman.Properties {
             get
             {
                 object obj = ResourceManager.GetObject("pacmanLives", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         internal static System.Drawing.Bitmap black {
