@@ -105,6 +105,9 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LivesUI.resx">
+      <DependentUpon>LivesUI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PlayerUI.resx">
       <DependentUpon>PlayerUI.cs</DependentUpon>
     </EmbeddedResource>
