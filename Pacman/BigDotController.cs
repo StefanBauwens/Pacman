@@ -6,23 +6,23 @@ using System.Threading.Tasks;
 
 namespace Pacman
 {
-    class PacDotController
+    class BigDotController
     {
-        private PacDotModel pacDotModel;
-        private PacDotUI pacDotUI;
+        private BigDotModel bigDotModel;
+        private BigDotUI bigDotUI;
 
-        public PacDotController()
+        public BigDotController()
         {
-            this.pacDotModel = new PacDotModel();
-            this.pacDotUI = new PacDotUI();
+            this.bigDotModel = new BigDotModel();
+            this.bigDotUI = new BigDotUI();
         }
 
         // returns view
-        public PacDotUI view
+        public BigDotUI view
         {
             get
             {
-                return this.pacDotUI;
+                return this.bigDotUI;
             }
         }
 
@@ -31,10 +31,7 @@ namespace Pacman
         {
 
             // update view with images
-            this.pacDotUI.updateImage(isEaten);
-
-
+            this.bigDotUI.updateImage(isEaten);
         }
-
     }
 }

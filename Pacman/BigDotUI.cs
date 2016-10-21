@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Pacman
 {
-    public partial class PacDotUI : UserControl
+    public partial class BigDotUI : UserControl
     {
-        public PacDotUI()
+        public BigDotUI()
         {
             InitializeComponent();
         }
@@ -20,9 +20,9 @@ namespace Pacman
         // update the dots to black image
         public void updateImage(bool isEaten)
         {
-            if(isEaten)
+            if (isEaten)
             {
-                //this.pacDotImage.Image = Properties.Resources.naam van image v pacdot
+                this.bigDotImage.Image = Properties.Resources.black;
             }
         }
     }
