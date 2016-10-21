@@ -9,17 +9,34 @@ namespace Pacman
     public class MessageBoxController
     {
         MessageBoxModel messageBoxModel;
-        MessageBoxUI messageUI;
+        MessageBoxUI messageBoxUI;
 
         public MessageBoxController()
         {
             messageBoxModel = new MessageBoxModel();
-            messageUI = new MessageBoxUI(this);
+            messageBoxUI = new MessageBoxUI(this);
         }
 
         public MessageBoxUI View
         {
-            get { return messageUI; }
+            get { return messageBoxUI; }
+        }
+
+
+        public void notify(bool startBtnClicked, bool isDead)
+        {
+            // update message from model
+            if(startBtnClicked)
+            {
+                this.messageBoxModel.Message = "READY?";
+            }
+            else if(isDead)
+            {
+                this.messageBoxModel.Message = "GAME OVER";
+            }
+
+            //update message in view
+            this.messageBoxUI.updateText(messageBoxModel.Message);
         }
     }
 }

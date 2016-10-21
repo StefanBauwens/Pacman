@@ -25,19 +25,10 @@ namespace Pacman
         // executes when the observable is changed
         public void notify(int newNrLives)
         {
+            
             // update view with new amount of pictures (lives)
-            if (newNrLives == 2)
-            {
-                this.livesUI.imageLifeRight.Image = Properties.Resources.black;   
-            }
-            else if (newNrLives == 1)
-            {
-                this.livesUI.imageLifeMiddle.Image = Properties.Resources.black;
-            }
-            else if (newNrLives == 0)
-            {
-                this.livesUI.imageLifeLeft.Image = Properties.Resources.black;
-            }
+            this.livesUI.updateLives(newNrLives);
+            
             // update model with new value
             this.livesModel.lives = newNrLives;
         }
