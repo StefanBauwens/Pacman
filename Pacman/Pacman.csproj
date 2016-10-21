@@ -110,6 +110,14 @@
     <Compile Include="TileUI.Designer.cs">
       <DependentUpon>TileUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="WorldController.cs" />
+    <Compile Include="WorldModel.cs" />
+    <Compile Include="WorldUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WorldUI.Designer.cs">
+      <DependentUpon>WorldUI.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="EnemyUI.resx">
       <DependentUpon>EnemyUI.cs</DependentUpon>
     </EmbeddedResource>
