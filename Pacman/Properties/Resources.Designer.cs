@@ -63,14 +63,16 @@ namespace Pacman.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap pacmanLives
-        {
-            get
-            {
-                object obj = ResourceManager.GetObject("pacmanLives", resourceCulture);
+        internal static System.Drawing.Bitmap bigdot {
+            get {
+                object obj = ResourceManager.GetObject("bigdot", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap black {
             get {
                 object obj = ResourceManager.GetObject("black", resourceCulture);
@@ -84,6 +86,36 @@ namespace Pacman.Properties {
         internal static System.Drawing.Bitmap blinky {
             get {
                 object obj = ResourceManager.GetObject("blinky", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pacdot {
+            get {
+                object obj = ResourceManager.GetObject("pacdot", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pacman {
+            get {
+                object obj = ResourceManager.GetObject("pacman", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pacmanLives {
+            get {
+                object obj = ResourceManager.GetObject("pacmanLives", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

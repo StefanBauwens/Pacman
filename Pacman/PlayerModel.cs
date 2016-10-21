@@ -8,8 +8,8 @@ namespace Pacman
 {
     public class PlayerModel
     {
-        int mX = 0; //coordinates player
-        int mY = 0;
+        int mX = 1; //coordinates player
+        int mY = 1;
 
         public enum direction
         {
