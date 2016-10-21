@@ -35,29 +35,33 @@
             // scoreTextLabel
             // 
             this.scoreTextLabel.AutoSize = true;
-            this.scoreTextLabel.Location = new System.Drawing.Point(31, 22);
+            this.scoreTextLabel.Location = new System.Drawing.Point(23, 18);
+            this.scoreTextLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.scoreTextLabel.Name = "scoreTextLabel";
-            this.scoreTextLabel.Size = new System.Drawing.Size(49, 17);
+            this.scoreTextLabel.Size = new System.Drawing.Size(38, 13);
             this.scoreTextLabel.TabIndex = 0;
             this.scoreTextLabel.Text = "Score:";
-            this.scoreTextLabel.Click += new System.EventHandler(this.label1_Click);
+            //this.scoreTextLabel.Click += new System.EventHandler(this.label1_Click);
             // 
             // scoreValueLabel
             // 
             this.scoreValueLabel.AutoSize = true;
-            this.scoreValueLabel.Location = new System.Drawing.Point(90, 21);
+            this.scoreValueLabel.Location = new System.Drawing.Point(68, 17);
+            this.scoreValueLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.scoreValueLabel.Name = "scoreValueLabel";
-            this.scoreValueLabel.Size = new System.Drawing.Size(40, 17);
+            this.scoreValueLabel.Size = new System.Drawing.Size(31, 13);
             this.scoreValueLabel.TabIndex = 1;
             this.scoreValueLabel.Text = "1000";
             // 
             // ScoreUI
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.scoreValueLabel);
             this.Controls.Add(this.scoreTextLabel);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "ScoreUI";
+            this.Size = new System.Drawing.Size(113, 43);
             this.ResumeLayout(false);
             this.PerformLayout();
 

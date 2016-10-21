@@ -22,5 +22,12 @@ namespace Pacman
             get { return enemyUI; }
         }
 
+        public void notify(bool isRunningAway, bool isDead)
+        {
+            
+            this.enemyUI.updateImage(isRunningAway);
+            
+        }
+
     }
 }

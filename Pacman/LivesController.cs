@@ -21,20 +21,17 @@ namespace Pacman
         {
             get { return this.livesUI; }
         }
-        /*
+        
+        // executes when the observable is changed
         public void notify(int newNrLives)
         {
-            this.scoreModel.score = newNrLives;
-    
+            
+            // update view with new amount of pictures (lives)
+            this.livesUI.updateLives(newNrLives);
+            
+            // update model with new value
+            this.livesModel.lives = newNrLives;
         }
-        */
-        //
-        public void updateLives(int newNrLives)
-        {
-            if (newNrLives == 2)
-            {
-               // this.scoreUI.
-            }
-        }
+        
     }
 }

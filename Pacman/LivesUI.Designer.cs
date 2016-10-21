@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.imageLifeLeft = new System.Windows.Forms.PictureBox();
-            this.imageLiveMiddle = new System.Windows.Forms.PictureBox();
+            this.imageLifeMiddle = new System.Windows.Forms.PictureBox();
             this.imageLifeRight = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.imageLifeLeft)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageLiveMiddle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageLifeMiddle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageLifeRight)).BeginInit();
             this.SuspendLayout();
             // 
@@ -45,14 +45,14 @@
             this.imageLifeLeft.TabIndex = 0;
             this.imageLifeLeft.TabStop = false;
             // 
-            // imageLiveMiddle
+            // imageLifeMiddle
             // 
-            this.imageLiveMiddle.Image = global::Pacman.Properties.Resources.pacmanLives;
-            this.imageLiveMiddle.Location = new System.Drawing.Point(86, 13);
-            this.imageLiveMiddle.Name = "imageLiveMiddle";
-            this.imageLiveMiddle.Size = new System.Drawing.Size(24, 19);
-            this.imageLiveMiddle.TabIndex = 1;
-            this.imageLiveMiddle.TabStop = false;
+            this.imageLifeMiddle.Image = global::Pacman.Properties.Resources.pacmanLives;
+            this.imageLifeMiddle.Location = new System.Drawing.Point(86, 13);
+            this.imageLifeMiddle.Name = "imageLifeMiddle";
+            this.imageLifeMiddle.Size = new System.Drawing.Size(24, 19);
+            this.imageLifeMiddle.TabIndex = 1;
+            this.imageLifeMiddle.TabStop = false;
             // 
             // imageLifeRight
             // 
@@ -68,11 +68,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.imageLifeRight);
-            this.Controls.Add(this.imageLiveMiddle);
+            this.Controls.Add(this.imageLifeMiddle);
             this.Controls.Add(this.imageLifeLeft);
             this.Name = "LivesUI";
             ((System.ComponentModel.ISupportInitialize)(this.imageLifeLeft)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageLiveMiddle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageLifeMiddle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageLifeRight)).EndInit();
             this.ResumeLayout(false);
 
@@ -81,7 +81,7 @@
         #endregion
 
         public System.Windows.Forms.PictureBox imageLifeLeft;
-        public System.Windows.Forms.PictureBox imageLiveMiddle;
+        public System.Windows.Forms.PictureBox imageLifeMiddle;
         public System.Windows.Forms.PictureBox imageLifeRight;
     }
 }

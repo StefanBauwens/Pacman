@@ -8,5 +8,12 @@ namespace Pacman
 {
     class LivesModel
     {
+        protected int _lives;
+
+        public int lives
+        {
+            get{ return _lives; }
+            set{ _lives = value; }
+        }
     }
 }

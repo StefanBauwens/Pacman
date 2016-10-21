@@ -10,7 +10,7 @@ namespace Pacman
     {
         bool mCanWalkThrough;
 
-        public bool CanWakThrough
+        public bool CanWalkThrough
         {
             get { return mCanWalkThrough; }
             set { mCanWalkThrough = value; }

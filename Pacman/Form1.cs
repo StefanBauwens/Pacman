@@ -12,8 +12,6 @@ namespace Pacman
 {
     public partial class Form1 : Form
     {
-        public KeyEventArgs keyEvent;
-
         public Form1()
         {   
             InitializeComponent();
@@ -25,7 +23,12 @@ namespace Pacman
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            
+            //player.checkKey(e);
+        }
+
+        private void Form1_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            player.checkKey(e);
         }
     }
 }

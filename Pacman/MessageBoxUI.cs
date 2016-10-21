@@ -19,5 +19,11 @@ namespace Pacman
             messageBoxController = controller;
             InitializeComponent();
         }
+
+        //update message label with new text
+        public void updateText(string newText)
+        {
+            this.messageTextLabel.Text = newText;
+        }
     }
 }
