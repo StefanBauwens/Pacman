@@ -29,10 +29,15 @@ namespace Pacman
         {
            // playerController.checkKey(e);
         }*/
-
+        
         private void PlayerUI_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
             playerController.checkKey(e);
+        }
+
+        private void PlayerUI_KeyDown(object sender, KeyEventArgs e)
+        {
+            //playerController.checkKey(e);
         }
     }
 }

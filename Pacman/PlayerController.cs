@@ -35,25 +35,26 @@ namespace Pacman
             {
                 case PlayerModel.direction.up:
                     this.model.Y--;
-                    this.view.Top -=16;
+                    this.view.Top -=1;
                     break;
                 case PlayerModel.direction.right:
                     this.model.X++;
-                    this.view.Left +=16;
+                    this.view.Left +=1;
                     break;
                 case PlayerModel.direction.down:
                     this.model.Y++;
-                    this.view.Top +=16;
+                    this.view.Top +=1;
                     break;
                 case PlayerModel.direction.left:
                     this.model.X--;
-                    this.view.Left -=16;
+                    this.view.Left -=1;
                     break;
             }
         }
 
         public void checkKey(PreviewKeyDownEventArgs e)
         {
+            Console.WriteLine(e);
             switch(e.KeyCode)
             {
                 case Keys.Up:
@@ -69,6 +70,8 @@ namespace Pacman
                     playerModel.Direction = PlayerModel.direction.left;
                     break;
             }
+            e.IsInputKey = true;
+
         }
 
     }

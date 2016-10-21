@@ -23,9 +23,9 @@ namespace Pacman
             this.scoreValueLabel.Text = newScore.ToString();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        /*private void label1_Click(object sender, EventArgs e)
         {
 
-        }
+        }*/
     }
 }

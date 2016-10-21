@@ -2,6 +2,8 @@
 {
     partial class Form1
     {
+        public PlayerController player;
+
         //public PlayerController player;
         /// <summary>
         /// Required designer variable.
@@ -38,11 +40,18 @@
             this.ClientSize = new System.Drawing.Size(284, 262);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
+            //this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
+            //this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.Form1_PreviewKeyDown);
             this.ResumeLayout(false);
 
-            PlayerController player = new PlayerController();
+            player = new PlayerController();
             this.Controls.Add(player.view);
+            //player.view.Focus();
+
+            LivesController lives = new LivesController();
+            this.Controls.Add(lives.view);
+
+
         }
 
         #endregion
