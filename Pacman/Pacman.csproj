@@ -76,6 +76,14 @@
     <Compile Include="MessageBoxUI.Designer.cs">
       <DependentUpon>MessageBoxUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="PacDotController.cs" />
+    <Compile Include="PacDotModel.cs" />
+    <Compile Include="PacDotUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PacDotUI.Designer.cs">
+      <DependentUpon>PacDotUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="PlayerController.cs" />
     <Compile Include="PlayerModel.cs" />
     <Compile Include="PlayerUI.cs">
@@ -102,11 +110,17 @@
     <Compile Include="TileUI.Designer.cs">
       <DependentUpon>TileUI.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="EnemyUI.resx">
+      <DependentUpon>EnemyUI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LivesUI.resx">
       <DependentUpon>LivesUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MessageBoxUI.resx">
+      <DependentUpon>MessageBoxUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlayerUI.resx">
       <DependentUpon>PlayerUI.cs</DependentUpon>

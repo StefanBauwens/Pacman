@@ -24,5 +24,15 @@ namespace Pacman
         {
 
         }
+
+        public void updateImage(bool isRunningAway)
+        {
+            if(isRunningAway)
+            {
+                //this.enemyImage.Image = Properties.Resources.Naam van blauwe image
+            }
+            
+
+        }
     }
 }
