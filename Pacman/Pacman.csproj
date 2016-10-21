@@ -122,6 +122,9 @@
     <EmbeddedResource Include="MessageBoxUI.resx">
       <DependentUpon>MessageBoxUI.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PacDotUI.resx">
+      <DependentUpon>PacDotUI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PlayerUI.resx">
       <DependentUpon>PlayerUI.cs</DependentUpon>
     </EmbeddedResource>

@@ -1,6 +1,6 @@
 ﻿namespace Pacman
 {
-    partial class PacDotUI
+    partial class BigDotUI
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,31 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pacDotImage = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pacDotImage)).BeginInit();
+            this.bigDotImage = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.bigDotImage)).BeginInit();
             this.SuspendLayout();
             // 
-            // pacDotImage
+            // bigDotImage
             // 
-            this.pacDotImage.Location = new System.Drawing.Point(29, 19);
-            this.pacDotImage.Name = "pacDotImage";
-            this.pacDotImage.Size = new System.Drawing.Size(100, 50);
-            this.pacDotImage.TabIndex = 0;
-            this.pacDotImage.TabStop = false;
+            this.bigDotImage.Location = new System.Drawing.Point(50, 20);
+            this.bigDotImage.Name = "bigDotImage";
+            this.bigDotImage.Size = new System.Drawing.Size(100, 50);
+            this.bigDotImage.TabIndex = 0;
+            this.bigDotImage.TabStop = false;
             // 
-            // PacDotUI
+            // BigDotUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.pacDotImage);
-            this.Name = "PacDotUI";
-            ((System.ComponentModel.ISupportInitialize)(this.pacDotImage)).EndInit();
+            this.Controls.Add(this.bigDotImage);
+            this.Name = "BigDotUI";
+            ((System.ComponentModel.ISupportInitialize)(this.bigDotImage)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pacDotImage;
+        private System.Windows.Forms.PictureBox bigDotImage;
     }
 }

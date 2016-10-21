@@ -8,7 +8,7 @@ namespace Pacman
 {
     class TileModel
     {
-        bool mCanWalkThrough;
+        protected bool mCanWalkThrough;
 
         public bool CanWalkThrough
         {
