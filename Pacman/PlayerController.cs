@@ -34,40 +34,63 @@ namespace Pacman
             switch(this.model.Direction)
             {
                 case PlayerModel.direction.up:
-                    this.model.Y--;
-                    this.view.Top -=1;
+                    if (WorldModel.Map2D[this.model.Y - 1, this.model.X] != 1)
+                    {
+                        this.model.Y--;
+                        this.view.Top -= 16;
+                    }
                     break;
                 case PlayerModel.direction.right:
-                    this.model.X++;
-                    this.view.Left +=1;
+                    if (WorldModel.Map2D[this.model.Y, this.model.X + 1] != 1)
+                    {
+                        this.model.X++;
+                        this.view.Left += 16;
+                    }
                     break;
                 case PlayerModel.direction.down:
-                    this.model.Y++;
-                    this.view.Top +=1;
+                    if (WorldModel.Map2D[this.model.Y + 1, this.model.X] != 1)
+                    {
+                        this.model.Y++;
+                        this.view.Top += 16;
+                    }
                     break;
                 case PlayerModel.direction.left:
-                    this.model.X--;
-                    this.view.Left -=1;
+                    if (WorldModel.Map2D[this.model.Y, this.model.X - 1] != 1)
+                    {
+                        this.model.X--;
+                        this.view.Left -= 16;
+                    }
                     break;
             }
         }
 
         public void checkKey(PreviewKeyDownEventArgs e)
         {
-            Console.WriteLine(e);
             switch(e.KeyCode)
             {
                 case Keys.Up:
-                    playerModel.Direction = PlayerModel.direction.up;
+                    if (WorldModel.Map2D[this.model.Y - 1, this.model.X] != 1) //if's here so you can't change direction if you can't go in that direction.
+                    {
+                        playerModel.Direction = PlayerModel.direction.up;
+                    }
                     break;
                 case Keys.Right:
-                    playerModel.Direction = PlayerModel.direction.right;
+                    if (WorldModel.Map2D[this.model.Y, this.model.X + 1] != 1)
+                    {
+                        playerModel.Direction = PlayerModel.direction.right;
+                    }
                     break;
                 case Keys.Down:
-                    playerModel.Direction = PlayerModel.direction.down;
+                    if (WorldModel.Map2D[this.model.Y + 1, this.model.X] != 1)
+                    {
+                        playerModel.Direction = PlayerModel.direction.down;
+                    }
                     break;
                 case Keys.Left:
-                    playerModel.Direction = PlayerModel.direction.left;
+                    if (WorldModel.Map2D[this.model.Y, this.model.X - 1] != 1)
+                    {
+                        playerModel.Direction = PlayerModel.direction.left;
+                    }
                     break;
             }
             e.IsInputKey = true;

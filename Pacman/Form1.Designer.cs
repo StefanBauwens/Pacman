@@ -37,20 +37,21 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.ClientSize = new System.Drawing.Size(304, 336);
             this.Name = "Form1";
             this.Text = "Form1";
-            //this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
-            //this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.Form1_PreviewKeyDown);
             this.ResumeLayout(false);
 
             player = new PlayerController();
+            player.view.Top = 16;
+            player.view.Left = 16;
             this.Controls.Add(player.view);
-            //player.view.Focus();
 
-            LivesController lives = new LivesController();
-            this.Controls.Add(lives.view);
+            //LivesController lives = new LivesController();
+            //this.Controls.Add(lives.view);
 
+            WorldController world = new WorldController();
+            this.Controls.Add(world.view);
 
         }
 

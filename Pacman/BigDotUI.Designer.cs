@@ -34,18 +34,22 @@
             // 
             // bigDotImage
             // 
-            this.bigDotImage.Location = new System.Drawing.Point(50, 20);
+            this.bigDotImage.Image = global::Pacman.Properties.Resources.bigdot;
+            this.bigDotImage.Location = new System.Drawing.Point(0, 0);
+            this.bigDotImage.Margin = new System.Windows.Forms.Padding(2);
             this.bigDotImage.Name = "bigDotImage";
-            this.bigDotImage.Size = new System.Drawing.Size(100, 50);
+            this.bigDotImage.Size = new System.Drawing.Size(16, 16);
             this.bigDotImage.TabIndex = 0;
             this.bigDotImage.TabStop = false;
             // 
             // BigDotUI
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.bigDotImage);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "BigDotUI";
+            this.Size = new System.Drawing.Size(16, 16);
             ((System.ComponentModel.ISupportInitialize)(this.bigDotImage)).EndInit();
             this.ResumeLayout(false);
 
