@@ -20,6 +20,13 @@ namespace Pacman
         }
 
         direction mDir = direction.right;
+        int mAnimation = 1; 
+
+        public int Animation
+        {
+            get { return mAnimation; }
+            set { mAnimation = value; }
+        }
 
         public int X
         {
