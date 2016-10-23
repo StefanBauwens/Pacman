@@ -102,6 +102,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="ScoreController.cs" />
     <Compile Include="ScoreModel.cs" />
     <Compile Include="ScoreUI.cs">
@@ -149,14 +154,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="ScoreUI.resx">
       <DependentUpon>ScoreUI.cs</DependentUpon>
     </EmbeddedResource>
@@ -178,7 +178,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\pacmanLives.png" />
+    <None Include="Resources\pacmanright2.png" />
     <None Include="Resources\pacman.png" />
+    <None Include="Resources\pacmanright.png" />
+    <None Include="Resources\pacmanup1.png" />
+    <None Include="Resources\pacmanright1.png" />
+    <None Include="Resources\pacmanleft1.png" />
+    <None Include="Resources\pacmandown1.png" />
+    <None Include="Resources\pacmanup.png" />
+    <None Include="Resources\pacmanleft.png" />
+    <None Include="Resources\pacmandown.png" />
     <None Include="Resources\pacdot.png" />
     <None Include="Resources\bigdot.png" />
   </ItemGroup>
