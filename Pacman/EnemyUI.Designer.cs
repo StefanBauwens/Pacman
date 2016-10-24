@@ -28,36 +28,42 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.enemyImage = new System.Windows.Forms.PictureBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.enemyImage)).BeginInit();
             this.SuspendLayout();
             // 
             // enemyImage
             // 
-            this.enemyImage.Image = global::Pacman.Properties.Resources.blinky;
+            this.enemyImage.Image = global::Pacman.Properties.Resources.enemy1right0;
             this.enemyImage.Location = new System.Drawing.Point(0, 0);
-            this.enemyImage.Margin = new System.Windows.Forms.Padding(4);
             this.enemyImage.Name = "enemyImage";
-            this.enemyImage.Size = new System.Drawing.Size(21, 20);
+            this.enemyImage.Size = new System.Drawing.Size(16, 16);
             this.enemyImage.TabIndex = 0;
             this.enemyImage.TabStop = false;
             this.enemyImage.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 20;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // EnemyUI
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.enemyImage);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "EnemyUI";
-            this.Size = new System.Drawing.Size(248, 185);
+            this.Size = new System.Drawing.Size(16, 16);
             ((System.ComponentModel.ISupportInitialize)(this.enemyImage)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.PictureBox enemyImage;
+        private System.Windows.Forms.Timer timer1;
+        public System.Windows.Forms.PictureBox enemyImage;
     }
 }
