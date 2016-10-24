@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Pacman
 {
@@ -20,7 +21,15 @@ namespace Pacman
         }
 
         direction mDir = direction.right;
-        int mAnimation = 1; 
+        int mAnimation = 1;
+
+        PreviewKeyDownEventArgs mLastKeyPressed;
+
+        public PreviewKeyDownEventArgs LastKeyPressed
+        {
+            get { return mLastKeyPressed; }
+            set { mLastKeyPressed = value; }
+        }
 
         public int Animation
         {
