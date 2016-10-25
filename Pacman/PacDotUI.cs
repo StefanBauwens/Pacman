@@ -22,7 +22,7 @@ namespace Pacman
         {
             if(isEaten)
             {
-                //this.pacDotImage.Image = Properties.Resources.naam van image v pacdot
+                this.pacDotImage.Image = Properties.Resources.black;
             }
         }
     }

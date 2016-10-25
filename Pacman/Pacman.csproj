@@ -46,6 +46,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BigDotController.cs" />
+    <Compile Include="BigDotModel.cs" />
+    <Compile Include="BigDotUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BigDotUI.Designer.cs">
+      <DependentUpon>BigDotUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="EnemyController.cs" />
     <Compile Include="EnemyModel.cs" />
     <Compile Include="EnemyUI.cs">
@@ -110,6 +118,9 @@
     <Compile Include="TileUI.Designer.cs">
       <DependentUpon>TileUI.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="BigDotUI.resx">
+      <DependentUpon>BigDotUI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EnemyUI.resx">
       <DependentUpon>EnemyUI.cs</DependentUpon>
     </EmbeddedResource>
