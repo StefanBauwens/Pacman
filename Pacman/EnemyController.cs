@@ -11,17 +11,21 @@ namespace Pacman
         EnemyModel enemyModel;
         EnemyUI enemyUI;
         PlayerController player;
+        TileController beginTile;
 
         bool alreadyMoving = false;
         int counter;
+        bool check;
+        int x, y; //coordinates to check. Either player cooridnates or coordinates from begintile
         Random randGen;
 
 
-        public EnemyController(PlayerController playerController)//, TileController beginTile) //constructor
+        public EnemyController(PlayerController playerController, TileController mBeginTile) //constructor
         {
             this.enemyModel = new EnemyModel();
             this.enemyUI = new EnemyUI(this);
             this.player = playerController;
+            this.beginTile = mBeginTile;
         }
 
         public EnemyUI View
@@ -38,7 +42,16 @@ namespace Pacman
         public void moveEnemy()
         {
             startMovement:
-            bool wall = false;
+
+            if (this.Model.IsRunningAway)
+            {
+                this.View.timer1.Interval = 17;
+            }
+            else
+            {
+                this.View.timer1.Interval = 15;
+            }
+
             switch (this.Model.Direction)
             {
 
@@ -55,11 +68,27 @@ namespace Pacman
                         animate();
                         if (this.Model.Animation < 4)
                         {
-                            this.View.enemyImage.Image = Pacman.Properties.Resources.enemy1up0;
+                            //ADD PICTURES FOR EYES IF ISDEAD == TRUE 
+                            //LOOK TO FIND MORE EFFICIENT WAY
+                            if (this.Model.IsRunningAway == false)
+                            {
+                                this.View.enemyImage.Image = Pacman.Properties.Resources.enemy1up0;
+                            }
+                            else
+                            {
+                                this.View.enemyImage.Image = Pacman.Properties.Resources.blue0;
+                            }
                         }
                         else
                         {
-                            this.View.enemyImage.Image = Pacman.Properties.Resources.enemy1up1;
+                            if (this.Model.IsRunningAway == false)
+                            {
+                                this.View.enemyImage.Image = Pacman.Properties.Resources.enemy1up1;
+                            }
+                            else
+                            {
+                                this.View.enemyImage.Image = Pacman.Properties.Resources.blue1;
+                            }
                         }
                         refreshPic();
                         if (counter == 16)
@@ -67,11 +96,6 @@ namespace Pacman
                             this.Model.Y--;
                             alreadyMoving = false;
                         }
-                        wall = false;
-                    }
-                    else
-                    {
-                        wall = true;
                     }
                     break;
                 case EnemyModel.direction.right:
@@ -87,11 +111,25 @@ namespace Pacman
                         animate();
                         if (this.Model.Animation < 4)
                         {
-                            this.View.enemyImage.Image = Pacman.Properties.Resources.enemy1right0;
+                            if (this.Model.IsRunningAway == false) //checks if enemy should be blue(and running away) or not
+                            {
+                                this.View.enemyImage.Image = Pacman.Properties.Resources.enemy1right0;
+                            }
+                            else
+                            {
+                                this.View.enemyImage.Image = Pacman.Properties.Resources.blue0;
+                            }
                         }
                         else
                         {
-                            this.View.enemyImage.Image = Pacman.Properties.Resources.enemy1right1;
+                            if (this.Model.IsRunningAway == false)
+                            {
+                                this.View.enemyImage.Image = Pacman.Properties.Resources.enemy1right1;
+                            }
+                            else
+                            {
+                                this.View.enemyImage.Image = Pacman.Properties.Resources.blue1;
+                            }
                         }
                         refreshPic();
                         if (counter == 16)
@@ -99,11 +137,6 @@ namespace Pacman
                             this.Model.X++;
                             alreadyMoving = false;
                         }
-                        wall = false;
-                    }
-                    else
-                    {
-                        wall = true;
                     }
                     break;
                 case EnemyModel.direction.down:
@@ -119,11 +152,25 @@ namespace Pacman
                         animate();
                         if (this.Model.Animation < 4)
                         {
-                            this.View.enemyImage.Image = Pacman.Properties.Resources.enemy1down0;
+                            if (this.Model.IsRunningAway == false)
+                            {
+                                this.View.enemyImage.Image = Pacman.Properties.Resources.enemy1down0;
+                            }
+                            else
+                            {
+                                this.View.enemyImage.Image = Pacman.Properties.Resources.blue0;
+                            }
                         }
                         else
                         {
-                            this.View.enemyImage.Image = Pacman.Properties.Resources.enemy1down1;
+                            if (this.Model.IsRunningAway == false)
+                            {
+                                this.View.enemyImage.Image = Pacman.Properties.Resources.enemy1down1;
+                            }
+                            else
+                            {
+                                this.View.enemyImage.Image = Pacman.Properties.Resources.blue1;
+                            }
                         }
                         refreshPic();
                         if (counter == 16)
@@ -131,12 +178,12 @@ namespace Pacman
                             this.Model.Y++;
                             alreadyMoving = false;
                         }
-                        wall = false;
+                        //wall = false;
                     }
-                    else
+                    /*else
                     {
                         wall = true;
-                    }
+                    }*/
                     break;
                 case EnemyModel.direction.left:
                     if (WorldModel.Map2D[this.Model.Y, this.Model.X - 1] != 1)
@@ -151,11 +198,26 @@ namespace Pacman
                         animate();
                         if (this.Model.Animation < 4)
                         {
-                            this.View.enemyImage.Image = Pacman.Properties.Resources.enemy1left0;
+                            if (this.Model.IsRunningAway == false)
+                            {
+                                this.View.enemyImage.Image = Pacman.Properties.Resources.enemy1left0;
+                            }
+                            else
+                            {
+                                this.View.enemyImage.Image = Pacman.Properties.Resources.blue0;
+                            }
                         }
                         else
                         {
-                            this.View.enemyImage.Image = Pacman.Properties.Resources.enemy1left1;
+                            if (this.Model.IsRunningAway == false)
+                            {
+                                this.View.enemyImage.Image = Pacman.Properties.Resources.enemy1left1;
+                            }
+                            else
+                            {
+                                this.View.enemyImage.Image = Pacman.Properties.Resources.blue1;
+                            }
+
                         }
                         refreshPic();
                         if (counter == 16)
@@ -163,52 +225,115 @@ namespace Pacman
                             this.Model.X--;
                             alreadyMoving = false;
                         }
-                        wall = false;
+                        //wall = false;
                     }
-                    else
+                    /*else
                     {
                         wall = true;
-                    }
+                    }*/
                     break;
             }
             randGen = new Random();
             //check here which way to go
 
             List<int> directionsToGo = new List<int>();
-            if (player.model.X >= this.Model.X && alreadyMoving == false) //if player is on the right of the enemy
+
+            if (this.Model.IsDead == false) //if player is dead it needs to focus on begintile and else on player
             {
-                if (WorldModel.Map2D[this.Model.Y, this.Model.X + 1] != 1) //checks if right is free
+                x = player.model.X;
+                y = player.model.Y;
+            }
+            else
+            {
+                x = beginTile.Model.X;
+                y = beginTile.Model.Y;
+            }
+
+            if (WorldModel.Map2D[this.Model.Y, this.Model.X + 1] != 1 && this.Model.Direction != EnemyModel.direction.left) //checks if right is free
+            {
+                if (this.Model.IsRunningAway) //if enemy is blue it has to check to run the opposite direction of the player
+                {
+                    check = (x <= this.Model.X && alreadyMoving == false);
+                }
+                else
+                {
+                    check = (x >= this.Model.X && alreadyMoving == false); //if player is on the right of the enemy
+                }  
+                if (check) 
                 {
                     directionsToGo.Add(1); //adds right to the list of possible directions to go
+                    //directionsToGo.Add(1); //more chance to follow player
+                    //directionsToGo.Add(1);
                 }
+                //directionsToGo.Add(1);
             }
-            if (player.model.X <= this.Model.X && alreadyMoving == false) //if player is on the left of the enemy
+            if (WorldModel.Map2D[this.Model.Y, this.Model.X - 1] != 1 && this.Model.Direction != EnemyModel.direction.right) //checks if left is free
             {
-                if (WorldModel.Map2D[this.Model.Y, this.Model.X - 1] != 1) //checks if left is free
+                if (this.Model.IsRunningAway) //if enemy is blue it has to check to run the opposite direction of the player
+                {
+                    check = (x >= this.Model.X && alreadyMoving == false);
+                }
+                else
+                {
+                    check = (x <= this.Model.X && alreadyMoving == false); //if player is on the left of the enemy
+                }
+                if (check) 
                 {
                     directionsToGo.Add(3); //adds left to the list of possible directions to go
+                    //directionsToGo.Add(3);
+                    //directionsToGo.Add(3);
                 }
+                //directionsToGo.Add(3);
             }
-            if (player.model.Y >= this.Model.Y && alreadyMoving == false) //if player is lower than the enemy
+            if (WorldModel.Map2D[this.Model.Y + 1, this.Model.X] != 1 && this.Model.Direction != EnemyModel.direction.up) //checks if down is free
             {
-                if (WorldModel.Map2D[this.Model.Y + 1, this.Model.X] != 1) //checks if down is free
+                if (this.Model.IsRunningAway) //if enemy is blue it has to check to run the opposite direction of the player
                 {
+                    check = (y <= this.Model.Y && alreadyMoving == false);
+                }
+                else
+                {
+                    check = (y >= this.Model.Y && alreadyMoving == false); //if player is lower than the enemy
+                }
+                if (check) 
+                {              
                     directionsToGo.Add(2); //adds down to the list of possible directions to go
+                    //directionsToGo.Add(2);
+                    //directionsToGo.Add(2);
                 }
+                //directionsToGo.Add(2);
             }
-            if (player.model.Y <= this.Model.Y && alreadyMoving == false) //if player is higher than the enemy
+            if (WorldModel.Map2D[this.Model.Y - 1, this.Model.X] != 1 && this.Model.Direction != EnemyModel.direction.down) //checks if up is free
             {
-                if (WorldModel.Map2D[this.Model.Y - 1, this.Model.X] != 1) //checks if up is free
+                if (this.Model.IsRunningAway) //if enemy is blue it has to check to run the opposite direction of the player
                 {
-                    directionsToGo.Add(0); //adds up to the list of possible directions to go
+                    check = (y >= this.Model.Y && alreadyMoving == false);
                 }
+                else
+                {
+                    check = (y <= this.Model.Y && alreadyMoving == false);//if player is higher than the enemy
+                }
+                if (check) 
+                {                
+                    directionsToGo.Add(0); //adds up to the list of possible directions to go
+                    //directionsToGo.Add(0);
+                    //directionsToGo.Add(0);
+                }
+                //directionsToGo.Add(0);
             }
             if (directionsToGo.Count == 0)
             {
                 if (alreadyMoving == false)
                 {
-                    this.Model.Direction = (EnemyModel.direction)this.randGen.Next(0, 4); //gives a random direction
-                    goto startMovement;                 
+                    int randomNum;
+                    do
+                    {
+                        randomNum = this.randGen.Next(0, 4);
+                    }
+                    while (this.Model.Direction == (EnemyModel.direction)((randomNum + 2) % 4)); //makes sure the enemy can't go back from the direction it comes from
+
+                    this.Model.Direction = (EnemyModel.direction)randomNum;//(EnemyModel.direction)this.randGen.Next(0, 4); //gives a random direction
+                    goto startMovement;
                 }
             }
             else
@@ -218,14 +343,6 @@ namespace Pacman
                     this.Model.Direction = (EnemyModel.direction)directionsToGo[this.randGen.Next(directionsToGo.Count)];
                 }
             }
-        
-            /*if (wall == true && alreadyMoving == false)
-            {                
-                this.Model.Direction = (EnemyModel.direction)this.randGen.Next(0, 4); //gives a random direction
-                goto startMovement;
-            }*/
-
-
         }
 
         protected void animate()

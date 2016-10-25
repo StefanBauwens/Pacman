@@ -21,5 +21,11 @@ namespace Pacman
         {
             get { return this.tileUI; }
         }
+
+        public TileModel Model
+        {
+            get { return this.tileModel; }
+            set { this.tileModel = value; }
+        }
     }
 }

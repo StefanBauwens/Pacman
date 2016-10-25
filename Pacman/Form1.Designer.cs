@@ -47,23 +47,27 @@
             player.view.Left = 16;
             this.Controls.Add(player.view);
 
-            EnemyController blinky = new EnemyController(player);
+            TileController beginTile = new TileController();
+            beginTile.Model.X = 1;
+            beginTile.Model.Y = 1;
+
+            EnemyController blinky = new EnemyController(player, beginTile);
             blinky.View.Top = 16;
             blinky.View.Left = 16;
             this.Controls.Add(blinky.View);
 
-            EnemyController blinky1 = new EnemyController(player);
+            EnemyController blinky1 = new EnemyController(player, beginTile);
             blinky1.View.Top = 16;
             blinky1.View.Left = 32;
             blinky1.Model.X = 2;
             this.Controls.Add(blinky1.View);
 
-            EnemyController blinky2 = new EnemyController(player);
+            EnemyController blinky2 = new EnemyController(player, beginTile);
             blinky2.View.Top = 16;
             blinky2.View.Left = 16;
             this.Controls.Add(blinky2.View);
 
-            EnemyController blinky3 = new EnemyController(player);
+            EnemyController blinky3 = new EnemyController(player, beginTile);
             blinky3.View.Top = 16;
             blinky3.View.Left = 16;
             this.Controls.Add(blinky3.View);
