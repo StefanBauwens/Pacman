@@ -102,6 +102,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="ScoreController.cs" />
     <Compile Include="ScoreModel.cs" />
     <Compile Include="ScoreUI.cs">
@@ -117,6 +122,14 @@
     </Compile>
     <Compile Include="TileUI.Designer.cs">
       <DependentUpon>TileUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WorldController.cs" />
+    <Compile Include="WorldModel.cs" />
+    <Compile Include="WorldUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WorldUI.Designer.cs">
+      <DependentUpon>WorldUI.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="BigDotUI.resx">
       <DependentUpon>BigDotUI.cs</DependentUpon>
@@ -141,15 +154,14 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="ScoreUI.resx">
       <DependentUpon>ScoreUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WorldUI.resx">
+      <DependentUpon>WorldUI.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -166,6 +178,26 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\pacmanLives.png" />
+    <None Include="Resources\enemy1up1.png" />
+    <None Include="Resources\enemy1up0.png" />
+    <None Include="Resources\enemy1right1.png" />
+    <None Include="Resources\enemy1right0.png" />
+    <None Include="Resources\enemy1left1.png" />
+    <None Include="Resources\enemy1left0.png" />
+    <None Include="Resources\enemy1down1.png" />
+    <None Include="Resources\enemy1down0.png" />
+    <None Include="Resources\pacmanright2.png" />
+    <None Include="Resources\pacman.png" />
+    <None Include="Resources\pacmanright.png" />
+    <None Include="Resources\pacmanup1.png" />
+    <None Include="Resources\pacmanright1.png" />
+    <None Include="Resources\pacmanleft1.png" />
+    <None Include="Resources\pacmandown1.png" />
+    <None Include="Resources\pacmanup.png" />
+    <None Include="Resources\pacmanleft.png" />
+    <None Include="Resources\pacmandown.png" />
+    <None Include="Resources\pacdot.png" />
+    <None Include="Resources\bigdot.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

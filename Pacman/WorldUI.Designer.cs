@@ -1,6 +1,6 @@
 ﻿namespace Pacman
 {
-    partial class PacDotUI
+    partial class WorldUI
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,35 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pacDotImage = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pacDotImage)).BeginInit();
             this.SuspendLayout();
             // 
-            // pacDotImage
-            // 
-            this.pacDotImage.Image = global::Pacman.Properties.Resources.pacdot;
-            this.pacDotImage.Location = new System.Drawing.Point(0, 0);
-            this.pacDotImage.Margin = new System.Windows.Forms.Padding(2);
-            this.pacDotImage.Name = "pacDotImage";
-            this.pacDotImage.Size = new System.Drawing.Size(16, 16);
-            this.pacDotImage.TabIndex = 0;
-            this.pacDotImage.TabStop = false;
-            // 
-            // PacDotUI
+            // WorldUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.pacDotImage);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.Name = "PacDotUI";
-            this.Size = new System.Drawing.Size(16, 16);
-            ((System.ComponentModel.ISupportInitialize)(this.pacDotImage)).EndInit();
+            this.Name = "WorldUI";
+            this.Size = new System.Drawing.Size(320, 368);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.PictureBox pacDotImage;
     }
 }
