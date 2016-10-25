@@ -178,6 +178,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\pacmanLives.png" />
+    <None Include="Resources\blue11.png" />
+    <None Include="Resources\blue01.png" />
+    <None Include="Resources\blinky1.jpg" />
+    <None Include="Resources\black1.jpg" />
+    <None Include="Resources\blue1.png" />
+    <None Include="Resources\blue0.png" />
     <None Include="Resources\enemy1up1.png" />
     <None Include="Resources\enemy1up0.png" />
     <None Include="Resources\enemy1right1.png" />

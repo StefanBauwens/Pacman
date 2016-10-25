@@ -29,10 +29,16 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.enemyImage = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.enemyImage = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.enemyImage)).BeginInit();
             this.SuspendLayout();
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 15;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // enemyImage
             // 
@@ -43,12 +49,6 @@
             this.enemyImage.TabIndex = 0;
             this.enemyImage.TabStop = false;
             this.enemyImage.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
-            // timer1
-            // 
-            this.timer1.Enabled = true;
-            this.timer1.Interval = 20;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // EnemyUI
             // 
@@ -63,7 +63,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.Timer timer1;
+        public System.Windows.Forms.Timer timer1;
         public System.Windows.Forms.PictureBox enemyImage;
     }
 }
