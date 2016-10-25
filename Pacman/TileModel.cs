@@ -6,9 +6,23 @@ using System.Threading.Tasks;
 
 namespace Pacman
 {
-    class TileModel
+    public class TileModel
     {
         protected bool mCanWalkThrough;
+        protected int mX;
+        protected int mY;
+        
+        public int X
+        {
+            get { return mX; }
+            set { mX = value; }
+        }
+
+        public int Y
+        {
+            get { return mY; }
+            set { mY = value; }
+        }
 
         public bool CanWalkThrough
         {
