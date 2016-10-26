@@ -8,7 +8,7 @@ namespace Pacman
 {
     class ScoreModel
     {
-        protected int _score;
+        protected int _score = 0;
 
         public int score
         {

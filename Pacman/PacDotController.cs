@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace Pacman
 {
-    class PacDotController
+    public class PacDotController
     {
         private PacDotModel pacDotModel;
         private PacDotUI pacDotUI;
+        protected List<dynamic> observers = new List<dynamic>();
 
         public PacDotController()
         {
@@ -26,6 +27,23 @@ namespace Pacman
             }
         }
 
+        // add observer to observer list
+        public void subscribeObserverToPacDot(dynamic observer)
+        {
+            this.observers.Add(observer);
+        }
+
+        // loop over observers and execute method that needs to be run 
+        // when observable (= pacDot) changes
+        protected void notifyObserversFromPacDot()
+        {
+            foreach (dynamic observer in this.observers)
+            {
+                observer.notify(pacDotModel.dotPoints); //change score with value of pac dot
+            }
+        }
+
+
         // executes when the observable is changed
         public void notify(bool isEaten)
         {
@@ -33,6 +51,7 @@ namespace Pacman
             // update view with images
             this.pacDotUI.updateImage(isEaten);
 
+            notifyObserversFromPacDot();
 
         }
 

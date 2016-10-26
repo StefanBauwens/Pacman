@@ -29,7 +29,7 @@ namespace Pacman
         {
             if(isRunningAway)
             {
-                //this.enemyImage.Image = Properties.Resources.Naam van blauwe image
+                //this.enemyImage.Image = Properties.Resources.enemyblue0
             }
             
 
