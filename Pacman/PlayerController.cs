@@ -38,7 +38,7 @@ namespace Pacman
 
         public void movePlayer()
         {
-            Console.WriteLine(keyDelay);
+            //Console.WriteLine(keyDelay);
             if (keyDelay > 0)
             {
                 keyDelay--;
