@@ -48,8 +48,8 @@
             this.Controls.Add(player.view);
 
             TileController beginTile = new TileController();
-            beginTile.Model.X = 1;
-            beginTile.Model.Y = 1;
+            beginTile.Model.X = 9;
+            beginTile.Model.Y = 9;
 
             EnemyController blinky = new EnemyController(player, beginTile);
             blinky.View.Top = 16;

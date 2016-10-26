@@ -41,7 +41,7 @@ namespace Pacman
 
         public void moveEnemy()
         {
-            startMovement:
+            //startMovement:
 
             if (this.Model.IsRunningAway)
             {
@@ -54,7 +54,6 @@ namespace Pacman
 
             switch (this.Model.Direction)
             {
-
                 case EnemyModel.direction.up:
                     if (WorldModel.Map2D[this.Model.Y - 1, this.Model.X] != 1)
                     {
@@ -68,32 +67,44 @@ namespace Pacman
                         animate();
                         if (this.Model.Animation < 4)
                         {
-                            //ADD PICTURES FOR EYES IF ISDEAD == TRUE 
-                            //LOOK TO FIND MORE EFFICIENT WAY
-                            if (this.Model.IsRunningAway == false)
+                            if (this.Model.IsRunningAway)// == false)
                             {
-                                this.View.enemyImage.Image = Pacman.Properties.Resources.enemy1up0;
+                                //this.View.enemyImage.Image = Pacman.Properties.Resources.enemy1up0;
+                                this.View.enemyImage.Image = Pacman.Properties.Resources.blue0;
+                            }
+                            else if (this.Model.IsDead)
+                            {
+                                this.View.enemyImage.Image = Pacman.Properties.Resources.eyesup;
                             }
                             else
                             {
-                                this.View.enemyImage.Image = Pacman.Properties.Resources.blue0;
+                                this.View.enemyImage.Image = Pacman.Properties.Resources.enemy1up0;
+                                //this.View.enemyImage.Image = Pacman.Properties.Resources.blue0;
                             }
                         }
                         else
                         {
-                            if (this.Model.IsRunningAway == false)
+                            if (this.Model.IsRunningAway)// == false)
                             {
-                                this.View.enemyImage.Image = Pacman.Properties.Resources.enemy1up1;
+                                //this.View.enemyImage.Image = Pacman.Properties.Resources.enemy1up1;
+                                this.View.enemyImage.Image = Pacman.Properties.Resources.blue1;
+                            }
+                            else if (this.Model.IsDead)
+                            {
+                                this.View.enemyImage.Image = Pacman.Properties.Resources.eyesup;
                             }
                             else
                             {
-                                this.View.enemyImage.Image = Pacman.Properties.Resources.blue1;
+                                //this.View.enemyImage.Image = Pacman.Properties.Resources.blue1;
+                                this.View.enemyImage.Image = Pacman.Properties.Resources.enemy1up1;
                             }
                         }
                         refreshPic();
                         if (counter == 16)
                         {
                             this.Model.Y--;
+                            //Console.WriteLine(this.Model.Direction);
+
                             alreadyMoving = false;
                         }
                     }
@@ -111,30 +122,44 @@ namespace Pacman
                         animate();
                         if (this.Model.Animation < 4)
                         {
-                            if (this.Model.IsRunningAway == false) //checks if enemy should be blue(and running away) or not
+                            if (this.Model.IsRunningAway)// == false) //checks if enemy should be blue(and running away) or not
                             {
-                                this.View.enemyImage.Image = Pacman.Properties.Resources.enemy1right0;
+                                //this.View.enemyImage.Image = Pacman.Properties.Resources.enemy1right0;
+                                this.View.enemyImage.Image = Pacman.Properties.Resources.blue0;
+                            }
+                            else if (this.Model.IsDead)
+                            {
+                                this.View.enemyImage.Image = Pacman.Properties.Resources.eyesright;
                             }
                             else
                             {
-                                this.View.enemyImage.Image = Pacman.Properties.Resources.blue0;
+                                //this.View.enemyImage.Image = Pacman.Properties.Resources.blue0;
+                                this.View.enemyImage.Image = Pacman.Properties.Resources.enemy1right0;
                             }
                         }
                         else
                         {
-                            if (this.Model.IsRunningAway == false)
+                            if (this.Model.IsRunningAway)// == false)
                             {
-                                this.View.enemyImage.Image = Pacman.Properties.Resources.enemy1right1;
+                                //this.View.enemyImage.Image = Pacman.Properties.Resources.enemy1right1;
+                                this.View.enemyImage.Image = Pacman.Properties.Resources.blue1;
+                            }
+                            else if (this.Model.IsDead)
+                            {
+                                this.View.enemyImage.Image = Pacman.Properties.Resources.eyesright;
                             }
                             else
                             {
-                                this.View.enemyImage.Image = Pacman.Properties.Resources.blue1;
+                                //this.View.enemyImage.Image = Pacman.Properties.Resources.blue1;
+                                this.View.enemyImage.Image = Pacman.Properties.Resources.enemy1right1;
                             }
                         }
                         refreshPic();
                         if (counter == 16)
                         {
                             this.Model.X++;
+                            //Console.WriteLine(this.Model.Direction);
+
                             alreadyMoving = false;
                         }
                     }
@@ -152,30 +177,44 @@ namespace Pacman
                         animate();
                         if (this.Model.Animation < 4)
                         {
-                            if (this.Model.IsRunningAway == false)
+                            if (this.Model.IsRunningAway)// == false)
                             {
-                                this.View.enemyImage.Image = Pacman.Properties.Resources.enemy1down0;
+                                //this.View.enemyImage.Image = Pacman.Properties.Resources.enemy1down0;
+                                this.View.enemyImage.Image = Pacman.Properties.Resources.blue0;
+                            }
+                            else if (this.Model.IsDead)
+                            {
+                                this.View.enemyImage.Image = Pacman.Properties.Resources.eyesdown;
                             }
                             else
                             {
-                                this.View.enemyImage.Image = Pacman.Properties.Resources.blue0;
+                                //this.View.enemyImage.Image = Pacman.Properties.Resources.blue0;
+                                this.View.enemyImage.Image = Pacman.Properties.Resources.enemy1down0;
                             }
                         }
                         else
                         {
-                            if (this.Model.IsRunningAway == false)
+                            if (this.Model.IsRunningAway)// == false)
                             {
-                                this.View.enemyImage.Image = Pacman.Properties.Resources.enemy1down1;
+                                //this.View.enemyImage.Image = Pacman.Properties.Resources.enemy1down1;
+                                this.View.enemyImage.Image = Pacman.Properties.Resources.blue1;
+                            }
+                            else if (this.Model.IsDead)
+                            {
+                                this.View.enemyImage.Image = Pacman.Properties.Resources.eyesdown;
                             }
                             else
                             {
-                                this.View.enemyImage.Image = Pacman.Properties.Resources.blue1;
+                                //this.View.enemyImage.Image = Pacman.Properties.Resources.blue1;
+                                this.View.enemyImage.Image = Pacman.Properties.Resources.enemy1down1;
                             }
                         }
                         refreshPic();
                         if (counter == 16)
                         {
                             this.Model.Y++;
+                            //Console.WriteLine(this.Model.Direction);
+
                             alreadyMoving = false;
                         }
                         //wall = false;
@@ -198,24 +237,36 @@ namespace Pacman
                         animate();
                         if (this.Model.Animation < 4)
                         {
-                            if (this.Model.IsRunningAway == false)
+                            if (this.Model.IsRunningAway)// == false)
                             {
-                                this.View.enemyImage.Image = Pacman.Properties.Resources.enemy1left0;
+                                //this.View.enemyImage.Image = Pacman.Properties.Resources.enemy1left0;
+                                this.View.enemyImage.Image = Pacman.Properties.Resources.blue0;
+                            }
+                            else if (this.Model.IsDead)
+                            {
+                                this.View.enemyImage.Image = Pacman.Properties.Resources.eyesleft;
                             }
                             else
                             {
-                                this.View.enemyImage.Image = Pacman.Properties.Resources.blue0;
+                                //this.View.enemyImage.Image = Pacman.Properties.Resources.blue0;
+                                this.View.enemyImage.Image = Pacman.Properties.Resources.enemy1left0;
                             }
                         }
                         else
                         {
-                            if (this.Model.IsRunningAway == false)
+                            if (this.Model.IsRunningAway)// == false)
                             {
-                                this.View.enemyImage.Image = Pacman.Properties.Resources.enemy1left1;
+                                //this.View.enemyImage.Image = Pacman.Properties.Resources.enemy1left1;
+                                this.View.enemyImage.Image = Pacman.Properties.Resources.blue1;
+                            }
+                            else if (this.Model.IsDead)
+                            {
+                                this.View.enemyImage.Image = Pacman.Properties.Resources.eyesleft;
                             }
                             else
                             {
-                                this.View.enemyImage.Image = Pacman.Properties.Resources.blue1;
+                                //this.View.enemyImage.Image = Pacman.Properties.Resources.blue1;
+                                this.View.enemyImage.Image = Pacman.Properties.Resources.enemy1left1;
                             }
 
                         }
@@ -223,6 +274,7 @@ namespace Pacman
                         if (counter == 16)
                         {
                             this.Model.X--;
+                            //Console.WriteLine(this.Model.Direction);
                             alreadyMoving = false;
                         }
                         //wall = false;
@@ -237,7 +289,7 @@ namespace Pacman
             //check here which way to go
 
             List<int> directionsToGo = new List<int>();
-
+            List<int> directionsToGo2 = new List<int>();
             if (this.Model.IsDead == false) //if player is dead it needs to focus on begintile and else on player
             {
                 x = player.model.X;
@@ -265,7 +317,7 @@ namespace Pacman
                     //directionsToGo.Add(1); //more chance to follow player
                     //directionsToGo.Add(1);
                 }
-                //directionsToGo.Add(1);
+                directionsToGo2.Add(1);
             }
             if (WorldModel.Map2D[this.Model.Y, this.Model.X - 1] != 1 && this.Model.Direction != EnemyModel.direction.right) //checks if left is free
             {
@@ -280,10 +332,8 @@ namespace Pacman
                 if (check) 
                 {
                     directionsToGo.Add(3); //adds left to the list of possible directions to go
-                    //directionsToGo.Add(3);
-                    //directionsToGo.Add(3);
                 }
-                //directionsToGo.Add(3);
+                directionsToGo2.Add(3);
             }
             if (WorldModel.Map2D[this.Model.Y + 1, this.Model.X] != 1 && this.Model.Direction != EnemyModel.direction.up) //checks if down is free
             {
@@ -297,11 +347,9 @@ namespace Pacman
                 }
                 if (check) 
                 {              
-                    directionsToGo.Add(2); //adds down to the list of possible directions to go
-                    //directionsToGo.Add(2);
-                    //directionsToGo.Add(2);
+                    directionsToGo.Add(2); //adds down to the list of possible directions to go               
                 }
-                //directionsToGo.Add(2);
+                directionsToGo2.Add(2);
             }
             if (WorldModel.Map2D[this.Model.Y - 1, this.Model.X] != 1 && this.Model.Direction != EnemyModel.direction.down) //checks if up is free
             {
@@ -316,14 +364,13 @@ namespace Pacman
                 if (check) 
                 {                
                     directionsToGo.Add(0); //adds up to the list of possible directions to go
-                    //directionsToGo.Add(0);
-                    //directionsToGo.Add(0);
                 }
-                //directionsToGo.Add(0);
+                directionsToGo2.Add(0);
             }
+
             if (directionsToGo.Count == 0)
             {
-                if (alreadyMoving == false)
+                /*if (alreadyMoving == false)
                 {
                     int randomNum;
                     do
@@ -331,16 +378,30 @@ namespace Pacman
                         randomNum = this.randGen.Next(0, 4);
                     }
                     while (this.Model.Direction == (EnemyModel.direction)((randomNum + 2) % 4)); //makes sure the enemy can't go back from the direction it comes from
-
-                    this.Model.Direction = (EnemyModel.direction)randomNum;//(EnemyModel.direction)this.randGen.Next(0, 4); //gives a random direction
-                    goto startMovement;
+                    //Console.WriteLine(randomNum);
+                    this.Model.Direction = (EnemyModel.direction)randomNum;//gives a random direction
+                    //goto startMovement;
+                }*/
+                if (alreadyMoving == false)
+                {
+                    if (directionsToGo2.Count !=0)
+                    {
+                        this.Model.Direction = (EnemyModel.direction)directionsToGo2[this.randGen.Next(directionsToGo2.Count)];
+                    }
+                    else
+                    {
+                        this.Model.Direction = (EnemyModel.direction)(((int)this.Model.Direction + 2) % 4);
+                    }
                 }
             }
             else
             {
                 if (alreadyMoving == false)
                 {
+                    //Console.WriteLine(this.Model.Direction);
+                    Console.WriteLine();
                     this.Model.Direction = (EnemyModel.direction)directionsToGo[this.randGen.Next(directionsToGo.Count)];
+                    //goto startMovement;
                 }
             }
         }
