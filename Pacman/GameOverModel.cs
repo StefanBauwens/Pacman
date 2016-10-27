@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Pacman
 {
-    class MessageBoxModel
+    class GameOverModel
     {
         string mMessage;
 
