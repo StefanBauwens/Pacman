@@ -26,6 +26,12 @@ namespace Pacman
                 return this.pacDotUI;
             }
         }
+        
+        public PacDotModel Model
+        {
+            get { return pacDotModel; }
+            set { pacDotModel = value; }
+        }
 
         // add observer to observer list
         public void subscribeObserverToPacDot(dynamic observer)
@@ -45,14 +51,13 @@ namespace Pacman
 
 
         // executes when the observable is changed
-        public void notify(bool isEaten)
+        public void notify(int xCoordinate, int yCoordinate)//bool isEaten)
         {
-
-            // update view with images
-            this.pacDotUI.updateImage(isEaten);
-
-            notifyObserversFromPacDot();
-
+            if (this.Model.X == xCoordinate && this.Model.Y == yCoordinate)
+            {
+                this.pacDotUI.updateImage(true);
+                notifyObserversFromPacDot();  // update view with images
+            }
         }
 
     }

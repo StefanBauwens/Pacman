@@ -10,21 +10,22 @@ namespace Pacman
     {
         EnemyModel enemyModel;
         EnemyUI enemyUI;
-        PlayerController player;
+        //PlayerController player;
         TileController beginTile;
+        //ENEMY = OBSERVER
 
         bool alreadyMoving = false;
         int counter;
         bool check;
-        int x, y; //coordinates to check. Either player cooridnates or coordinates from begintile
+
         Random randGen;
 
 
-        public EnemyController(PlayerController playerController, TileController mBeginTile) //constructor
+        public EnemyController(/*PlayerController playerController,*/ TileController mBeginTile) //constructor
         {
             this.enemyModel = new EnemyModel();
             this.enemyUI = new EnemyUI(this);
-            this.player = playerController;
+            //this.player = playerController;
             this.beginTile = mBeginTile;
         }
 
@@ -290,26 +291,27 @@ namespace Pacman
 
             List<int> directionsToGo = new List<int>();
             List<int> directionsToGo2 = new List<int>();
-            if (this.Model.IsDead == false) //if player is dead it needs to focus on begintile and else on player
+            /*if (this.Model.IsDead == false) //if player is dead it needs to focus on begintile and else on player
             {
                 x = player.model.X;
                 y = player.model.Y;
             }
-            else
+            else*/
+            if (this.Model.IsDead == true) //if player is dead it needs to focus on begintile
             {
-                x = beginTile.Model.X;
-                y = beginTile.Model.Y;
+                this.Model.XObserver = beginTile.Model.X;
+                this.Model.YObserver = beginTile.Model.Y;
             }
 
             if (WorldModel.Map2D[this.Model.Y, this.Model.X + 1] != 1 && this.Model.Direction != EnemyModel.direction.left) //checks if right is free
             {
                 if (this.Model.IsRunningAway) //if enemy is blue it has to check to run the opposite direction of the player
                 {
-                    check = (x <= this.Model.X && alreadyMoving == false);
+                    check = (this.Model.XObserver <= this.Model.X && alreadyMoving == false);
                 }
                 else
                 {
-                    check = (x >= this.Model.X && alreadyMoving == false); //if player is on the right of the enemy
+                    check = (this.Model.XObserver >= this.Model.X && alreadyMoving == false); //if player is on the right of the enemy
                 }  
                 if (check) 
                 {
@@ -323,11 +325,11 @@ namespace Pacman
             {
                 if (this.Model.IsRunningAway) //if enemy is blue it has to check to run the opposite direction of the player
                 {
-                    check = (x >= this.Model.X && alreadyMoving == false);
+                    check = (this.Model.XObserver >= this.Model.X && alreadyMoving == false);
                 }
                 else
                 {
-                    check = (x <= this.Model.X && alreadyMoving == false); //if player is on the left of the enemy
+                    check = (this.Model.XObserver <= this.Model.X && alreadyMoving == false); //if player is on the left of the enemy
                 }
                 if (check) 
                 {
@@ -339,11 +341,11 @@ namespace Pacman
             {
                 if (this.Model.IsRunningAway) //if enemy is blue it has to check to run the opposite direction of the player
                 {
-                    check = (y <= this.Model.Y && alreadyMoving == false);
+                    check = (this.Model.YObserver <= this.Model.Y && alreadyMoving == false);
                 }
                 else
                 {
-                    check = (y >= this.Model.Y && alreadyMoving == false); //if player is lower than the enemy
+                    check = (this.Model.YObserver >= this.Model.Y && alreadyMoving == false); //if player is lower than the enemy
                 }
                 if (check) 
                 {              
@@ -355,11 +357,11 @@ namespace Pacman
             {
                 if (this.Model.IsRunningAway) //if enemy is blue it has to check to run the opposite direction of the player
                 {
-                    check = (y >= this.Model.Y && alreadyMoving == false);
+                    check = (this.Model.YObserver >= this.Model.Y && alreadyMoving == false);
                 }
                 else
                 {
-                    check = (y <= this.Model.Y && alreadyMoving == false);//if player is higher than the enemy
+                    check = (this.Model.YObserver <= this.Model.Y && alreadyMoving == false);//if player is higher than the enemy
                 }
                 if (check) 
                 {                
@@ -413,6 +415,23 @@ namespace Pacman
             {
                 this.Model.Animation = 0;
             }
+        }
+
+        // Method that gets executed when the observable is changed
+        public void notify(int xCoordinate, int yCoordinate)
+        {
+            this.Model.XObserver = xCoordinate; //gets the coordinates which it should follow(or run away from)
+            this.Model.YObserver = yCoordinate;
+            if (this.Model.IsRunningAway && this.Model.X == this.Model.XObserver && this.Model.Y == this.Model.YObserver)
+            {
+                this.Model.IsRunningAway = false;
+                this.Model.IsDead = true;
+            }
+            // Update model with new value
+            /*this.scoreModel.score = newDiceValue;
+
+            // Update view with new value
+            this.scoreUI.updateScore(newDiceValue);*/
         }
 
         protected void refreshPic()

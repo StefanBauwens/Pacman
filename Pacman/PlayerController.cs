@@ -9,8 +9,10 @@ namespace Pacman
 {
     public class PlayerController
     {
-        PlayerModel playerModel;
-        PlayerUI playerUI;
+        protected PlayerModel playerModel;
+        protected PlayerUI playerUI;
+        //PLAYER = OBSERVABLE
+        protected List<dynamic> observers = new List<dynamic>();
 
         //const int SLOWDOWN = 1500000; //raise this number to slow down pacman
         const int KEYSPEED = 30; //how long a keypress stays active
@@ -69,6 +71,7 @@ namespace Pacman
                         if (counter == 16)
                         {
                             this.model.Y--;
+                            this.notifyObservers();
                             alreadyMoving = false;
                         }
                     }
@@ -96,6 +99,7 @@ namespace Pacman
                         if (counter == 16)
                         {
                             this.model.X++;
+                            this.notifyObservers();
                             alreadyMoving = false;
                         }
                     }
@@ -123,6 +127,7 @@ namespace Pacman
                         if (counter == 16)
                         {
                             this.model.Y++;
+                            this.notifyObservers();
                             alreadyMoving = false;
                         }
                     }
@@ -150,6 +155,7 @@ namespace Pacman
                         if (counter == 16)
                         {
                             this.model.X--;
+                            this.notifyObservers();
                             alreadyMoving = false;
                         }
                     }
@@ -173,6 +179,20 @@ namespace Pacman
 
             }*/
             this.view.pictureBox1.Refresh();
+        }
+
+        protected void notifyObservers()
+        {
+            foreach (dynamic observer in this.observers)
+            {
+                observer.notify(this.model.X, this.model.Y); //gives coordinates of player to observers
+            }
+        }
+
+        // Add observer to observer list
+        public void subscribeObserver(dynamic observer)
+        {
+            this.observers.Add(observer);
         }
 
         public void checkKeyAFewTimes(PreviewKeyDownEventArgs e)

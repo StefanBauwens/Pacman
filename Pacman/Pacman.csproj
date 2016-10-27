@@ -160,6 +160,9 @@
     <EmbeddedResource Include="ScoreUI.resx">
       <DependentUpon>ScoreUI.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="TileUI.resx">
+      <DependentUpon>TileUI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WorldUI.resx">
       <DependentUpon>WorldUI.cs</DependentUpon>
     </EmbeddedResource>
@@ -178,6 +181,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\pacmanLives.png" />
+    <None Include="Resources\wall2.png" />
+    <None Include="Resources\wallsprite.png" />
     <None Include="Resources\eyesup.png" />
     <None Include="Resources\eyesright.png" />
     <None Include="Resources\eyesleft.png" />
