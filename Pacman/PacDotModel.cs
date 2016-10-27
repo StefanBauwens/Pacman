@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Pacman
 {
-    class PacDotModel: TileModel
+    public class PacDotModel: TileModel
     {
         
         protected bool _isEaten = false; //if true --> pacdot will disappear

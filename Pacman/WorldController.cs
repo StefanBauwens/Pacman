@@ -17,23 +17,70 @@ namespace Pacman
             worldUI = new WorldUI(this);
 
             //draw the world
+            PlayerController player = new PlayerController();//adds player
+            player.model.X = 9;
+            player.model.Y = 11;
+            player.view.Top = 176; 
+            player.view.Left = 144;
+            this.view.Controls.Add(player.view);
+
+            TileController beginTile = new TileController(); //adds begintile for enemies TEMPORARLY!!
+            beginTile.Model.X = 9;
+            beginTile.Model.Y = 9;
+
             for (int rows = 0; rows < WorldModel.Map2D.GetLength(0); rows++)
             {
                 for (int colls = 0; colls < WorldModel.Map2D.GetLength(1); colls++)
                 {
-                    if (WorldModel.Map2D[rows, colls]==0)
+                    switch (WorldModel.Map2D[rows, colls])
                     {
-                        PacDotController pacDot = new PacDotController();
-                        pacDot.view.Top = rows * 16;
-                        pacDot.view.Left = colls * 16;
-                        this.view.Controls.Add(pacDot.view);
-                    }
-                    else
-                    {
-                        BigDotController bigDot = new BigDotController();
-                        bigDot.view.Top = rows * 16;
-                        bigDot.view.Left = colls * 16;
-                        this.view.Controls.Add(bigDot.view);
+                        case 0:
+                            PacDotController pacDot = new PacDotController();
+                            player.subscribeObserver(pacDot); //subscribes to player
+                            pacDot.view.Top = rows * 16;
+                            pacDot.view.Left = colls * 16;
+                            pacDot.Model.X = colls;
+                            pacDot.Model.Y = rows;
+                            this.view.Controls.Add(pacDot.view);
+                            break;
+                        case 1:
+                            TileController wall = new TileController();
+                            wall.Model.X = colls;
+                            wall.Model.Y = rows;
+                            wall.View.Top = rows * 16;
+                            wall.View.Left = colls * 16;
+                            wall.View.pictureBox1.Image = Pacman.Properties.Resources.wall2;//wallsprite;
+                            this.view.Controls.Add(wall.View);
+
+                            /*BigDotController bigDot = new BigDotController();
+                            bigDot.view.Top = rows * 16;
+                            bigDot.view.Left = colls * 16;
+                            this.view.Controls.Add(bigDot.view);*/
+                            break;
+                        case 2:
+                            TileController blackTile = new TileController(); //adds a blacktile first for under the enemy
+                            blackTile.Model.X = colls;
+                            blackTile.Model.Y = rows;
+                            blackTile.View.Top = rows * 16;
+                            blackTile.View.Left = colls * 16;
+                            this.view.Controls.Add(blackTile.View);
+
+                            EnemyController blinky = new EnemyController(beginTile);
+                            player.subscribeObserver(blinky);
+                            blinky.View.Top = rows * 16;
+                            blinky.View.Left = colls * 16;
+                            blinky.Model.X = colls;
+                            blinky.Model.Y = rows;                            
+                            this.view.Controls.Add(blinky.View);
+                            blinky.View.BringToFront(); //make sure enemy layer is over tiles so it's visible
+                            break;
+                        case 3:
+                            BigDotController bigDot = new BigDotController();
+                            bigDot.view.Top = rows * 16;
+                            bigDot.view.Left = colls * 16;
+                            this.view.Controls.Add(bigDot.view);
+                            break;
+
                     }
                 }
             }
