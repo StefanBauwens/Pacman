@@ -10,6 +10,7 @@ namespace Pacman
     {
         private LivesModel livesModel;
         private LivesUI livesUI;
+        protected List<dynamic> observers = new List<dynamic>();
 
         public LivesController()
         {
@@ -21,7 +22,23 @@ namespace Pacman
         {
             get { return this.livesUI; }
         }
-        
+
+        // add observer to observer list
+        public void subscribeObserverToLives(dynamic observer)
+        {
+            this.observers.Add(observer);
+        }
+
+        // loop over observers and execute method that needs to be run 
+        // when observable (= Lives) changes
+        protected void notifyObserversFromLives()
+        {
+            foreach (dynamic observer in this.observers)
+            {
+                observer.notify(livesModel.lives); // false = ready; true = game over
+            }
+        }
+
         // executes when the observable is changed
         public void notify(int newNrLives)
         {
@@ -31,6 +48,12 @@ namespace Pacman
             
             // update model with new value
             this.livesModel.lives = newNrLives;
+
+            // text game over visible
+            if (newNrLives == 0)
+            {
+                notifyObserversFromLives();
+            }
         }
         
     }

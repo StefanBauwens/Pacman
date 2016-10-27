@@ -51,7 +51,7 @@ namespace Pacman
 
 
         // executes when the observable is changed
-        public void notify(int xCoordinate, int yCoordinate)//bool isEaten)
+        public void notify(int xCoordinate, int yCoordinate)
         {
             if (this.Model.X == xCoordinate && this.Model.Y == yCoordinate)
             {

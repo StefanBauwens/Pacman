@@ -76,13 +76,13 @@
     <Compile Include="LivesUI.Designer.cs">
       <DependentUpon>LivesUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="MessageBoxController.cs" />
-    <Compile Include="MessageBoxModel.cs" />
-    <Compile Include="MessageBoxUI.cs">
+    <Compile Include="GameOverController.cs" />
+    <Compile Include="GameOverModel.cs" />
+    <Compile Include="GameOverUI.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="MessageBoxUI.Designer.cs">
-      <DependentUpon>MessageBoxUI.cs</DependentUpon>
+    <Compile Include="GameOverUI.Designer.cs">
+      <DependentUpon>GameOverUI.cs</DependentUpon>
     </Compile>
     <Compile Include="PacDotController.cs" />
     <Compile Include="PacDotModel.cs" />
@@ -143,8 +143,8 @@
     <EmbeddedResource Include="LivesUI.resx">
       <DependentUpon>LivesUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MessageBoxUI.resx">
-      <DependentUpon>MessageBoxUI.cs</DependentUpon>
+    <EmbeddedResource Include="GameOverUI.resx">
+      <DependentUpon>GameOverUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PacDotUI.resx">
       <DependentUpon>PacDotUI.cs</DependentUpon>
