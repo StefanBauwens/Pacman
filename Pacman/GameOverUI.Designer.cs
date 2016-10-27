@@ -1,6 +1,6 @@
 ﻿namespace Pacman
 {
-    partial class MessageBoxUI
+    partial class GameOverUI
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,26 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.messageTextLabel = new System.Windows.Forms.Label();
+            this.gameOverLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // messageTextLabel
+            // gameOverLabel
             // 
-            this.messageTextLabel.AutoSize = true;
-            this.messageTextLabel.Location = new System.Drawing.Point(29, 15);
-            this.messageTextLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.messageTextLabel.Name = "messageTextLabel";
-            this.messageTextLabel.Size = new System.Drawing.Size(91, 17);
-            this.messageTextLabel.TabIndex = 0;
-            this.messageTextLabel.Text = "GAME OVER";
+            this.gameOverLabel.AutoSize = true;
+            this.gameOverLabel.Location = new System.Drawing.Point(29, 15);
+            this.gameOverLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.gameOverLabel.Name = "gameOverLabel";
+            this.gameOverLabel.Size = new System.Drawing.Size(91, 17);
+            this.gameOverLabel.TabIndex = 0;
+            this.gameOverLabel.Text = "GAME OVER";
             // 
-            // MessageBoxUI
+            // GameOverUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.messageTextLabel);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.Name = "MessageBoxUI";
+            this.Controls.Add(this.gameOverLabel);
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Name = "GameOverUI";
             this.Size = new System.Drawing.Size(153, 43);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -56,6 +56,6 @@
 
         #endregion
 
-        public System.Windows.Forms.Label messageTextLabel;
+        public System.Windows.Forms.Label gameOverLabel;
     }
 }
