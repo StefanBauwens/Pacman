@@ -10,19 +10,11 @@ using System.Windows.Forms;
 
 namespace Pacman
 {
-    public partial class GameOverUI : UserControl
+    public partial class ReadyUI : UserControl
     {
-        GameOverController gameOverController;
-
-        public GameOverUI(GameOverController controller)
+        public ReadyUI()
         {
-            gameOverController = controller;
             InitializeComponent();
-        }
-
-        private void gameOverLabel_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
