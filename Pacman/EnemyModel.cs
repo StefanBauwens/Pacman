@@ -22,6 +22,7 @@ namespace Pacman
 
         bool mIsRunningAway = false; //if true enemy is blue and running away from player
         bool mIsDead = false; //if the enemy gets eaten it must be heading to the box
+        bool mHasEatenPacman = false; // if pacman gets eaten by enemy
 
         int mX = 1; //coordinates of the enemy
         int mY = 1;
@@ -41,6 +42,7 @@ namespace Pacman
             set { mYObserver = value; }
         }
 
+        
         public int Animation
         {
             get { return mAnimation; }
@@ -63,6 +65,12 @@ namespace Pacman
         {
             get { return mIsDead; }
             set { mIsDead = value; }
+        }
+
+        public bool HasEatenPacman
+        {
+            get { return mHasEatenPacman; }
+            set { mHasEatenPacman = value; }
         }
 
         public int X

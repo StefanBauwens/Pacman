@@ -13,6 +13,9 @@ namespace Pacman
         //PlayerController player;
         TileController beginTile;
         //ENEMY = OBSERVER
+        //ENEMY observable from lives
+        protected List<dynamic> observers = new List<dynamic>();
+
 
         bool alreadyMoving = false;
         int counter;
@@ -422,16 +425,20 @@ namespace Pacman
         {
             this.Model.XObserver = xCoordinate; //gets the coordinates which it should follow(or run away from)
             this.Model.YObserver = yCoordinate;
+            
+            // if enemy is blue and gets eaten by pacman
             if (this.Model.IsRunningAway && this.Model.X == this.Model.XObserver && this.Model.Y == this.Model.YObserver)
             {
                 this.Model.IsRunningAway = false;
                 this.Model.IsDead = true;
             }
-            // Update model with new value
-            /*this.scoreModel.score = newDiceValue;
-
-            // Update view with new value
-            this.scoreUI.updateScore(newDiceValue);*/
+            
+            // if pacman gets eaten by enemy
+            if(this.Model.IsRunningAway == false && !this.Model.IsDead && this.Model.X == this.Model.XObserver && this.Model.Y == this.Model.YObserver)
+            {
+                notifyObserversFromEnemy();  
+            }
+            
         }
 
         protected void refreshPic()
@@ -443,14 +450,32 @@ namespace Pacman
             this.View.enemyImage.Refresh();
         }
 
+        // add observer to observer list
+        public void subscribeObserverToEnemy(dynamic observer)
+        {
+            this.observers.Add(observer);
+        }
+
+        // loop over observers and execute method that needs to be run 
+        // when observable (= enemy) changes
+        protected void notifyObserversFromEnemy()
+        {
+            this.Model.HasEatenPacman = true;
+            foreach (dynamic observer in this.observers)
+            {
+                observer.notify(enemyModel.HasEatenPacman); 
+            }
+        }
+
+
         public void notify(int number)//bool isRunningAway, bool isDead)
         {
-            //if (number == 50)
-            //{
+            if (number == 50)
+            {
                 //this.enemyUI.updateImage(isRunningAway);
                 this.Model.IsRunningAway = true;
                 Console.WriteLine("test");
-            //}
+            }
         }
 
     }

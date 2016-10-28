@@ -39,9 +39,9 @@
             // imageLifeLeft
             // 
             this.imageLifeLeft.Image = global::Pacman.Properties.Resources.pacmanLives;
-            this.imageLifeLeft.Location = new System.Drawing.Point(66, 13);
+            this.imageLifeLeft.Location = new System.Drawing.Point(56, 13);
             this.imageLifeLeft.Name = "imageLifeLeft";
-            this.imageLifeLeft.Size = new System.Drawing.Size(14, 19);
+            this.imageLifeLeft.Size = new System.Drawing.Size(24, 19);
             this.imageLifeLeft.TabIndex = 0;
             this.imageLifeLeft.TabStop = false;
             // 
