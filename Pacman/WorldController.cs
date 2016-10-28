@@ -35,6 +35,11 @@ namespace Pacman
             score.view.Top = 340;
             this.view.Controls.Add(score.view);
 
+            LivesController lives = new LivesController(); //adds lives to the form
+            lives.view.Top = 340;
+            lives.view.Left = 50;
+            this.view.Controls.Add(lives.view);
+
             for (int rows = 0; rows < WorldModel.Map2D.GetLength(0); rows++)
             {
                 for (int colls = 0; colls < WorldModel.Map2D.GetLength(1); colls++)
@@ -76,6 +81,8 @@ namespace Pacman
                             EnemyController blinky = new EnemyController(beginTile);
                             enemies.Add(blinky); //add to the enemies list
                             player.subscribeObserver(blinky);
+                            blinky.subscribeObserverToEnemey(lives);
+                            blinky.subscribeObserverToEnemy(player);
                             blinky.View.Top = rows * 16;
                             blinky.View.Left = colls * 16;
                             blinky.Model.X = colls;

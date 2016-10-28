@@ -192,6 +192,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\pacmanLives.png" />
+    <None Include="Resources\death11.png" />
+    <None Include="Resources\death10.png" />
+    <None Include="Resources\death9.png" />
+    <None Include="Resources\death7.png" />
+    <None Include="Resources\death6.png" />
+    <None Include="Resources\death5.png" />
+    <None Include="Resources\death4.png" />
+    <None Include="Resources\death3.png" />
+    <None Include="Resources\death2.png" />
+    <None Include="Resources\death1.png" />
+    <None Include="Resources\death0.png" />
     <None Include="Resources\wall2.png" />
     <None Include="Resources\wallsprite.png" />
     <None Include="Resources\eyesup.png" />

@@ -181,6 +181,21 @@ namespace Pacman
             this.view.pictureBox1.Refresh();
         }
 
+        protected void notify(bool isDead)
+        {
+            this.model.IsDead = isDead;
+            if (this.model.IsDead) //death scene
+            {
+                for (int i = 1; i <= 11; i++)
+                {
+                    object picture = Pacman.Properties.Resources.ResourceManager.GetObject("death" + i);
+                    this.view.pictureBox1.Image = (System.Drawing.Image)picture;
+                    System.Threading.Thread.Sleep(50);
+                    refreshPic();
+                }
+            }     
+        }
+
         protected void notifyObservers()
         {
             foreach (dynamic observer in this.observers)
