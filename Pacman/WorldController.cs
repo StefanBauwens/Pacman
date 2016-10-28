@@ -16,6 +16,9 @@ namespace Pacman
             //model = new WorldModel();
             worldUI = new WorldUI(this);
 
+            List<EnemyController> enemies = new List<EnemyController>(); 
+            List<BigDotController> bigdots = new List<BigDotController>();
+
             //draw the world
             PlayerController player = new PlayerController();//adds player
             player.model.X = 9;
@@ -24,9 +27,13 @@ namespace Pacman
             player.view.Left = 144;
             this.view.Controls.Add(player.view);
 
-            TileController beginTile = new TileController(); //adds begintile for enemies TEMPORARLY!!
+            TileController beginTile = new TileController(); //adds begintile for enemies 
             beginTile.Model.X = 9;
             beginTile.Model.Y = 9;
+
+            ScoreController score = new ScoreController(); //adds score
+            score.view.Top = 340;
+            this.view.Controls.Add(score.view);
 
             for (int rows = 0; rows < WorldModel.Map2D.GetLength(0); rows++)
             {
@@ -37,6 +44,7 @@ namespace Pacman
                         case 0:
                             PacDotController pacDot = new PacDotController();
                             player.subscribeObserver(pacDot); //subscribes to player
+                            pacDot.subscribeObserverToPacDot(score);
                             pacDot.view.Top = rows * 16;
                             pacDot.view.Left = colls * 16;
                             pacDot.Model.X = colls;
@@ -66,24 +74,38 @@ namespace Pacman
                             this.view.Controls.Add(blackTile.View);
 
                             EnemyController blinky = new EnemyController(beginTile);
+                            enemies.Add(blinky); //add to the enemies list
                             player.subscribeObserver(blinky);
                             blinky.View.Top = rows * 16;
                             blinky.View.Left = colls * 16;
                             blinky.Model.X = colls;
-                            blinky.Model.Y = rows;                            
+                            blinky.Model.Y = rows;                           
                             this.view.Controls.Add(blinky.View);
                             blinky.View.BringToFront(); //make sure enemy layer is over tiles so it's visible
                             break;
                         case 3:
                             BigDotController bigDot = new BigDotController();
+                            bigdots.Add(bigDot); //add to the list
+                            player.subscribeObserver(bigDot);
+                            bigDot.subscribeObserverToBigDot(score);
                             bigDot.view.Top = rows * 16;
                             bigDot.view.Left = colls * 16;
+                            bigDot.Model.X = colls;
+                            bigDot.Model.Y = rows;
                             this.view.Controls.Add(bigDot.view);
                             break;
-
                     }
                 }
             }
+
+            for (int i = 0; i < bigdots.Count; i++) //Subscribe all the enemies to each bigdot
+            {
+                for (int j = 0; j < enemies.Count; j++)
+                {
+                    bigdots[i].subscribeObserverToBigDot(enemies[j]);
+                }
+            }
+
         }
 
         public WorldUI view

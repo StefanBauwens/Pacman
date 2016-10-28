@@ -46,9 +46,7 @@
             WorldController world = new WorldController();
             this.Controls.Add(world.view);
 
-            ScoreController score = new ScoreController();
-            score.view.Top = 330;
-            this.Controls.Add(score.view);
+
 
 
         }
