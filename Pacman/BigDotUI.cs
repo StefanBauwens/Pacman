@@ -12,8 +12,11 @@ namespace Pacman
 {
     public partial class BigDotUI : UserControl
     {
-        public BigDotUI()
+        BigDotController controller;
+
+        public BigDotUI(BigDotController bigDotController)
         {
+            controller = bigDotController;
             InitializeComponent();
         }
 
@@ -24,6 +27,11 @@ namespace Pacman
             {
                 this.bigDotImage.Image = Properties.Resources.black;
             }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            this.controller.FlashImage();
         }
     }
 }

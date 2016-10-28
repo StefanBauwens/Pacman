@@ -443,11 +443,14 @@ namespace Pacman
             this.View.enemyImage.Refresh();
         }
 
-        public void notify(bool isRunningAway, bool isDead)
+        public void notify(int number)//bool isRunningAway, bool isDead)
         {
-            
-            this.enemyUI.updateImage(isRunningAway);
-            
+            //if (number == 50)
+            //{
+                //this.enemyUI.updateImage(isRunningAway);
+                this.Model.IsRunningAway = true;
+                Console.WriteLine("test");
+            //}
         }
 
     }

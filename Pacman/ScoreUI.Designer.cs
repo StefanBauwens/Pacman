@@ -36,7 +36,7 @@
             // 
             this.scoreTextLabel.AutoSize = true;
             this.scoreTextLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.scoreTextLabel.Location = new System.Drawing.Point(23, 18);
+            this.scoreTextLabel.Location = new System.Drawing.Point(23, 10);
             this.scoreTextLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.scoreTextLabel.Name = "scoreTextLabel";
             this.scoreTextLabel.Size = new System.Drawing.Size(38, 13);
@@ -47,7 +47,7 @@
             // 
             this.scoreValueLabel.AutoSize = true;
             this.scoreValueLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.scoreValueLabel.Location = new System.Drawing.Point(68, 17);
+            this.scoreValueLabel.Location = new System.Drawing.Point(68, 9);
             this.scoreValueLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.scoreValueLabel.Name = "scoreValueLabel";
             this.scoreValueLabel.Size = new System.Drawing.Size(13, 13);
@@ -62,7 +62,7 @@
             this.Controls.Add(this.scoreTextLabel);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ScoreUI";
-            this.Size = new System.Drawing.Size(113, 43);
+            this.Size = new System.Drawing.Size(113, 33);
             this.ResumeLayout(false);
             this.PerformLayout();
 
