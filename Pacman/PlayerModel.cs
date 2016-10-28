@@ -20,10 +20,16 @@ namespace Pacman
             left
         }
 
-        direction mDir = direction.right;
-        int mAnimation = 1;
+        protected direction mDir = direction.right;
+        protected int mAnimation = 1;
+        protected bool mIsDead = false;
+        protected PreviewKeyDownEventArgs mLastKeyPressed;
 
-        PreviewKeyDownEventArgs mLastKeyPressed;
+        public bool IsDead
+        {
+            get { return mIsDead; }
+            set { mIsDead = value; }
+        }
 
         public PreviewKeyDownEventArgs LastKeyPressed
         {
