@@ -40,20 +40,25 @@ namespace Pacman
         }
 
         // executes when the observable is changed
-        public void notify(int newNrLives)
+        public void notify(bool hasEatenPacman)
         {
             
-            // update view with new amount of pictures (lives)
-            this.livesUI.updateLives(newNrLives);
-            
-            // update model with new value
-            this.livesModel.lives = newNrLives;
-
-            // text game over visible
-            if (newNrLives == 0)
+            if(hasEatenPacman)
             {
-                notifyObserversFromLives();
+                // update model with new value
+                int newNrLives = this.livesModel.lives--;
+                Console.WriteLine(newNrLives);
+                // update view with new amount of pictures (lives)
+                this.livesUI.updateLives(newNrLives);
+
+                // text game over visible
+                if (newNrLives == 0)
+                {
+                    notifyObserversFromLives();// game over
+                }
             }
+
+            
         }
         
     }

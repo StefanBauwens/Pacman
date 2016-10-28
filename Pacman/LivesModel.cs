@@ -8,7 +8,7 @@ namespace Pacman
 {
     class LivesModel
     {
-        protected int _lives;
+        protected int _lives = 3;
 
         public int lives
         {
