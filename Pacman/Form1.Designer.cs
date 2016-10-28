@@ -37,50 +37,19 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(304, 336);
+            this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.ClientSize = new System.Drawing.Size(304, 368);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
 
-            /*player = new PlayerController();
-            player.view.Top = 16; //change this later by doing the initialising in worldcontroller!!
-            player.view.Left = 16;
-            this.Controls.Add(player.view);*/
-
-            /*TileController beginTile = new TileController();
-            beginTile.Model.X = 9;
-            beginTile.Model.Y = 9;*
-
-            /*EnemyController blinky = new EnemyController(beginTile);
-            player.subscribeObserver(blinky);
-            blinky.View.Top = 16;
-            blinky.View.Left = 16;
-            this.Controls.Add(blinky.View);
-
-            EnemyController blinky1 = new EnemyController(beginTile);
-            player.subscribeObserver(blinky1);
-            blinky1.View.Top = 16;
-            blinky1.View.Left = 32;
-            blinky1.Model.X = 2;
-            this.Controls.Add(blinky1.View);
-
-            EnemyController blinky2 = new EnemyController(beginTile);
-            player.subscribeObserver(blinky2);
-            blinky2.View.Top = 16;
-            blinky2.View.Left = 16;
-            this.Controls.Add(blinky2.View);
-
-            EnemyController blinky3 = new EnemyController(beginTile);
-            player.subscribeObserver(blinky3);
-            blinky3.View.Top = 16;
-            blinky3.View.Left = 16;
-            this.Controls.Add(blinky3.View);*/
-
-            //LivesController lives = new LivesController();
-            //this.Controls.Add(lives.view);
-
             WorldController world = new WorldController();
             this.Controls.Add(world.view);
+
+            ScoreController score = new ScoreController();
+            score.view.Top = 330;
+            this.Controls.Add(score.view);
+
 
         }
 
