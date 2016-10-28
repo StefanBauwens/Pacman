@@ -28,6 +28,7 @@ namespace Pacman
             if(nrLives == 0)
             {
                 gameOverUI.gameOverLabel.Visible = true; //if player dead --> show game over
+                gameOverModel.isGameOver = true;
             }
             else
             {

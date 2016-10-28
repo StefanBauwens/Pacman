@@ -107,6 +107,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="ReadyController.cs" />
+    <Compile Include="ReadyModel.cs" />
+    <Compile Include="ReadyUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ReadyUI.Designer.cs">
+      <DependentUpon>ReadyUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="ScoreController.cs" />
     <Compile Include="ScoreModel.cs" />
     <Compile Include="ScoreUI.cs">
@@ -156,6 +164,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReadyUI.resx">
+      <DependentUpon>ReadyUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ScoreUI.resx">
       <DependentUpon>ScoreUI.cs</DependentUpon>
