@@ -8,12 +8,12 @@ namespace Pacman
 {
     class GameOverModel
     {
-        string mMessage;
+        protected bool _isGameOver = false;
 
-        public string Message
+        public bool isGameOver
         {
-            get{ return mMessage; }
-            set{ mMessage = value; }
+            get{ return _isGameOver; }
+            set{ _isGameOver = value; }
         }
     }
 }
