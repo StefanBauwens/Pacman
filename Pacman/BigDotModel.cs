@@ -6,10 +6,17 @@ using System.Threading.Tasks;
 
 namespace Pacman
 {
-    class BigDotModel: TileModel
+    public class BigDotModel: TileModel
     {
         protected bool _isEaten = false; //if true --> pacdot will disappear
         protected int _dotPoints = 50;
+        protected int mAnimation = 0;
+
+        public int Animation
+        {
+            get { return mAnimation; }
+            set { mAnimation = value; }
+        }
 
         public BigDotModel()
         {

@@ -53,10 +53,11 @@ namespace Pacman
         // executes when the observable is changed
         public void notify(int xCoordinate, int yCoordinate)
         {
-            if (this.Model.X == xCoordinate && this.Model.Y == yCoordinate)
+            if (this.Model.X == xCoordinate && this.Model.Y == yCoordinate && !this.Model.isEaten)
             {
                 this.pacDotUI.updateImage(true);
                 notifyObserversFromPacDot();  // update view with images
+                this.Model.isEaten = true;
             }
         }
 

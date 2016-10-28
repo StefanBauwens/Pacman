@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.bigDotImage = new System.Windows.Forms.PictureBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.bigDotImage)).BeginInit();
             this.SuspendLayout();
             // 
@@ -42,12 +44,18 @@
             this.bigDotImage.TabIndex = 0;
             this.bigDotImage.TabStop = false;
             // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 40;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // BigDotUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.bigDotImage);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "BigDotUI";
             this.Size = new System.Drawing.Size(16, 16);
             ((System.ComponentModel.ISupportInitialize)(this.bigDotImage)).EndInit();
@@ -57,6 +65,7 @@
 
         #endregion
 
-        private System.Windows.Forms.PictureBox bigDotImage;
+        public System.Windows.Forms.PictureBox bigDotImage;
+        private System.Windows.Forms.Timer timer1;
     }
 }

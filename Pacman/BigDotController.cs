@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Pacman
 {
-    class BigDotController
+    public class BigDotController
     {
         private BigDotModel bigDotModel;
         private BigDotUI bigDotUI;
@@ -15,7 +15,7 @@ namespace Pacman
         public BigDotController()
         {
             this.bigDotModel = new BigDotModel();
-            this.bigDotUI = new BigDotUI();
+            this.bigDotUI = new BigDotUI(this);
         }
 
         // returns view
@@ -27,6 +27,37 @@ namespace Pacman
             }
         }
 
+        public BigDotModel Model
+        {
+            get { return bigDotModel; }
+            set { bigDotModel = value;}
+        }
+
+        public void FlashImage()
+        {
+            if (!this.Model.isEaten)
+            {
+                animate();
+                if (this.Model.Animation < 4)
+                {
+                    this.view.bigDotImage.Image = Pacman.Properties.Resources.bigdot;
+                }
+                else
+                {
+                    this.view.bigDotImage.Image = Pacman.Properties.Resources.black;
+                }
+                this.view.bigDotImage.Refresh();
+            }          
+        }
+
+        protected void animate()
+        {
+            this.Model.Animation++;
+            if (this.Model.Animation >= 8)
+            {
+                this.Model.Animation = 0;
+            }
+        }
 
         // add observer to observer list
         public void subscribeObserverToBigDot(dynamic observer)
@@ -45,14 +76,14 @@ namespace Pacman
         }
 
         // executes when the observable is changed
-        public void notify(bool isEaten)
+        public void notify(int xCoordinate, int yCoordinate)
         {
-
-            // update view with images
-            this.bigDotUI.updateImage(isEaten);
-
-            // notify observers with new score
-            notifyObserversFromBigDot();
+            if (this.Model.X == xCoordinate && this.Model.Y == yCoordinate && !this.Model.isEaten)
+            {
+                this.view.updateImage(true);
+                this.Model.isEaten = true;
+                notifyObserversFromBigDot();
+            }
         }
     }
 }
