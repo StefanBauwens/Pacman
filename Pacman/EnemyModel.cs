@@ -27,8 +27,21 @@ namespace Pacman
         int mX = 1; //coordinates of the enemy
         int mY = 1;
         int mXObserver, mYObserver; //coordinates to check. Either player cooridnates or coordinates from begintile
+        int mXDetailed, mYDetailed; //detailed coordinates, coordinates of the pixels and not just of the place in the map
 
         int mAnimation = 1;
+
+        public int XDetailed
+        {
+            get { return mXDetailed; }
+            set { mXDetailed = value; }
+        }
+
+        public int YDetailed
+        {
+            get { return mYDetailed; }
+            set { mYDetailed = value; }
+        }
 
         public int XObserver
         {

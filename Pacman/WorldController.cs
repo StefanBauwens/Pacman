@@ -101,6 +101,14 @@ namespace Pacman
                             bigDot.Model.Y = rows;
                             this.view.Controls.Add(bigDot.view);
                             break;
+                        case 4:
+                            TileController blackTile1 = new TileController(); //adds a blacktile first for under the enemy
+                            blackTile1.Model.X = colls;
+                            blackTile1.Model.Y = rows;
+                            blackTile1.View.Top = rows * 16;
+                            blackTile1.View.Left = colls * 16;
+                            this.view.Controls.Add(blackTile1.View);
+                            break;
                     }
                 }
             }
@@ -109,7 +117,7 @@ namespace Pacman
             {
                 for (int j = 0; j < enemies.Count; j++)
                 {
-                    bigdots[i].subscribeObserverToBigDot(enemies[j]);
+                    bigdots[i].subscribeObserverToBigDot(enemies[j]);                  
                 }
             }
 
