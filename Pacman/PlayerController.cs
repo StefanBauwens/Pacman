@@ -40,12 +40,24 @@ namespace Pacman
 
         public void movePlayer()
         {
-            //Console.WriteLine(keyDelay);
-            if (keyDelay > 0)
+            if (this.model.IsDead) //death scene
+            {
+                for (int i = 1; i <= 11; i++)
+                {
+                    object picture = Pacman.Properties.Resources.ResourceManager.GetObject("death" + i);
+                    this.view.pictureBox1.Image = (System.Drawing.Image)picture;
+                    System.Threading.Thread.Sleep(150);
+                    refreshPic();
+                }
+                this.model.IsDead = false;
+            }
+
+            if (keyDelay > 0) //add some keydelay so it's easier to turn around a corner
             {
                 keyDelay--;
                 checkKey(this.model.LastKeyPressed);
             }
+
             switch (this.model.Direction)
             {
                 case PlayerModel.direction.up:
@@ -174,33 +186,31 @@ namespace Pacman
 
         protected void refreshPic()
         {
-            /*for (int j = 0; j < SLOWDOWN; j++)
-            {
-
-            }*/
             this.view.pictureBox1.Refresh();
         }
 
         public void notify(bool isDead)
         {
             this.model.IsDead = isDead;
-            if (this.model.IsDead) //death scene
+
+            foreach (dynamic observer in this.observers)
             {
-                for (int i = 1; i <= 11; i++)
+                if (observer is EnemyController)
                 {
-                    object picture = Pacman.Properties.Resources.ResourceManager.GetObject("death" + i);
-                    this.view.pictureBox1.Image = (System.Drawing.Image)picture;
-                    System.Threading.Thread.Sleep(150);
-                    refreshPic();
+                    //hide all enemies
+                    observer.Model.X = 18;
+                    observer.Model.Y = 16;
+                    observer.View.Left = -32;
+                    observer.View.Top = -32;
                 }
-            }     
+            }
         }
 
         protected void notifyObservers()
         {
             foreach (dynamic observer in this.observers)
             {
-                observer.notify(this.model.X, this.model.Y); //gives coordinates of player to observers
+                observer.notify(this.model.X, this.model.Y, this.view.Left, this.view.Top); //gives coordinates of player to observers
             }
         }
 

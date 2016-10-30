@@ -45,8 +45,85 @@ namespace Pacman
 
         public void moveEnemy()
         {
-            //startMovement:
+            //Console.WriteLine("Enemy Coordinates X:" + this.Model.X + " Y:" + this.Model.Y);
+            //Console.WriteLine("Player Coordinates X:" + this.Model.XObserver + " Y:" + this.Model.YObserver);
 
+            // if enemy is blue and gets eaten by pacman
+            /*if (this.Model.IsRunningAway && this.Model.X == this.Model.XObserver && this.Model.Y == this.Model.YObserver)
+            {
+                this.Model.IsRunningAway = false;
+                this.Model.IsDead = true;
+            }*/
+
+            // if pacman gets eaten by enemy
+            /*if (this.Model.IsRunningAway == false && !this.Model.IsDead && this.Model.X == this.Model.XObserver && this.Model.Y == this.Model.YObserver)
+            {
+                notifyObserversFromEnemy();
+            }*/
+
+
+
+            /*if (this.View.Left >= this.Model.XDetailed && this.View.Left <= (this.Model.XDetailed + 16) && this.View.Top >= this.Model.YDetailed && this.View.Top <= (this.Model.YDetailed + 16))
+            {
+                isTouching = true;
+            }
+            if ((this.View.Left + 16) >= this.Model.XDetailed && (this.View.Left + 16) <= (this.Model.XDetailed + 16) && this.View.Top >= this.Model.YDetailed && this.View.Top <= (this.Model.YDetailed + 16))
+            {
+                isTouching = true;
+            }
+            if (this.View.Left >= this.Model.XDetailed && this.View.Left <= (this.Model.XDetailed + 16) && (this.View.Top + 16) >= this.Model.YDetailed && (this.View.Top + 16) <= (this.Model.YDetailed + 16))
+            {
+                isTouching = true;
+            }
+            if ((this.View.Left + 16) >= this.Model.XDetailed && (this.View.Left + 16) <= (this.Model.XDetailed + 16) && (this.View.Top + 16) >= this.Model.YDetailed && (this.View.Top + 16) <= (this.Model.YDetailed + 16))
+            {
+                isTouching = true;
+            }*/
+
+            //Good collision detection with player
+            bool isTouching = false;
+
+            if (this.Model.X == this.Model.XObserver && this.View.Top > (this.Model.YDetailed+4) && this.View.Top< (this.Model.YDetailed+12)) // +4 and 12(16 -4) to have 4 pixels slack
+            {
+                isTouching = true;
+            }
+            if (this.Model.X == this.Model.XObserver && (this.View.Top+16) > (this.Model.YDetailed+4) && (this.View.Top+16) < (this.Model.YDetailed + 12))
+            {
+                isTouching = true;
+            }
+            if (this.Model.Y == this.Model.YObserver && this.View.Left > (this.Model.XDetailed+4) && this.View.Left < (this.Model.XDetailed + 12))
+            {
+                isTouching = true;
+            }
+            if (this.Model.Y == this.Model.YObserver && (this.View.Left+16) > (this.Model.XDetailed+4) && (this.View.Left+16) < (this.Model.XDetailed + 12))
+            {
+                isTouching = true;
+            }
+            if (this.Model.Y == this.Model.YObserver && this.Model.X == this.Model.XObserver)
+            {
+                isTouching = true;
+            }
+
+            // if enemy is blue and gets eaten by pacman
+            if (this.Model.IsRunningAway && isTouching)
+            {
+                this.Model.IsRunningAway = false;
+                this.Model.IsDead = true;
+            }
+
+            // if pacman gets eaten by enemy
+            if (this.Model.IsRunningAway == false && !this.Model.IsDead && isTouching)
+            {
+                //hide enemy
+                /*this.Model.X = 18; 
+                this.Model.Y = 16;
+                this.View.Left = -32; 
+                this.View.Top = -32;*/
+                this.Model.HasEatenPacman = true;
+                notifyObserversFromEnemy();
+            }
+
+            //startMovement:
             if (this.Model.IsRunningAway)
             {
                 this.View.timer1.Interval = 17;
@@ -302,7 +379,7 @@ namespace Pacman
             else*/
             if (this.Model.IsDead == true) //if player is dead it needs to focus on begintile
             {
-                this.Model.XObserver = beginTile.Model.X;
+                this.Model.XObserver = beginTile.Model.X; 
                 this.Model.YObserver = beginTile.Model.Y;
             }
 
@@ -421,13 +498,21 @@ namespace Pacman
         }
 
         // Method that gets executed when the observable is changed
-        public void notify(int xCoordinate, int yCoordinate)
+        public void notify(int xCoordinate, int yCoordinate, int xDetailed, int yDetailed)
         {
             this.Model.XObserver = xCoordinate; //gets the coordinates which it should follow(or run away from)
             this.Model.YObserver = yCoordinate;
+
+            this.Model.XDetailed = xDetailed; //used for precise collision detection
+            this.Model.YDetailed = yDetailed;
+
+            /*if (this.Model.IsDead)
+            {
+                this.Model.IsDead = false; 
+            }*/
             
             // if enemy is blue and gets eaten by pacman
-            if (this.Model.IsRunningAway && this.Model.X == this.Model.XObserver && this.Model.Y == this.Model.YObserver)
+            /*if (this.Model.IsRunningAway && this.Model.X == this.Model.XObserver && this.Model.Y == this.Model.YObserver)
             {
                 this.Model.IsRunningAway = false;
                 this.Model.IsDead = true;
@@ -437,7 +522,7 @@ namespace Pacman
             if(this.Model.IsRunningAway == false && !this.Model.IsDead && this.Model.X == this.Model.XObserver && this.Model.Y == this.Model.YObserver)
             {
                 notifyObserversFromEnemy();  
-            }
+            }*/
             
         }
 
@@ -460,7 +545,6 @@ namespace Pacman
         // when observable (= enemy) changes
         protected void notifyObserversFromEnemy()
         {
-            this.Model.HasEatenPacman = true;
             foreach (dynamic observer in this.observers)
             {
                 observer.notify(enemyModel.HasEatenPacman); 
