@@ -20,7 +20,13 @@ namespace Pacman
             List<BigDotController> bigdots = new List<BigDotController>();
 
             //draw the world
-            PlayerController player = new PlayerController();//adds player
+            ReadyController ready = new ReadyController(); //adds ready text
+            ready.view.Top = 177;
+            ready.view.Left = 130;
+            this.view.Controls.Add(ready.view);
+
+            
+            PlayerController player = new PlayerController(ready);//adds player
             player.model.X = 9;
             player.model.Y = 11;
             player.view.Top = 176; 
@@ -48,10 +54,7 @@ namespace Pacman
             lives.subscribeObserverToLives(gameOver);
             gameOver.GameOverTextVisible(false);
 
-            ReadyController ready = new ReadyController(); //adds ready text
-            ready.view.Top = 178;
-            ready.view.Left = 130;
-            this.view.Controls.Add(ready.view);
+            
 
             for (int rows = 0; rows < WorldModel.Map2D.GetLength(0); rows++)
             {
