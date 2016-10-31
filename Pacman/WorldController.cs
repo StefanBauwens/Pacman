@@ -48,11 +48,12 @@ namespace Pacman
             
 
             GameOverController gameOver = new GameOverController(); //adds game over text
-            gameOver.view.Top = 178;
+            gameOver.view.Top = 177;
             gameOver.view.Left = 117;
             this.view.Controls.Add(gameOver.view);
             lives.subscribeObserverToLives(gameOver);
             gameOver.GameOverTextVisible(false);
+            
 
             
 

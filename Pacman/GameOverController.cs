@@ -32,6 +32,7 @@ namespace Pacman
             
             if(nrLives == 0)
             {
+                this.view.BringToFront();
                 gameOverModel.isGameOver = true;
                 gameOverUI.gameOverLabel.Visible = true;
             }
