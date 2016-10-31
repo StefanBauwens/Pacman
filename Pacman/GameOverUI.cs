@@ -7,11 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing.Text;
 
 namespace Pacman
 {
     public partial class GameOverUI : UserControl
     {
+        
         GameOverController gameOverController;
 
         public GameOverUI(GameOverController controller)

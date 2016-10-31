@@ -381,6 +381,16 @@ namespace Pacman.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] PacMan1 {
+            get {
+                object obj = ResourceManager.GetObject("PacMan1", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap pacmandown {
@@ -397,6 +407,16 @@ namespace Pacman.Properties {
             get {
                 object obj = ResourceManager.GetObject("pacmandown1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] pacmanfont {
+            get {
+                object obj = ResourceManager.GetObject("pacmanfont", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         
@@ -476,6 +496,16 @@ namespace Pacman.Properties {
         internal static System.Drawing.Bitmap pacmanup1 {
             get {
                 object obj = ResourceManager.GetObject("pacmanup1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap twohundred {
+            get {
+                object obj = ResourceManager.GetObject("twohundred", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

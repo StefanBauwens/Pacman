@@ -84,6 +84,7 @@
     <Compile Include="GameOverUI.Designer.cs">
       <DependentUpon>GameOverUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="LoadFont.cs" />
     <Compile Include="PacDotController.cs" />
     <Compile Include="PacDotModel.cs" />
     <Compile Include="PacDotUI.cs">
@@ -192,6 +193,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\pacmanLives.png" />
+    <Content Include="Resources\PacMan.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <EmbeddedResource Include="Resources\pacmanfont.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <None Include="Resources\twohundred.png" />
+    <None Include="Resources\200.png" />
     <None Include="Resources\white1.png" />
     <None Include="Resources\white0.png" />
     <None Include="Resources\death11.png" />

@@ -69,7 +69,6 @@ namespace Pacman
                 if (this.Model.TimeBlue == 0) //if times up, the blue enemy becomes back normal
                 {
                     this.Model.IsRunningAway = false;
-                    this.Model.IsWhite = false;
                 }
             }
 
@@ -92,9 +91,9 @@ namespace Pacman
             }*/
 
             //Good collision detection with player
-            bool isTouching = false;
+            bool isTouching = this.Collision();
 
-            if (this.Model.X == this.Model.XObserver && this.View.Top > (this.Model.YDetailed+4) && this.View.Top< (this.Model.YDetailed+12)) // +4 and 12(16 -4) to have 4 pixels slack
+            /*if (this.Model.X == this.Model.XObserver && this.View.Top > (this.Model.YDetailed+4) && this.View.Top< (this.Model.YDetailed+12)) // +4 and 12(16 -4) to have 4 pixels slack
             {
                 isTouching = true;
             }
@@ -113,10 +112,10 @@ namespace Pacman
             if (this.Model.Y == this.Model.YObserver && this.Model.X == this.Model.XObserver)
             {
                 isTouching = true;
-            }
+            }*/
 
             // if enemy is blue and gets eaten by pacman
-            if (this.Model.IsRunningAway && isTouching)
+            if (this.Model.IsRunningAway && !this.Model.IsDead && isTouching)
             {
                 this.Model.IsRunningAway = false;
                 this.Model.IsDead = true;
@@ -124,11 +123,27 @@ namespace Pacman
             }
 
             // if pacman gets eaten by enemy
-            if (this.Model.IsRunningAway == false && !this.Model.IsDead && isTouching)
+            if (!this.Model.IsRunningAway && !this.Model.IsDead && isTouching && this.Model.XObserver!=beginTile.Model.X && this.Model.XObserver!=beginTile.Model.Y)
             {
                 this.Model.HasEatenPacman = true;
                 notifyObserversFromEnemy();
             }
+
+            if (this.Model.IsDead == true) //if enemy is dead it needs to focus on begintile
+            {
+                this.Model.XObserver = beginTile.Model.X;
+                this.Model.YObserver = beginTile.Model.Y;
+                this.Model.XDetailed = beginTile.Model.X * 16;
+                this.Model.YDetailed = beginTile.Model.Y * 16;
+            }
+
+            isTouching = Collision();
+
+            if (this.Model.IsDead && isTouching)
+            {
+                this.Model.IsDead = false;
+            }
+
 
             //startMovement:
             if (this.Model.IsRunningAway)
@@ -440,11 +455,6 @@ namespace Pacman
                 y = player.model.Y;
             }
             else*/
-            if (this.Model.IsDead == true) //if player is dead it needs to focus on begintile
-            {
-                this.Model.XObserver = beginTile.Model.X; 
-                this.Model.YObserver = beginTile.Model.Y;
-            }
 
             if (WorldModel.Map2D[this.Model.Y, this.Model.X + 1] != 1 && this.Model.Direction != EnemyModel.direction.left) //checks if right is free
             {
@@ -615,6 +625,9 @@ namespace Pacman
                     if (observer is ScoreController)
                     {
                         observer.notify(200);
+                        this.View.enemyImage.Image = Pacman.Properties.Resources.twohundred;
+                        this.View.enemyImage.Refresh();
+                        System.Threading.Thread.Sleep(300);
                     }
                 }
                 else
@@ -630,12 +643,40 @@ namespace Pacman
 
         public void notify(int number)//bool isRunningAway, bool isDead)
         {
-            if (number == 50)
+            if (number == 50 && !this.Model.IsDead)
             {
                 //this.enemyUI.updateImage(isRunningAway);
                 this.Model.IsRunningAway = true;
+                this.Model.IsWhite = false;
                 this.Model.TimeBlue = TIMEBLUE; //time that the enemy is running away before he turns back normal
             }
+        }
+
+        public bool Collision() //checks for collision with begintile or player
+        {
+            bool isTouching = false;
+
+            if (this.Model.X == this.Model.XObserver && this.View.Top > (this.Model.YDetailed + 4) && this.View.Top < (this.Model.YDetailed + 12)) // +4 and 12(16 -4) to have 4 pixels slack
+            {
+                isTouching = true;
+            }
+            if (this.Model.X == this.Model.XObserver && (this.View.Top + 16) > (this.Model.YDetailed + 4) && (this.View.Top + 16) < (this.Model.YDetailed + 12))
+            {
+                isTouching = true;
+            }
+            if (this.Model.Y == this.Model.YObserver && this.View.Left > (this.Model.XDetailed + 4) && this.View.Left < (this.Model.XDetailed + 12))
+            {
+                isTouching = true;
+            }
+            if (this.Model.Y == this.Model.YObserver && (this.View.Left + 16) > (this.Model.XDetailed + 4) && (this.View.Left + 16) < (this.Model.XDetailed + 12))
+            {
+                isTouching = true;
+            }
+            if (this.Model.Y == this.Model.YObserver && this.Model.X == this.Model.XObserver)
+            {
+                isTouching = true;
+            }
+            return isTouching;
         }
 
     }
