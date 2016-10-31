@@ -39,6 +39,19 @@ namespace Pacman
             lives.view.Top = 340;
             lives.view.Left = 190;
             this.view.Controls.Add(lives.view);
+            
+
+            GameOverController gameOver = new GameOverController(); //adds game over text
+            gameOver.view.Top = 178;
+            gameOver.view.Left = 117;
+            this.view.Controls.Add(gameOver.view);
+            lives.subscribeObserverToLives(gameOver);
+            gameOver.GameOverTextVisible(false);
+
+            ReadyController ready = new ReadyController(); //adds ready text
+            ready.view.Top = 178;
+            ready.view.Left = 130;
+            this.view.Controls.Add(ready.view);
 
             for (int rows = 0; rows < WorldModel.Map2D.GetLength(0); rows++)
             {
