@@ -23,13 +23,27 @@ namespace Pacman
         bool mIsRunningAway = false; //if true enemy is blue and running away from player
         bool mIsDead = false; //if the enemy gets eaten it must be heading to the box
         bool mHasEatenPacman = false; // if pacman gets eaten by enemy
+        bool mIsWhite = false; //if it's white(when blue flashing white to indicate it's going to become back normal)
 
         int mX = 1; //coordinates of the enemy
         int mY = 1;
         int mXObserver, mYObserver; //coordinates to check. Either player cooridnates or coordinates from begintile
         int mXDetailed, mYDetailed; //detailed coordinates, coordinates of the pixels and not just of the place in the map
 
+        int mTimeBlue = 0; //time that enemies stay blue
         int mAnimation = 1;
+
+        public bool IsWhite
+        {
+            get { return mIsWhite; }
+            set { mIsWhite = value; }
+        }
+
+        public int TimeBlue
+        {
+            get { return mTimeBlue; }
+            set { mTimeBlue = value; }
+        }
 
         public int XDetailed
         {

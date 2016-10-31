@@ -136,6 +136,12 @@
   <data name="enemy1down1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\enemy1down1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="death3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\death3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="death1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\death1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="pacmanright1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pacmanright1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -154,11 +160,26 @@
   <data name="pacmanLives" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pacmanLives.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="death6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\death6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="pacmandown" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pacmandown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="death9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\death9.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="death10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\death10.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="death7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\death7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="pacmanright2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pacmanright.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="death4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\death4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="blue0" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\blue01.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -166,11 +187,17 @@
   <data name="enemy1up0" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\enemy1up0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="death2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\death2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="blue1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\blue11.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="blinky1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\blinky1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="death11" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\death11.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="enemy1up1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\enemy1up1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -190,11 +217,17 @@
   <data name="enemy1down0" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\enemy1down0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="death0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\death0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="wall2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\wall2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="pacmanleft1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pacmanleft1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="death5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\death5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="pacdot" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pacdot.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -217,37 +250,10 @@
   <data name="pacmanright" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pacmanright2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="death0" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\death0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="white0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\white0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="death1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\death1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="death2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\death2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="death3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\death3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="death4" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\death4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="death5" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\death5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="death6" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\death6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="death7" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\death7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="death9" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\death9.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="death10" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\death10.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="death11" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\death11.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="white1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\white1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
