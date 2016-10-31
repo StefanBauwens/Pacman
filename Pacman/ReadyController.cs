@@ -10,6 +10,7 @@ namespace Pacman
     {
         ReadyModel readyModel;
         ReadyUI readyUI;
+        PlayerUI playerUI;
 
         public ReadyController()
         {
@@ -23,14 +24,16 @@ namespace Pacman
         }
 
 
-        public void ReadyText(bool gameStarted)
+        public void isGameStarted()
         {
-            if (gameStarted)
+            if (readyModel.gameStarted == false)
             {
-                readyUI.readyLabel.Visible = false;
+
+                System.Threading.Thread.Sleep(3000);
+                readyUI.Visible = false;
                 readyModel.gameStarted = true;
             }
-            
         }
+
     }
 }

@@ -11,6 +11,7 @@ namespace Pacman
     {
         protected PlayerModel playerModel;
         protected PlayerUI playerUI;
+        protected ReadyController ready;
         //PLAYER = OBSERVABLE
         protected List<dynamic> observers = new List<dynamic>();
 
@@ -21,10 +22,11 @@ namespace Pacman
         int counter;
         int keyDelay = 0;
 
-        public PlayerController()
+        public PlayerController(ReadyController readyC)
         {
             playerModel = new PlayerModel();
             playerUI = new PlayerUI(this);
+            ready = readyC;
         }
 
         public PlayerUI view
@@ -40,6 +42,8 @@ namespace Pacman
 
         public void movePlayer()
         {
+            ready.isGameStarted();
+
             if (this.model.IsDead) //death scene
             {
                 for (int i = 1; i <= 11; i++)
