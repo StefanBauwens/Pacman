@@ -83,6 +83,7 @@ namespace Pacman
                             player.subscribeObserver(blinky);
                             blinky.subscribeObserverToEnemy(lives);
                             blinky.subscribeObserverToEnemy(player);
+                            blinky.subscribeObserverToEnemy(score);
                             blinky.View.Top = rows * 16;
                             blinky.View.Left = colls * 16;
                             blinky.Model.X = colls;
