@@ -192,6 +192,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\pacmanLives.png" />
+    <None Include="Resources\white1.png" />
+    <None Include="Resources\white0.png" />
     <None Include="Resources\death11.png" />
     <None Include="Resources\death10.png" />
     <None Include="Resources\death9.png" />

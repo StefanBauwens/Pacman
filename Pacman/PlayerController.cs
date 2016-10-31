@@ -198,10 +198,10 @@ namespace Pacman
                 if (observer is EnemyController)
                 {
                     //hide all enemies
-                    observer.Model.X = 18;
-                    observer.Model.Y = 16;
-                    observer.View.Left = -32;
-                    observer.View.Top = -32;
+                    observer.Model.X = 1;//18;
+                    observer.Model.Y = 1;//16;
+                    observer.View.Left = 16;//-32;
+                    observer.View.Top = 16;//-32;
                 }
             }
         }
