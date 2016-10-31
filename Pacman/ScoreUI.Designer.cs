@@ -35,11 +35,12 @@
             // scoreTextLabel
             // 
             this.scoreTextLabel.AutoSize = true;
-            this.scoreTextLabel.Font = new System.Drawing.Font("8bit", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.scoreTextLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.scoreTextLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.scoreTextLabel.Location = new System.Drawing.Point(31, 12);
+            this.scoreTextLabel.Location = new System.Drawing.Point(2, 10);
+            this.scoreTextLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.scoreTextLabel.Name = "scoreTextLabel";
-            this.scoreTextLabel.Size = new System.Drawing.Size(49, 14);
+            this.scoreTextLabel.Size = new System.Drawing.Size(38, 13);
             this.scoreTextLabel.TabIndex = 0;
             this.scoreTextLabel.Text = "Score:";
             this.scoreTextLabel.Click += new System.EventHandler(this.scoreTextLabel_Click);
@@ -47,23 +48,25 @@
             // scoreValueLabel
             // 
             this.scoreValueLabel.AutoSize = true;
-            this.scoreValueLabel.Font = new System.Drawing.Font("8bit", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.scoreValueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.scoreValueLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.scoreValueLabel.Location = new System.Drawing.Point(91, 11);
+            this.scoreValueLabel.Location = new System.Drawing.Point(47, 10);
+            this.scoreValueLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.scoreValueLabel.Name = "scoreValueLabel";
-            this.scoreValueLabel.Size = new System.Drawing.Size(15, 14);
+            this.scoreValueLabel.Size = new System.Drawing.Size(13, 13);
             this.scoreValueLabel.TabIndex = 1;
             this.scoreValueLabel.Text = "0";
             // 
             // ScoreUI
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.scoreValueLabel);
             this.Controls.Add(this.scoreTextLabel);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ScoreUI";
-            this.Size = new System.Drawing.Size(151, 41);
+            this.Size = new System.Drawing.Size(113, 33);
+            this.Load += new System.EventHandler(this.ScoreUI_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

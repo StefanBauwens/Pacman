@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing.Text;
 
 namespace Pacman
 {
@@ -28,9 +29,10 @@ namespace Pacman
 
         }
 
-        /*private void label1_Click(object sender, EventArgs e)
+        private void ScoreUI_Load(object sender, EventArgs e)
         {
-
-        }*/
+            this.scoreTextLabel.Font = LoadFont.loadFont(10);
+            this.scoreValueLabel.Font = LoadFont.loadFont(10);
+        }
     }
 }
