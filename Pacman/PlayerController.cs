@@ -49,7 +49,7 @@ namespace Pacman
                     System.Threading.Thread.Sleep(150);
                     refreshPic();
                 }
-                this.model.IsDead = false;
+                this.model.IsDead = false;// pacman appears back
             }
 
             if (keyDelay > 0) //add some keydelay so it's easier to turn around a corner

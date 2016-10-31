@@ -17,23 +17,26 @@ namespace Pacman
             gameOverUI = new GameOverUI(this);
         }
 
-        public GameOverUI View
+        public GameOverUI view
         {
             get { return gameOverUI; }
         }
 
+        public void GameOverTextVisible(bool visible)
+        {
+            gameOverUI.gameOverLabel.Visible = visible;
+        }
 
         public void notify(int nrLives)
         {
+            
             if(nrLives == 0)
             {
-                gameOverUI.gameOverLabel.Visible = true; //if player dead --> show game over
                 gameOverModel.isGameOver = true;
-            }
-            else
-            {
-                gameOverUI.gameOverLabel.Visible = false;
+                gameOverUI.gameOverLabel.Visible = true;
             }
         }
+
+        
     }
 }

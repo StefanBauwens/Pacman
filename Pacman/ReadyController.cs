@@ -17,7 +17,7 @@ namespace Pacman
             readyUI = new ReadyUI();
         }
 
-        public ReadyUI View
+        public ReadyUI view
         {
             get { return readyUI; }
         }

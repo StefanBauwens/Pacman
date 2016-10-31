@@ -34,11 +34,11 @@
             // readyLabel
             // 
             this.readyLabel.AutoSize = true;
-            this.readyLabel.Font = new System.Drawing.Font("8bit", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.readyLabel.Font = new System.Drawing.Font("8bit", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.readyLabel.ForeColor = System.Drawing.Color.Yellow;
-            this.readyLabel.Location = new System.Drawing.Point(14, 15);
+            this.readyLabel.Location = new System.Drawing.Point(5, 1);
             this.readyLabel.Name = "readyLabel";
-            this.readyLabel.Size = new System.Drawing.Size(53, 14);
+            this.readyLabel.Size = new System.Drawing.Size(53, 15);
             this.readyLabel.TabIndex = 0;
             this.readyLabel.Text = "READY!";
             // 
@@ -46,9 +46,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.readyLabel);
             this.Name = "ReadyUI";
-            this.Size = new System.Drawing.Size(82, 39);
+            this.Size = new System.Drawing.Size(65, 18);
             this.ResumeLayout(false);
             this.PerformLayout();
 

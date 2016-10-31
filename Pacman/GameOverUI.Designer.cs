@@ -34,13 +34,13 @@
             // gameOverLabel
             // 
             this.gameOverLabel.AutoSize = true;
-            this.gameOverLabel.BackColor = System.Drawing.SystemColors.Control;
-            this.gameOverLabel.Font = new System.Drawing.Font("8bit", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gameOverLabel.BackColor = System.Drawing.Color.Transparent;
+            this.gameOverLabel.Font = new System.Drawing.Font("8bit", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gameOverLabel.ForeColor = System.Drawing.Color.Red;
-            this.gameOverLabel.Location = new System.Drawing.Point(30, 14);
+            this.gameOverLabel.Location = new System.Drawing.Point(0, 1);
             this.gameOverLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.gameOverLabel.Name = "gameOverLabel";
-            this.gameOverLabel.Size = new System.Drawing.Size(83, 14);
+            this.gameOverLabel.Size = new System.Drawing.Size(83, 15);
             this.gameOverLabel.TabIndex = 0;
             this.gameOverLabel.Text = "GAME   OVER";
             this.gameOverLabel.Click += new System.EventHandler(this.gameOverLabel_Click);
@@ -49,10 +49,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Transparent;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.Controls.Add(this.gameOverLabel);
+            this.ForeColor = System.Drawing.Color.Transparent;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "GameOverUI";
-            this.Size = new System.Drawing.Size(153, 43);
+            this.Size = new System.Drawing.Size(91, 16);
             this.ResumeLayout(false);
             this.PerformLayout();
 

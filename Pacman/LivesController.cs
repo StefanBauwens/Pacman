@@ -35,7 +35,7 @@ namespace Pacman
         {
             foreach (dynamic observer in this.observers)
             {
-                observer.notify(livesModel.lives); // false = ready; true = game over
+                observer.notify(livesModel.lives); 
             }
         }
 
@@ -46,16 +46,15 @@ namespace Pacman
             if(hasEatenPacman)
             {
                 // update model with new value
-                int newNrLives = this.livesModel.lives--;
+                int newNrLives = --this.livesModel.lives; // -- before variable so newLives gets updated immediately with the lower lives
                 Console.WriteLine(newNrLives);
                 // update view with new amount of pictures (lives)
                 this.livesUI.updateLives(newNrLives);
 
                 // text game over visible
-                if (newNrLives == 0)
-                {
+                
                     notifyObserversFromLives();// game over
-                }
+                
             }
 
             
