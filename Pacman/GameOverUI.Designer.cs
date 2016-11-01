@@ -53,7 +53,7 @@
             this.Controls.Add(this.gameOverLabel);
             this.ForeColor = System.Drawing.Color.Transparent;
             this.Name = "GameOverUI";
-            this.Size = new System.Drawing.Size(68, 13);
+            this.Size = new System.Drawing.Size(89, 14);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -20,6 +20,7 @@ namespace Pacman
         {
             gameOverController = controller;
             InitializeComponent();
+            gameOverLabel.Font = LoadFont.loadFont(10);
         }
 
         private void gameOverLabel_Click(object sender, EventArgs e)

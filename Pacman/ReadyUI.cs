@@ -15,6 +15,7 @@ namespace Pacman
         public ReadyUI()
         {
             InitializeComponent();
+            this.readyLabel.Font = LoadFont.loadFont(10);
         }
     }
 }

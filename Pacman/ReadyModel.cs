@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Pacman
 {
-    class ReadyModel
+    public class ReadyModel
     {
         protected bool _gameStarted = false;
 

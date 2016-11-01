@@ -16,11 +16,12 @@ namespace Pacman
         //ENEMY observable from lives
         protected List<dynamic> observers = new List<dynamic>();
 
-
-        bool alreadyMoving = false;
-        int counter;
+        //bool alreadyMoving = false;
         int counter2 = 1;
+        //int step = 1; 
         bool check;
+
+        static public int blueEnemiesEaten = 0;
 
         const int TIMEBLUE = 250; //time that enemy stays blue
         Random randGen;
@@ -46,10 +47,11 @@ namespace Pacman
         }
 
         public void moveEnemy()
-        {          
-            if (this.Model.TimeBlue>0) 
+        {
+            //Console.WriteLine("Blue enemies eaten :" + blueEnemiesEaten + " Timeblue :" + this.Model.TimeBlue*300);
+            if (this.Model.TimeBlue>0 && this.Model.IsRunningAway) 
             {
-                this.Model.TimeBlue--;
+                this.Model.TimeBlue--; 
                 if (this.Model.TimeBlue< 40) //check if blue should start flashing white to indicate it's going to stop running away
                 {
                     counter2++;
@@ -68,6 +70,7 @@ namespace Pacman
                 }
                 if (this.Model.TimeBlue == 0) //if times up, the blue enemy becomes back normal
                 {
+                    EnemyController.blueEnemiesEaten = 0;
                     this.Model.IsRunningAway = false;
                 }
             }
@@ -119,6 +122,10 @@ namespace Pacman
             {
                 this.Model.IsRunningAway = false;
                 this.Model.IsDead = true;
+                this.Model.TimeBlue = 0;
+                this.Model.Step = 2;
+                fixSpeedChange();
+                EnemyController.blueEnemiesEaten++;
                 this.notifyObserversFromEnemy();
             }
 
@@ -142,6 +149,9 @@ namespace Pacman
             if (this.Model.IsDead && isTouching)
             {
                 this.Model.IsDead = false;
+                this.Model.TimeBlue = 0;
+                this.Model.Step = 1;
+                fixSpeedChange();
             }
 
 
@@ -160,13 +170,13 @@ namespace Pacman
                 case EnemyModel.direction.up:
                     if (WorldModel.Map2D[this.Model.Y - 1, this.Model.X] != 1)
                     {
-                        if (alreadyMoving == false)
+                        if (this.Model.AlreadyMoving == false)
                         {
-                            alreadyMoving = true;
-                            counter = 0;
+                            this.Model.AlreadyMoving = true;
+                            this.Model.Counter = 0;
                         }
-                        counter++;
-                        this.View.Top -= 1;
+                        this.Model.Counter += this.Model.Step;
+                        this.View.Top -= this.Model.Step;
                         animate();
                         if (this.Model.Animation < 4)
                         {
@@ -217,25 +227,25 @@ namespace Pacman
                             }
                         }
                         refreshPic();
-                        if (counter == 16)
+                        if (this.Model.Counter == 16)
                         {
                             this.Model.Y--;
                             //Console.WriteLine(this.Model.Direction);
 
-                            alreadyMoving = false;
+                            this.Model.AlreadyMoving = false;
                         }
                     }
                     break;
                 case EnemyModel.direction.right:
                     if (WorldModel.Map2D[this.Model.Y, this.Model.X + 1] != 1)
                     {
-                        if (alreadyMoving == false)
+                        if (this.Model.AlreadyMoving == false)
                         {
-                            alreadyMoving = true;
-                            counter = 0;
+                            this.Model.AlreadyMoving = true;
+                            this.Model.Counter = 0;
                         }
-                        counter++;
-                        this.View.Left += 1;
+                        this.Model.Counter += this.Model.Step;
+                        this.View.Left += this.Model.Step;
                         animate();
                         if (this.Model.Animation < 4)
                         {
@@ -286,25 +296,33 @@ namespace Pacman
                             }
                         }
                         refreshPic();
-                        if (counter == 16)
+                        if (this.Model.Counter == 16)
                         {
-                            this.Model.X++;
+                            if (this.Model.X == (WorldModel.Map2D.GetLength(1) - 2)) //if enemy is standing at the right edge of the map it teleports
+                            {
+                                this.Model.X = 1;
+                                this.View.Left = 16;
+                            }
+                            else
+                            {
+                                this.Model.X++;
+                            }
                             //Console.WriteLine(this.Model.Direction);
 
-                            alreadyMoving = false;
+                            this.Model.AlreadyMoving = false;
                         }
                     }
                     break;
                 case EnemyModel.direction.down:
                     if (WorldModel.Map2D[this.Model.Y + 1, this.Model.X] != 1)
                     {
-                        if (alreadyMoving == false)
+                        if (this.Model.AlreadyMoving == false)
                         {
-                            alreadyMoving = true;
-                            counter = 0;
+                            this.Model.AlreadyMoving = true;
+                            this.Model.Counter = 0;
                         }
-                        counter++;
-                        this.View.Top += 1;
+                        this.Model.Counter += this.Model.Step;
+                        this.View.Top += this.Model.Step;
                         animate();
                         if (this.Model.Animation < 4)
                         {
@@ -355,12 +373,12 @@ namespace Pacman
                             }
                         }
                         refreshPic();
-                        if (counter == 16)
+                        if (this.Model.Counter == 16)
                         {
                             this.Model.Y++;
                             //Console.WriteLine(this.Model.Direction);
 
-                            alreadyMoving = false;
+                            this.Model.AlreadyMoving = false;
                         }
                         //wall = false;
                     }
@@ -372,13 +390,13 @@ namespace Pacman
                 case EnemyModel.direction.left:
                     if (WorldModel.Map2D[this.Model.Y, this.Model.X - 1] != 1)
                     {
-                        if (alreadyMoving == false)
+                        if (this.Model.AlreadyMoving == false)
                         {
-                            alreadyMoving = true;
-                            counter = 0;
+                            this.Model.AlreadyMoving = true;
+                            this.Model.Counter = 0;
                         }
-                        counter++;
-                        this.View.Left -= 1;
+                        this.Model.Counter += this.Model.Step;
+                        this.View.Left -= this.Model.Step;
                         animate();
                         if (this.Model.Animation < 4)
                         {
@@ -430,11 +448,19 @@ namespace Pacman
 
                         }
                         refreshPic();
-                        if (counter == 16)
+                        if (this.Model.Counter == 16)
                         {
-                            this.Model.X--;
+                            if (this.Model.X == 1) //if you're standing at the left edge of the map you must teleport
+                            {
+                                this.Model.X = WorldModel.Map2D.GetLength(1) - 2;
+                                this.View.Left = this.Model.X * 16;
+                            }
+                            else
+                            {
+                                this.Model.X--;
+                            }
                             //Console.WriteLine(this.Model.Direction);
-                            alreadyMoving = false;
+                            this.Model.AlreadyMoving = false;
                         }
                         //wall = false;
                     }
@@ -449,6 +475,7 @@ namespace Pacman
 
             List<int> directionsToGo = new List<int>();
             List<int> directionsToGo2 = new List<int>();
+            int forcedDirection = 0;
             /*if (this.Model.IsDead == false) //if player is dead it needs to focus on begintile and else on player
             {
                 x = player.model.X;
@@ -460,11 +487,11 @@ namespace Pacman
             {
                 if (this.Model.IsRunningAway) //if enemy is blue it has to check to run the opposite direction of the player
                 {
-                    check = (this.Model.XObserver <= this.Model.X && alreadyMoving == false);
+                    check = (this.Model.XObserver <= this.Model.X && this.Model.AlreadyMoving == false);
                 }
                 else
                 {
-                    check = (this.Model.XObserver >= this.Model.X && alreadyMoving == false); //if player is on the right of the enemy
+                    check = (this.Model.XObserver >= this.Model.X && this.Model.AlreadyMoving == false); //if player is on the right of the enemy
                 }  
                 if (check) 
                 {
@@ -472,21 +499,29 @@ namespace Pacman
                     //directionsToGo.Add(1); //more chance to follow player
                     //directionsToGo.Add(1);
                 }
+                if (check && this.Model.YObserver == this.Model.Y) //check to see if enemy and player are on the same line
+                {
+                    forcedDirection = 1;
+                }
                 directionsToGo2.Add(1);
             }
             if (WorldModel.Map2D[this.Model.Y, this.Model.X - 1] != 1 && this.Model.Direction != EnemyModel.direction.right) //checks if left is free
             {
                 if (this.Model.IsRunningAway) //if enemy is blue it has to check to run the opposite direction of the player
                 {
-                    check = (this.Model.XObserver >= this.Model.X && alreadyMoving == false);
+                    check = (this.Model.XObserver >= this.Model.X && this.Model.AlreadyMoving == false);
                 }
                 else
                 {
-                    check = (this.Model.XObserver <= this.Model.X && alreadyMoving == false); //if player is on the left of the enemy
+                    check = (this.Model.XObserver <= this.Model.X && this.Model.AlreadyMoving == false); //if player is on the left of the enemy
                 }
                 if (check) 
                 {
                     directionsToGo.Add(3); //adds left to the list of possible directions to go
+                }
+                if (check && this.Model.YObserver == this.Model.Y) //check to see if enemy and player are on the same line
+                {
+                    forcedDirection = 3;
                 }
                 directionsToGo2.Add(3);
             }
@@ -494,15 +529,19 @@ namespace Pacman
             {
                 if (this.Model.IsRunningAway) //if enemy is blue it has to check to run the opposite direction of the player
                 {
-                    check = (this.Model.YObserver <= this.Model.Y && alreadyMoving == false);
+                    check = (this.Model.YObserver <= this.Model.Y && this.Model.AlreadyMoving == false);
                 }
                 else
                 {
-                    check = (this.Model.YObserver >= this.Model.Y && alreadyMoving == false); //if player is lower than the enemy
+                    check = (this.Model.YObserver >= this.Model.Y && this.Model.AlreadyMoving == false); //if player is lower than the enemy
                 }
                 if (check) 
                 {              
                     directionsToGo.Add(2); //adds down to the list of possible directions to go               
+                }
+                if (check && this.Model.XObserver == this.Model.X) //check to see if enemy and player are on the same line
+                {
+                    forcedDirection = 2;
                 }
                 directionsToGo2.Add(2);
             }
@@ -510,34 +549,26 @@ namespace Pacman
             {
                 if (this.Model.IsRunningAway) //if enemy is blue it has to check to run the opposite direction of the player
                 {
-                    check = (this.Model.YObserver >= this.Model.Y && alreadyMoving == false);
+                    check = (this.Model.YObserver >= this.Model.Y && this.Model.AlreadyMoving == false);
                 }
                 else
                 {
-                    check = (this.Model.YObserver <= this.Model.Y && alreadyMoving == false);//if player is higher than the enemy
+                    check = (this.Model.YObserver <= this.Model.Y && this.Model.AlreadyMoving == false);//if player is higher than the enemy
                 }
                 if (check) 
                 {                
                     directionsToGo.Add(0); //adds up to the list of possible directions to go
+                }
+                if (check && this.Model.XObserver == this.Model.X) //check to see if enemy and player are on the same line
+                {
+                    forcedDirection = 0;
                 }
                 directionsToGo2.Add(0);
             }
 
             if (directionsToGo.Count == 0)
             {
-                /*if (alreadyMoving == false)
-                {
-                    int randomNum;
-                    do
-                    {
-                        randomNum = this.randGen.Next(0, 4);
-                    }
-                    while (this.Model.Direction == (EnemyModel.direction)((randomNum + 2) % 4)); //makes sure the enemy can't go back from the direction it comes from
-                    //Console.WriteLine(randomNum);
-                    this.Model.Direction = (EnemyModel.direction)randomNum;//gives a random direction
-                    //goto startMovement;
-                }*/
-                if (alreadyMoving == false)
+                if (this.Model.AlreadyMoving == false)
                 {
                     if (directionsToGo2.Count !=0)
                     {
@@ -551,14 +582,17 @@ namespace Pacman
             }
             else
             {
-                if (alreadyMoving == false)
+                if (this.Model.AlreadyMoving == false)
                 {
-                    //Console.WriteLine(this.Model.Direction);
-                    Console.WriteLine();
                     this.Model.Direction = (EnemyModel.direction)directionsToGo[this.randGen.Next(directionsToGo.Count)];
-                    //goto startMovement;
+                   //goto startMovement;
                 }
             }
+            if (forcedDirection != 0)
+            {
+                this.Model.Direction = (EnemyModel.direction)forcedDirection;
+            }
+
         }
 
         protected void animate()
@@ -624,8 +658,30 @@ namespace Pacman
                 {
                     if (observer is ScoreController)
                     {
-                        observer.notify(200);
-                        this.View.enemyImage.Image = Pacman.Properties.Resources.twohundred;
+                        switch(EnemyController.blueEnemiesEaten)
+                        {
+                            case 1:
+                                observer.notify(200);
+                                this.View.enemyImage.Image = Pacman.Properties.Resources.twohundred;
+                                break;
+                            case 2:
+                                observer.notify(400);
+                                this.View.enemyImage.Image = Pacman.Properties.Resources.fourhundred;
+                                break;
+                            case 3:
+                                observer.notify(800);
+                                this.View.enemyImage.Image = Pacman.Properties.Resources.eighthundred;
+                                break;
+                            case 4:
+                                observer.notify(1600);
+                                this.View.enemyImage.Image = Pacman.Properties.Resources.sixteenhundred;
+                                break;
+                            default:
+                                observer.notify(1600);
+                                this.View.enemyImage.Image = Pacman.Properties.Resources.sixteenhundred;
+                                break;
+                        }
+                       
                         this.View.enemyImage.Refresh();
                         System.Threading.Thread.Sleep(300);
                     }
@@ -640,12 +696,38 @@ namespace Pacman
             }
         }
 
+        protected void fixSpeedChange() //this fixes coordinate issues when switching from dead to alive or vice versa
+        {
+            if (this.Model.Counter > 0)
+            {
+                switch (this.Model.Direction)
+                {
+                    case EnemyModel.direction.up:
+                        this.Model.Y--;
+                        break;
+                    case EnemyModel.direction.right:
+                        this.Model.X++;
+                        break;
+                    case EnemyModel.direction.down:
+                        this.Model.Y++;
+                        break;
+                    case EnemyModel.direction.left:
+                        this.Model.X--;
+                        break;
+                }
+                this.View.Left = this.Model.X * 16;
+                this.View.Top = this.Model.Y * 16;
+                this.Model.Counter = 0;
+                this.Model.AlreadyMoving = false;
+            }
+        }
 
         public void notify(int number)//bool isRunningAway, bool isDead)
         {
             if (number == 50 && !this.Model.IsDead)
             {
                 //this.enemyUI.updateImage(isRunningAway);
+                EnemyController.blueEnemiesEaten = 0;
                 this.Model.IsRunningAway = true;
                 this.Model.IsWhite = false;
                 this.Model.TimeBlue = TIMEBLUE; //time that the enemy is running away before he turns back normal

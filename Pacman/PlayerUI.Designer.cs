@@ -56,8 +56,8 @@
             this.Controls.Add(this.pictureBox1);
             this.Name = "PlayerUI";
             this.Size = new System.Drawing.Size(16, 16);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PlayerUI_KeyDown);
-            this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.PlayerUI_PreviewKeyDown);
+            //this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PlayerUI_KeyDown);
+            //this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.PlayerUI_PreviewKeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
