@@ -4,23 +4,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Input;
 
 namespace Pacman
 {
     public class PlayerController
     {
+        static public Keys key = Keys.Right;
+
         protected PlayerModel playerModel;
         protected PlayerUI playerUI;
-        protected ReadyController ready;
-        //PLAYER = OBSERVABLE
+        public ReadyController ready;
         protected List<dynamic> observers = new List<dynamic>();
 
-        //const int SLOWDOWN = 1500000; //raise this number to slow down pacman
-        const int KEYSPEED = 30; //how long a keypress stays active
+        public const int KEYSPEED = 30; //how long a keypress stays active
 
-        bool alreadyMoving = false;
-        int counter;
-        int keyDelay = 0;
+        //bool alreadyMoving = false;
+        //int counter;
+        static public int keyDelay = 0;
 
         public PlayerController(ReadyController readyC)
         {
@@ -42,6 +43,8 @@ namespace Pacman
 
         public void movePlayer()
         {
+            checkKeyAFewTimes(key);
+
             ready.isGameStarted();
 
             if (this.model.IsDead) //death scene
@@ -50,29 +53,29 @@ namespace Pacman
                 {
                     object picture = Pacman.Properties.Resources.ResourceManager.GetObject("death" + i);
                     this.view.pictureBox1.Image = (System.Drawing.Image)picture;
-                    System.Threading.Thread.Sleep(150);
-                    refreshPic();
+                    this.view.pictureBox1.Update();
+                    System.Threading.Thread.Sleep(150);                   
                 }
-                this.model.IsDead = false;// pacman appears back
+                System.Threading.Thread.Sleep(150);
+                this.notifyWorld();
+                this.view.pictureBox1.Image = Pacman.Properties.Resources.pacmanright;
+                this.view.pictureBox1.Update();
+                this.model.IsDead = false;// pacman appears back             
             }
 
-            if (keyDelay > 0) //add some keydelay so it's easier to turn around a corner
-            {
-                keyDelay--;
-                checkKey(this.model.LastKeyPressed);
-            }
+            //
 
             switch (this.model.Direction)
             {
                 case PlayerModel.direction.up:
                     if (WorldModel.Map2D[this.model.Y - 1, this.model.X] != 1)
                     {
-                        if (alreadyMoving == false)
+                        if (this.model.AlreadyMoving == false)
                         {
-                            alreadyMoving = true;
-                            counter = 0;
+                            this.model.AlreadyMoving = true;
+                            this.model.Counter = 0;
                         }
-                        counter++;
+                        this.model.Counter++;
                         this.view.Top -= 1;
                         animate();
                         if (this.model.Animation < 4)
@@ -83,24 +86,24 @@ namespace Pacman
                         {
                             this.view.pictureBox1.Image = Pacman.Properties.Resources.pacmanup1;
                         }
-                        refreshPic();
-                        if (counter == 16)
+                        this.view.pictureBox1.Refresh();
+                        if (this.model.Counter == 16)
                         {
                             this.model.Y--;
                             this.notifyObservers();
-                            alreadyMoving = false;
+                            this.model.AlreadyMoving = false;
                         }
                     }
                     break;
                 case PlayerModel.direction.right:
                     if (WorldModel.Map2D[this.model.Y, this.model.X + 1] != 1)
                     {
-                        if (alreadyMoving == false)
+                        if (this.model.AlreadyMoving == false)
                         {
-                            alreadyMoving = true;
-                            counter = 0;
+                            this.model.AlreadyMoving = true;
+                            this.model.Counter = 0;
                         }
-                        counter++;
+                        this.model.Counter++;
                         this.view.Left += 1;
                         animate();
                         if (this.model.Animation < 4)
@@ -111,24 +114,32 @@ namespace Pacman
                         {
                             this.view.pictureBox1.Image = Pacman.Properties.Resources.pacmanright1;
                         }
-                        refreshPic();
-                        if (counter == 16)
+                        this.view.pictureBox1.Refresh();
+                        if (this.model.Counter == 16)
                         {
-                            this.model.X++;
+                            if (this.model.X == (WorldModel.Map2D.GetLength(1)-2)) //if you're standing at the right edge of the map you must teleport
+                            {
+                                this.model.X = 1;
+                                this.view.Left = 16;                              
+                            }
+                            else
+                            {
+                                this.model.X++;
+                            }
                             this.notifyObservers();
-                            alreadyMoving = false;
+                            this.model.AlreadyMoving = false;
                         }
                     }
                     break;
                 case PlayerModel.direction.down:
                     if (WorldModel.Map2D[this.model.Y + 1, this.model.X] != 1)
                     {
-                        if (alreadyMoving == false)
+                        if (this.model.AlreadyMoving == false)
                         {
-                            alreadyMoving = true;
-                            counter = 0;
+                            this.model.AlreadyMoving = true;
+                            this.model.Counter = 0;
                         }
-                        counter++;
+                        this.model.Counter++;
                         this.view.Top += 1;
                         animate();
                         if (this.model.Animation < 4)
@@ -139,24 +150,24 @@ namespace Pacman
                         {
                             this.view.pictureBox1.Image = Pacman.Properties.Resources.pacmandown1;
                         }
-                        refreshPic();
-                        if (counter == 16)
+                        this.view.pictureBox1.Refresh();
+                        if (this.model.Counter == 16)
                         {
                             this.model.Y++;
                             this.notifyObservers();
-                            alreadyMoving = false;
+                            this.model.AlreadyMoving = false;
                         }
                     }
                     break;
                 case PlayerModel.direction.left:
                     if (WorldModel.Map2D[this.model.Y, this.model.X - 1] != 1)
-                    {
-                        if (alreadyMoving == false)
+                    {       
+                        if (this.model.AlreadyMoving == false)
                         {
-                            alreadyMoving = true;
-                            counter = 0;
+                            this.model.AlreadyMoving = true;
+                            this.model.Counter = 0;
                         }
-                        counter++;
+                        this.model.Counter++;
                         this.view.Left -= 1;
                         animate();
                         if (this.model.Animation < 4)
@@ -167,16 +178,25 @@ namespace Pacman
                         {
                             this.view.pictureBox1.Image = Pacman.Properties.Resources.pacmanleft1;
                         }
-                        refreshPic();
-                        if (counter == 16)
+                        this.view.pictureBox1.Refresh();
+                        if (this.model.Counter == 16)
                         {
-                            this.model.X--;
+                            if (this.model.X == 1) //if you're standing at the left edge of the map you must teleport
+                            {
+                                this.model.X = WorldModel.Map2D.GetLength(1)-2;
+                                this.view.Left = this.model.X*16;
+                            }
+                            else
+                            {
+                                this.model.X--;
+                            }
                             this.notifyObservers();
-                            alreadyMoving = false;
+                            this.model.AlreadyMoving = false;
                         }
                     }
                     break;
             }
+            //Console.WriteLine("Lastkeypressed: " + this.model.LastKeyPressed);
         }
 
         protected void animate()
@@ -188,10 +208,10 @@ namespace Pacman
             }
         }
 
-        protected void refreshPic()
+        /*protected void refreshPic()
         {
             this.view.pictureBox1.Refresh();
-        }
+        }*/
 
         public void notify(bool isDead)
         {
@@ -202,6 +222,8 @@ namespace Pacman
                 if (observer is EnemyController)
                 {
                     //hide all enemies
+                    observer.Model.Counter = 0;
+                    //observer.Model.Direction = EnemyModel.direction.right;
                     observer.Model.X = 18;
                     observer.Model.Y = 16;
                     observer.View.Left = -32;
@@ -214,7 +236,21 @@ namespace Pacman
         {
             foreach (dynamic observer in this.observers)
             {
-                observer.notify(this.model.X, this.model.Y, this.view.Left, this.view.Top); //gives coordinates of player to observers
+                if (!(observer is WorldController))
+                {
+                    observer.notify(this.model.X, this.model.Y, this.view.Left, this.view.Top); //gives coordinates of player to observers
+                }
+            }
+        }
+
+        protected void notifyWorld()
+        {
+            foreach (dynamic observer in this.observers)
+            {
+                if (observer is WorldController)
+                {
+                    observer.notify(true);
+                }
             }
         }
 
@@ -224,45 +260,54 @@ namespace Pacman
             this.observers.Add(observer);
         }
 
-        public void checkKeyAFewTimes(PreviewKeyDownEventArgs e)
+        public void checkKeyAFewTimes(Keys e)
         {
             this.model.LastKeyPressed = e;
-            keyDelay = KEYSPEED;
-            this.movePlayer();
+            //keyDelay = KEYSPEED;
+
+            if (keyDelay > 0) //add some keydelay so it's easier to turn around a corner
+            {
+                keyDelay--;
+                checkKey(this.model.LastKeyPressed);
+            }
+            else
+            {
+                key = Keys.A;
+            }
+            //this.movePlayer();
         }
 
-        public void checkKey(PreviewKeyDownEventArgs e)
+        public void checkKey(Keys e)//KeyEventArgs e)//PreviewKeyDownEventArgs e)
         {
-            switch (e.KeyCode)
+            switch (e)//e.KeyCode)
             {
                 case Keys.Up:
-                    if ((WorldModel.Map2D[this.model.Y - 1, this.model.X] != 1) && (alreadyMoving== false)) //if's here so you can't change direction if you can't go in that direction.
+                    if ((WorldModel.Map2D[this.model.Y - 1, this.model.X] != 1) && (this.model.AlreadyMoving == false) && this.model.Direction != PlayerModel.direction.up) //if's here so you can't change direction if you can't go in that direction.
                     {
                         playerModel.Direction = PlayerModel.direction.up;
                     }
                     break;
                 case Keys.Right:
-                    if ((WorldModel.Map2D[this.model.Y, this.model.X + 1] != 1) && (alreadyMoving == false))
+                    if ((WorldModel.Map2D[this.model.Y, this.model.X + 1] != 1) && (this.model.AlreadyMoving == false) && this.model.Direction != PlayerModel.direction.right)
                     {
                         playerModel.Direction = PlayerModel.direction.right;
                     }
                     break;
                 case Keys.Down:
-                    if ((WorldModel.Map2D[this.model.Y + 1, this.model.X] != 1) && (alreadyMoving == false))
+                    if ((WorldModel.Map2D[this.model.Y + 1, this.model.X] != 1) && (this.model.AlreadyMoving == false) && this.model.Direction != PlayerModel.direction.down)
                     {
                         playerModel.Direction = PlayerModel.direction.down;
                     }
                     break;
                 case Keys.Left:
-                    if ((WorldModel.Map2D[this.model.Y, this.model.X - 1] != 1) && (alreadyMoving == false))
+                    if ((WorldModel.Map2D[this.model.Y, this.model.X - 1] != 1) && (this.model.AlreadyMoving == false) && this.model.Direction != PlayerModel.direction.left)
                     {
                         playerModel.Direction = PlayerModel.direction.left;
                     }
                     break;
             }
-            
-            e.IsInputKey = true;
-
+            //key = Keys.A; 
+            //e.IsInputKey = true; //Use this only when using previewkeydown so that when using arrow keys you don't switch controls
         }
 
     }

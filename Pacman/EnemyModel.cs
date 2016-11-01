@@ -24,6 +24,7 @@ namespace Pacman
         bool mIsDead = false; //if the enemy gets eaten it must be heading to the box
         bool mHasEatenPacman = false; // if pacman gets eaten by enemy
         bool mIsWhite = false; //if it's white(when blue flashing white to indicate it's going to become back normal)
+        bool mAlreadyMoving = false;
 
         int mX = 1; //coordinates of the enemy
         int mY = 1;
@@ -32,6 +33,27 @@ namespace Pacman
 
         int mTimeBlue = 0; //time that enemies stay blue
         int mAnimation = 1;
+        int mCounter = 0;
+
+        int mStep = 1;
+
+        public int Step //when dead and running to the beginngtile the step changes to 2 to speed it up
+        {
+            get { return mStep; }
+            set { mStep = value; }
+        }
+
+        public bool AlreadyMoving
+        {
+            get { return mAlreadyMoving; }
+            set { mAlreadyMoving = value; }
+        }
+
+        public int Counter
+        {
+            get { return mCounter; }
+            set { mCounter = value; }
+        }
 
         public bool IsWhite
         {

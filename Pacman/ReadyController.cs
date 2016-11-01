@@ -10,12 +10,18 @@ namespace Pacman
     {
         ReadyModel readyModel;
         ReadyUI readyUI;
-        PlayerUI playerUI;
+        //PlayerUI playerUI;
 
         public ReadyController()
         {
             readyModel = new ReadyModel();
             readyUI = new ReadyUI();
+        }
+        
+        public ReadyModel Model
+        {
+            get { return this.readyModel; }
+            set { this.readyModel = value; }
         }
 
         public ReadyUI view
@@ -28,7 +34,6 @@ namespace Pacman
         {
             if (readyModel.gameStarted == false)
             {
-
                 System.Threading.Thread.Sleep(3000);
                 readyUI.Visible = false;
                 readyModel.gameStarted = true;

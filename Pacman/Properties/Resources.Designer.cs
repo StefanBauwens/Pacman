@@ -243,6 +243,16 @@ namespace Pacman.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap eighthundred {
+            get {
+                object obj = ResourceManager.GetObject("eighthundred", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap enemy1down0 {
             get {
                 object obj = ResourceManager.GetObject("enemy1down0", resourceCulture);
@@ -356,6 +366,16 @@ namespace Pacman.Properties {
         internal static System.Drawing.Bitmap eyesup {
             get {
                 object obj = ResourceManager.GetObject("eyesup", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap fourhundred {
+            get {
+                object obj = ResourceManager.GetObject("fourhundred", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -496,6 +516,16 @@ namespace Pacman.Properties {
         internal static System.Drawing.Bitmap pacmanup1 {
             get {
                 object obj = ResourceManager.GetObject("pacmanup1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap sixteenhundred {
+            get {
+                object obj = ResourceManager.GetObject("sixteenhundred", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

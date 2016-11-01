@@ -2,7 +2,7 @@
 {
     partial class Form1
     {
-        public PlayerController player;
+        //public PlayerController player;
 
         //public PlayerController player;
         /// <summary>
@@ -41,7 +41,8 @@
             this.ClientSize = new System.Drawing.Size(304, 368);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            //this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown_1);
+            //this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.Form1_PreviewKeyDown);
             this.ResumeLayout(false);
 
             WorldController world = new WorldController();
@@ -49,6 +50,8 @@
         }
 
         #endregion
+
+        //private System.Windows.Forms.Timer timer1;
     }
 }
 

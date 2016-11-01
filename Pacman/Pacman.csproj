@@ -193,6 +193,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\pacmanLives.png" />
+    <None Include="Resources\sixteenhundred.png" />
+    <None Include="Resources\eighthundred.png" />
+    <None Include="Resources\fourhundred.png" />
     <Content Include="Resources\PacMan.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
