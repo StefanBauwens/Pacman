@@ -15,7 +15,7 @@ namespace Pacman
         PlayerController playerController;
 
         public PlayerUI(PlayerController controller)
-        {
+        {           
             playerController = controller;
             InitializeComponent();
         }
@@ -24,21 +24,12 @@ namespace Pacman
         {
             playerController.movePlayer();
         }
-
-        /*private void PlayerUI_KeyDown(object sender, KeyEventArgs e)
-        {
-           // playerController.checkKey(e);
-        }*/
         
-        private void PlayerUI_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        /*private void PlayerUI_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
             playerController.checkKeyAFewTimes(e);
-            //playerController.checkKey(e);
-        }
+            playerController.checkKey(e);
+        }*/
 
-        private void PlayerUI_KeyDown(object sender, KeyEventArgs e)
-        {
-            //playerController.checkKey(e);
-        }
     }
 }

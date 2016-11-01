@@ -21,9 +21,24 @@ namespace Pacman
         }
 
         protected direction mDir = direction.right;
-        protected int mAnimation = 1;
         protected bool mIsDead = false;
-        protected PreviewKeyDownEventArgs mLastKeyPressed;
+        protected bool mAlreadyMoving = false;
+
+        protected Keys mLastKeyPressed;
+        protected int mCounter = 0;
+        protected int mAnimation = 1;
+
+        public bool AlreadyMoving
+        {
+            get { return mAlreadyMoving; }
+            set { mAlreadyMoving = value; }
+        }
+
+        public int Counter
+        {
+            get { return mCounter; }
+            set { mCounter = value; }
+        }
 
         public bool IsDead
         {
@@ -31,7 +46,7 @@ namespace Pacman
             set { mIsDead = value; }
         }
 
-        public PreviewKeyDownEventArgs LastKeyPressed
+        public /*PreviewKeyDownEventArgs*/ /*KeyEventArgs*/ Keys LastKeyPressed
         {
             get { return mLastKeyPressed; }
             set { mLastKeyPressed = value; }
