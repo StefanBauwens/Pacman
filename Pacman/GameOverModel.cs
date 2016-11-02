@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Pacman
 {
-    class GameOverModel
+    public class GameOverModel
     {
         protected bool _isGameOver = false;
 

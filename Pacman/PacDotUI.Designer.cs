@@ -47,7 +47,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.pacDotImage);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "PacDotUI";
             this.Size = new System.Drawing.Size(16, 16);
             ((System.ComponentModel.ISupportInitialize)(this.pacDotImage)).EndInit();
@@ -57,6 +57,6 @@
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pacDotImage;
+        public System.Windows.Forms.PictureBox pacDotImage;
     }
 }
