@@ -243,6 +243,16 @@ namespace Pacman.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap doorTileEnemies {
+            get {
+                object obj = ResourceManager.GetObject("doorTileEnemies", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap eighthundred {
             get {
                 object obj = ResourceManager.GetObject("eighthundred", resourceCulture);
@@ -437,6 +447,16 @@ namespace Pacman.Properties {
             get {
                 object obj = ResourceManager.GetObject("pacmanfont", resourceCulture);
                 return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pacmanfull {
+            get {
+                object obj = ResourceManager.GetObject("pacmanfull", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
