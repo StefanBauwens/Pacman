@@ -10,7 +10,6 @@ namespace Pacman
     {
         ReadyModel readyModel;
         ReadyUI readyUI;
-        //PlayerUI playerUI;
 
         public ReadyController()
         {

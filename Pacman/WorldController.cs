@@ -187,6 +187,14 @@ namespace Pacman
                             }
                             
                             break;
+                        case 5:
+                            DoorTileController doorTile = new DoorTileController();
+                            doorTile.Model.X = colls;
+                            doorTile.Model.Y = rows;
+                            doorTile.View.Top = rows * 16;
+                            doorTile.View.Left = colls * 16;
+                            this.view.Controls.Add(doorTile.View);
+                            break;
                     }
                 }
             }
