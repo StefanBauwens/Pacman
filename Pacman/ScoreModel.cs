@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Pacman
 {
-    class ScoreModel
+    public class ScoreModel
     {
         protected int _score = 0;
 

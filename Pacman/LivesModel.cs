@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Pacman
 {
-    class LivesModel
+    public class LivesModel
     {
         protected int _lives = 3;
 

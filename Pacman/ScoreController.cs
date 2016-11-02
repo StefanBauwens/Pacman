@@ -27,6 +27,11 @@ namespace Pacman
             }
         }
 
+        public ScoreModel Model
+        {
+            get { return scoreModel; }
+            set { scoreModel = value; }
+        }
 
         // executes when the observable is changed
         public void notify(int newNrDots)
