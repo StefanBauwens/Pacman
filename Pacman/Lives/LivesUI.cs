@@ -15,7 +15,6 @@ namespace Pacman
         public LivesUI()
         {
             InitializeComponent();
-        }
-        
+        }        
     }
 }

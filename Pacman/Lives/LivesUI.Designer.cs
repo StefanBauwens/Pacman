@@ -39,38 +39,43 @@
             // imageLifeLeft
             // 
             this.imageLifeLeft.Image = global::Pacman.Properties.Resources.pacmanLives;
-            this.imageLifeLeft.Location = new System.Drawing.Point(56, 13);
+            this.imageLifeLeft.Location = new System.Drawing.Point(42, 7);
+            this.imageLifeLeft.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.imageLifeLeft.Name = "imageLifeLeft";
-            this.imageLifeLeft.Size = new System.Drawing.Size(24, 19);
+            this.imageLifeLeft.Size = new System.Drawing.Size(18, 15);
             this.imageLifeLeft.TabIndex = 0;
             this.imageLifeLeft.TabStop = false;
             // 
             // imageLifeMiddle
             // 
             this.imageLifeMiddle.Image = global::Pacman.Properties.Resources.pacmanLives;
-            this.imageLifeMiddle.Location = new System.Drawing.Point(86, 13);
+            this.imageLifeMiddle.Location = new System.Drawing.Point(64, 7);
+            this.imageLifeMiddle.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.imageLifeMiddle.Name = "imageLifeMiddle";
-            this.imageLifeMiddle.Size = new System.Drawing.Size(24, 19);
+            this.imageLifeMiddle.Size = new System.Drawing.Size(18, 15);
             this.imageLifeMiddle.TabIndex = 1;
             this.imageLifeMiddle.TabStop = false;
             // 
             // imageLifeRight
             // 
             this.imageLifeRight.Image = global::Pacman.Properties.Resources.pacmanLives;
-            this.imageLifeRight.Location = new System.Drawing.Point(117, 13);
+            this.imageLifeRight.Location = new System.Drawing.Point(87, 7);
+            this.imageLifeRight.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.imageLifeRight.Name = "imageLifeRight";
-            this.imageLifeRight.Size = new System.Drawing.Size(30, 19);
+            this.imageLifeRight.Size = new System.Drawing.Size(22, 15);
             this.imageLifeRight.TabIndex = 2;
             this.imageLifeRight.TabStop = false;
             // 
             // LivesUI
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.imageLifeRight);
             this.Controls.Add(this.imageLifeMiddle);
             this.Controls.Add(this.imageLifeLeft);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "LivesUI";
+            this.Size = new System.Drawing.Size(112, 34);
             ((System.ComponentModel.ISupportInitialize)(this.imageLifeLeft)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageLifeMiddle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageLifeRight)).EndInit();

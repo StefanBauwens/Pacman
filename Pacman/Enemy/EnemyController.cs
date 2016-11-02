@@ -10,29 +10,48 @@ namespace Pacman
     {
         EnemyModel enemyModel;
         EnemyUI enemyUI;
-        //PlayerController player;
         TileController beginTile;
-        //ENEMY = OBSERVER
-        //ENEMY observable from lives
-        protected List<dynamic> observers = new List<dynamic>();
-
-        //bool alreadyMoving = false;
-        int counter2 = 1;
-        //int step = 1; 
-        bool check;
-
-        static public int blueEnemiesEaten = 0;
-
-        const int TIMEBLUE = 250; //time that enemy stays blue
         Random randGen;
 
+        protected List<dynamic> observers = new List<dynamic>();
 
-        public EnemyController(/*PlayerController playerController,*/ TileController mBeginTile) //constructor
+        int counter2 = 1;
+        bool check;
+        static public int blueEnemiesEaten = 0;
+        static int amountEnemies = -1;
+        const int TIMEBLUE = 250; //time that enemy stays blue
+
+        object up0;
+        object up1;
+        public object right0;
+        object right1;
+        object down0;
+        object down1;
+        object left0;
+        object left1;
+
+        public EnemyController(TileController mBeginTile) //constructor
         {
+            amountEnemies++;
+
             this.enemyModel = new EnemyModel();
             this.enemyUI = new EnemyUI(this);
-            //this.player = playerController;
             this.beginTile = mBeginTile;
+
+            this.Model.Color = (EnemyModel.colorType)(((amountEnemies)%4) + 1); //new color for new enemy
+
+            //sets all the sprites good for specific color
+            up0 = Pacman.Properties.Resources.ResourceManager.GetObject("enemy" + (int)this.Model.Color + "up0");
+            up1 = Pacman.Properties.Resources.ResourceManager.GetObject("enemy" + (int)this.Model.Color + "up1");
+            right0 = Pacman.Properties.Resources.ResourceManager.GetObject("enemy" + (int)this.Model.Color + "right0");
+            right1 = Pacman.Properties.Resources.ResourceManager.GetObject("enemy" + (int)this.Model.Color + "right1");
+            down0 = Pacman.Properties.Resources.ResourceManager.GetObject("enemy" + (int)this.Model.Color + "down0");
+            down1 = Pacman.Properties.Resources.ResourceManager.GetObject("enemy" + (int)this.Model.Color + "down1");
+            left0 = Pacman.Properties.Resources.ResourceManager.GetObject("enemy" + (int)this.Model.Color + "left0");
+            left1 = Pacman.Properties.Resources.ResourceManager.GetObject("enemy" + (int)this.Model.Color + "left1");
+
+            this.View.enemyImage.Image = (System.Drawing.Image)right0;
+            this.View.enemyImage.Refresh();
         }
 
         public EnemyUI View
@@ -48,7 +67,6 @@ namespace Pacman
 
         public void moveEnemy()
         {
-            //Console.WriteLine("Blue enemies eaten :" + blueEnemiesEaten + " Timeblue :" + this.Model.TimeBlue*300);
             if (this.Model.TimeBlue>0 && this.Model.IsRunningAway) 
             {
                 this.Model.TimeBlue--; 
@@ -75,47 +93,7 @@ namespace Pacman
                 }
             }
 
-
-            /*if (this.View.Left >= this.Model.XDetailed && this.View.Left <= (this.Model.XDetailed + 16) && this.View.Top >= this.Model.YDetailed && this.View.Top <= (this.Model.YDetailed + 16))
-            {
-                isTouching = true;
-            }
-            if ((this.View.Left + 16) >= this.Model.XDetailed && (this.View.Left + 16) <= (this.Model.XDetailed + 16) && this.View.Top >= this.Model.YDetailed && this.View.Top <= (this.Model.YDetailed + 16))
-            {
-                isTouching = true;
-            }
-            if (this.View.Left >= this.Model.XDetailed && this.View.Left <= (this.Model.XDetailed + 16) && (this.View.Top + 16) >= this.Model.YDetailed && (this.View.Top + 16) <= (this.Model.YDetailed + 16))
-            {
-                isTouching = true;
-            }
-            if ((this.View.Left + 16) >= this.Model.XDetailed && (this.View.Left + 16) <= (this.Model.XDetailed + 16) && (this.View.Top + 16) >= this.Model.YDetailed && (this.View.Top + 16) <= (this.Model.YDetailed + 16))
-            {
-                isTouching = true;
-            }*/
-
-            //Good collision detection with player
             bool isTouching = this.Collision();
-
-            /*if (this.Model.X == this.Model.XObserver && this.View.Top > (this.Model.YDetailed+4) && this.View.Top< (this.Model.YDetailed+12)) // +4 and 12(16 -4) to have 4 pixels slack
-            {
-                isTouching = true;
-            }
-            if (this.Model.X == this.Model.XObserver && (this.View.Top+16) > (this.Model.YDetailed+4) && (this.View.Top+16) < (this.Model.YDetailed + 12))
-            {
-                isTouching = true;
-            }
-            if (this.Model.Y == this.Model.YObserver && this.View.Left > (this.Model.XDetailed+4) && this.View.Left < (this.Model.XDetailed + 12))
-            {
-                isTouching = true;
-            }
-            if (this.Model.Y == this.Model.YObserver && (this.View.Left+16) > (this.Model.XDetailed+4) && (this.View.Left+16) < (this.Model.XDetailed + 12))
-            {
-                isTouching = true;
-            }
-            if (this.Model.Y == this.Model.YObserver && this.Model.X == this.Model.XObserver)
-            {
-                isTouching = true;
-            }*/
 
             // if enemy is blue and gets eaten by pacman
             if (this.Model.IsRunningAway && !this.Model.IsDead && isTouching)
@@ -180,9 +158,8 @@ namespace Pacman
                         animate();
                         if (this.Model.Animation < 4)
                         {
-                            if (this.Model.IsRunningAway)// == false)
+                            if (this.Model.IsRunningAway)
                             {
-                                //this.View.enemyImage.Image = Pacman.Properties.Resources.enemy1up0;
                                 if (this.Model.IsWhite)
                                 {
                                     this.View.enemyImage.Image = Pacman.Properties.Resources.white0;
@@ -198,15 +175,13 @@ namespace Pacman
                             }
                             else
                             {
-                                this.View.enemyImage.Image = Pacman.Properties.Resources.enemy1up0;
-                                //this.View.enemyImage.Image = Pacman.Properties.Resources.blue0;
+                                this.View.enemyImage.Image = (System.Drawing.Image)up0;
                             }
                         }
                         else
                         {
-                            if (this.Model.IsRunningAway)// == false)
+                            if (this.Model.IsRunningAway)
                             {
-                                //this.View.enemyImage.Image = Pacman.Properties.Resources.enemy1up1;
                                 if (this.Model.IsWhite)
                                 {
                                     this.View.enemyImage.Image = Pacman.Properties.Resources.white1;
@@ -222,16 +197,13 @@ namespace Pacman
                             }
                             else
                             {
-                                //this.View.enemyImage.Image = Pacman.Properties.Resources.blue1;
-                                this.View.enemyImage.Image = Pacman.Properties.Resources.enemy1up1;
+                                this.View.enemyImage.Image = (System.Drawing.Image)up1;
                             }
                         }
                         refreshPic();
                         if (this.Model.Counter == 16)
                         {
                             this.Model.Y--;
-                            //Console.WriteLine(this.Model.Direction);
-
                             this.Model.AlreadyMoving = false;
                         }
                     }
@@ -249,9 +221,8 @@ namespace Pacman
                         animate();
                         if (this.Model.Animation < 4)
                         {
-                            if (this.Model.IsRunningAway)// == false) //checks if enemy should be blue(and running away) or not
+                            if (this.Model.IsRunningAway) //checks if enemy should be blue(and running away) or not
                             {
-                                //this.View.enemyImage.Image = Pacman.Properties.Resources.enemy1right0;
                                 if (this.Model.IsWhite)
                                 {
                                     this.View.enemyImage.Image = Pacman.Properties.Resources.white0;
@@ -267,15 +238,13 @@ namespace Pacman
                             }
                             else
                             {
-                                //this.View.enemyImage.Image = Pacman.Properties.Resources.blue0;
-                                this.View.enemyImage.Image = Pacman.Properties.Resources.enemy1right0;
+                                this.View.enemyImage.Image = (System.Drawing.Image)right0;
                             }
                         }
                         else
                         {
-                            if (this.Model.IsRunningAway)// == false)
+                            if (this.Model.IsRunningAway)
                             {
-                                //this.View.enemyImage.Image = Pacman.Properties.Resources.enemy1right1;
                                 if (this.Model.IsWhite)
                                 {
                                     this.View.enemyImage.Image = Pacman.Properties.Resources.white1;
@@ -291,14 +260,13 @@ namespace Pacman
                             }
                             else
                             {
-                                //this.View.enemyImage.Image = Pacman.Properties.Resources.blue1;
-                                this.View.enemyImage.Image = Pacman.Properties.Resources.enemy1right1;
+                                this.View.enemyImage.Image = (System.Drawing.Image)right1;
                             }
                         }
                         refreshPic();
                         if (this.Model.Counter == 16)
                         {
-                            if (this.Model.X == (WorldModel.Map2D.GetLength(1) - 2)) //if enemy is standing at the right edge of the map it teleports
+                            if (this.Model.X == (WorldModel.Map2D.GetLength(1) - 2)) 
                             {
                                 this.Model.X = 1;
                                 this.View.Left = 16;
@@ -307,8 +275,6 @@ namespace Pacman
                             {
                                 this.Model.X++;
                             }
-                            //Console.WriteLine(this.Model.Direction);
-
                             this.Model.AlreadyMoving = false;
                         }
                     }
@@ -326,9 +292,8 @@ namespace Pacman
                         animate();
                         if (this.Model.Animation < 4)
                         {
-                            if (this.Model.IsRunningAway)// == false)
+                            if (this.Model.IsRunningAway)
                             {
-                                //this.View.enemyImage.Image = Pacman.Properties.Resources.enemy1down0;
                                 if (this.Model.IsWhite)
                                 {
                                     this.View.enemyImage.Image = Pacman.Properties.Resources.white0;
@@ -344,15 +309,13 @@ namespace Pacman
                             }
                             else
                             {
-                                //this.View.enemyImage.Image = Pacman.Properties.Resources.blue0;
-                                this.View.enemyImage.Image = Pacman.Properties.Resources.enemy1down0;
+                                this.View.enemyImage.Image = (System.Drawing.Image)down0;
                             }
                         }
                         else
                         {
-                            if (this.Model.IsRunningAway)// == false)
+                            if (this.Model.IsRunningAway)
                             {
-                                //this.View.enemyImage.Image = Pacman.Properties.Resources.enemy1down1;
                                 if (this.Model.IsWhite)
                                 {
                                     this.View.enemyImage.Image = Pacman.Properties.Resources.white1;
@@ -368,24 +331,16 @@ namespace Pacman
                             }
                             else
                             {
-                                //this.View.enemyImage.Image = Pacman.Properties.Resources.blue1;
-                                this.View.enemyImage.Image = Pacman.Properties.Resources.enemy1down1;
+                                this.View.enemyImage.Image = (System.Drawing.Image)down1;
                             }
                         }
                         refreshPic();
                         if (this.Model.Counter == 16)
                         {
                             this.Model.Y++;
-                            //Console.WriteLine(this.Model.Direction);
-
                             this.Model.AlreadyMoving = false;
                         }
-                        //wall = false;
                     }
-                    /*else
-                    {
-                        wall = true;
-                    }*/
                     break;
                 case EnemyModel.direction.left:
                     if (WorldModel.Map2D[this.Model.Y, this.Model.X - 1] != 1)
@@ -400,9 +355,8 @@ namespace Pacman
                         animate();
                         if (this.Model.Animation < 4)
                         {
-                            if (this.Model.IsRunningAway)// == false)
+                            if (this.Model.IsRunningAway)
                             {
-                                //this.View.enemyImage.Image = Pacman.Properties.Resources.enemy1left0;
                                 if (this.Model.IsWhite)
                                 {
                                     this.View.enemyImage.Image = Pacman.Properties.Resources.white0;
@@ -418,15 +372,13 @@ namespace Pacman
                             }
                             else
                             {
-                                //this.View.enemyImage.Image = Pacman.Properties.Resources.blue0;
-                                this.View.enemyImage.Image = Pacman.Properties.Resources.enemy1left0;
+                                this.View.enemyImage.Image = (System.Drawing.Image)left0;
                             }
                         }
                         else
                         {
-                            if (this.Model.IsRunningAway)// == false)
+                            if (this.Model.IsRunningAway)
                             {
-                                //this.View.enemyImage.Image = Pacman.Properties.Resources.enemy1left1;
                                 if (this.Model.IsWhite)
                                 {
                                     this.View.enemyImage.Image = Pacman.Properties.Resources.white1;
@@ -442,8 +394,7 @@ namespace Pacman
                             }
                             else
                             {
-                                //this.View.enemyImage.Image = Pacman.Properties.Resources.blue1;
-                                this.View.enemyImage.Image = Pacman.Properties.Resources.enemy1left1;
+                                this.View.enemyImage.Image = (System.Drawing.Image)left1; 
                             }
 
                         }
@@ -459,29 +410,18 @@ namespace Pacman
                             {
                                 this.Model.X--;
                             }
-                            //Console.WriteLine(this.Model.Direction);
                             this.Model.AlreadyMoving = false;
                         }
-                        //wall = false;
-                    }
-                    /*else
-                    {
-                        wall = true;
-                    }*/
+                    }        
                     break;
             }
+
             randGen = new Random();
             //check here which way to go
 
             List<int> directionsToGo = new List<int>();
             List<int> directionsToGo2 = new List<int>();
             int forcedDirection = 0;
-            /*if (this.Model.IsDead == false) //if player is dead it needs to focus on begintile and else on player
-            {
-                x = player.model.X;
-                y = player.model.Y;
-            }
-            else*/
 
             if (WorldModel.Map2D[this.Model.Y, this.Model.X + 1] != 1 && this.Model.Direction != EnemyModel.direction.left) //checks if right is free
             {
@@ -496,8 +436,6 @@ namespace Pacman
                 if (check) 
                 {
                     directionsToGo.Add(1); //adds right to the list of possible directions to go
-                    //directionsToGo.Add(1); //more chance to follow player
-                    //directionsToGo.Add(1);
                 }
                 if (check && this.Model.YObserver == this.Model.Y) //check to see if enemy and player are on the same line
                 {
@@ -585,10 +523,9 @@ namespace Pacman
                 if (this.Model.AlreadyMoving == false)
                 {
                     this.Model.Direction = (EnemyModel.direction)directionsToGo[this.randGen.Next(directionsToGo.Count)];
-                   //goto startMovement;
                 }
             }
-            if (forcedDirection != 0)
+            if (forcedDirection != 0) //force the enemy to go in direction of the player if it can
             {
                 this.Model.Direction = (EnemyModel.direction)forcedDirection;
             }
@@ -612,33 +549,10 @@ namespace Pacman
 
             this.Model.XDetailed = xDetailed; //used for precise collision detection
             this.Model.YDetailed = yDetailed;
-
-            /*if (this.Model.IsDead)
-            {
-                this.Model.IsDead = false; 
-            }*/
-            
-            // if enemy is blue and gets eaten by pacman
-            /*if (this.Model.IsRunningAway && this.Model.X == this.Model.XObserver && this.Model.Y == this.Model.YObserver)
-            {
-                this.Model.IsRunningAway = false;
-                this.Model.IsDead = true;
-            }
-            
-            // if pacman gets eaten by enemy
-            if(this.Model.IsRunningAway == false && !this.Model.IsDead && this.Model.X == this.Model.XObserver && this.Model.Y == this.Model.YObserver)
-            {
-                notifyObserversFromEnemy();  
-            }*/
-            
         }
 
         protected void refreshPic()
         {
-            /*for (int j = 0; j < SLOWDOWN; j++)
-            {
-
-            }*/
             this.View.enemyImage.Refresh();
         }
 
@@ -661,7 +575,7 @@ namespace Pacman
                         switch(EnemyController.blueEnemiesEaten)
                         {
                             case 1:
-                                observer.notify(200);
+                                observer.notify(200); //for every blue enemy you eat score doubles
                                 this.View.enemyImage.Image = Pacman.Properties.Resources.twohundred;
                                 break;
                             case 2:
@@ -722,11 +636,10 @@ namespace Pacman
             }
         }
 
-        public void notify(int number)//bool isRunningAway, bool isDead)
+        public void notify(int number)
         {
             if (number == 50 && !this.Model.IsDead)
             {
-                //this.enemyUI.updateImage(isRunningAway);
                 EnemyController.blueEnemiesEaten = 0;
                 this.Model.IsRunningAway = true;
                 this.Model.IsWhite = false;
