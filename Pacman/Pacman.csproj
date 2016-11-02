@@ -54,6 +54,13 @@
     <Compile Include="BigDotUI.Designer.cs">
       <DependentUpon>BigDotUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="DoorTileController.cs" />
+    <Compile Include="DoorTileUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DoorTileUI.Designer.cs">
+      <DependentUpon>DoorTileUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="EnemyController.cs" />
     <Compile Include="EnemyModel.cs" />
     <Compile Include="EnemyUI.cs">
@@ -143,6 +150,9 @@
     <EmbeddedResource Include="BigDotUI.resx">
       <DependentUpon>BigDotUI.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DoorTileUI.resx">
+      <DependentUpon>DoorTileUI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EnemyUI.resx">
       <DependentUpon>EnemyUI.cs</DependentUpon>
     </EmbeddedResource>
@@ -193,9 +203,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\pacmanLives.png" />
+    <None Include="Resources\pacmanfull.png" />
     <None Include="Resources\sixteenhundred.png" />
     <None Include="Resources\eighthundred.png" />
     <None Include="Resources\fourhundred.png" />
+    <None Include="Resources\doorTileEnemies.png" />
     <Content Include="Resources\PacMan.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

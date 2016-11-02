@@ -68,7 +68,7 @@ namespace Pacman
             switch (this.model.Direction)
             {
                 case PlayerModel.direction.up:
-                    if (WorldModel.Map2D[this.model.Y - 1, this.model.X] != 1)
+                    if (WorldModel.Map2D[this.model.Y - 1, this.model.X] != 1 && WorldModel.Map2D[this.model.Y - 1, this.model.X] != 5)
                     {
                         if (this.model.AlreadyMoving == false)
                         {
@@ -96,7 +96,7 @@ namespace Pacman
                     }
                     break;
                 case PlayerModel.direction.right:
-                    if (WorldModel.Map2D[this.model.Y, this.model.X + 1] != 1)
+                    if (WorldModel.Map2D[this.model.Y, this.model.X + 1] != 1 && WorldModel.Map2D[this.model.Y, this.model.X + 1] != 5)
                     {
                         if (this.model.AlreadyMoving == false)
                         {
@@ -132,7 +132,7 @@ namespace Pacman
                     }
                     break;
                 case PlayerModel.direction.down:
-                    if (WorldModel.Map2D[this.model.Y + 1, this.model.X] != 1)
+                    if (WorldModel.Map2D[this.model.Y + 1, this.model.X] != 1 && WorldModel.Map2D[this.model.Y + 1, this.model.X] != 5)
                     {
                         if (this.model.AlreadyMoving == false)
                         {
@@ -160,7 +160,7 @@ namespace Pacman
                     }
                     break;
                 case PlayerModel.direction.left:
-                    if (WorldModel.Map2D[this.model.Y, this.model.X - 1] != 1)
+                    if (WorldModel.Map2D[this.model.Y, this.model.X - 1] != 1 && WorldModel.Map2D[this.model.Y, this.model.X - 1] != 5)
                     {       
                         if (this.model.AlreadyMoving == false)
                         {
@@ -282,25 +282,25 @@ namespace Pacman
             switch (e)//e.KeyCode)
             {
                 case Keys.Up:
-                    if ((WorldModel.Map2D[this.model.Y - 1, this.model.X] != 1) && (this.model.AlreadyMoving == false) && this.model.Direction != PlayerModel.direction.up) //if's here so you can't change direction if you can't go in that direction.
+                    if ((WorldModel.Map2D[this.model.Y - 1, this.model.X] != 1) && (WorldModel.Map2D[this.model.Y - 1, this.model.X] != 5) && (this.model.AlreadyMoving == false) && this.model.Direction != PlayerModel.direction.up) //if's here so you can't change direction if you can't go in that direction.
                     {
                         playerModel.Direction = PlayerModel.direction.up;
                     }
                     break;
                 case Keys.Right:
-                    if ((WorldModel.Map2D[this.model.Y, this.model.X + 1] != 1) && (this.model.AlreadyMoving == false) && this.model.Direction != PlayerModel.direction.right)
+                    if ((WorldModel.Map2D[this.model.Y, this.model.X + 1] != 1) && (WorldModel.Map2D[this.model.Y, this.model.X + 1] != 5) && (this.model.AlreadyMoving == false) && this.model.Direction != PlayerModel.direction.right)
                     {
                         playerModel.Direction = PlayerModel.direction.right;
                     }
                     break;
                 case Keys.Down:
-                    if ((WorldModel.Map2D[this.model.Y + 1, this.model.X] != 1) && (this.model.AlreadyMoving == false) && this.model.Direction != PlayerModel.direction.down)
+                    if ((WorldModel.Map2D[this.model.Y + 1, this.model.X] != 1) && (WorldModel.Map2D[this.model.Y + 1, this.model.X] != 5) && (this.model.AlreadyMoving == false) && this.model.Direction != PlayerModel.direction.down)
                     {
                         playerModel.Direction = PlayerModel.direction.down;
                     }
                     break;
                 case Keys.Left:
-                    if ((WorldModel.Map2D[this.model.Y, this.model.X - 1] != 1) && (this.model.AlreadyMoving == false) && this.model.Direction != PlayerModel.direction.left)
+                    if ((WorldModel.Map2D[this.model.Y, this.model.X - 1] != 1) && (WorldModel.Map2D[this.model.Y, this.model.X - 1] != 5) && (this.model.AlreadyMoving == false) && this.model.Direction != PlayerModel.direction.left)
                     {
                         playerModel.Direction = PlayerModel.direction.left;
                     }
