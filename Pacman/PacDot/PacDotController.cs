@@ -67,7 +67,6 @@ namespace Pacman
             {
                 this.pacDotUI.updateImage(true);
                 this.Model.isEaten = true;
-                //pacDotAmmount--; //takes one off the ammount
                 pacDotsEaten++; //adds one to pacdots eaten
                 notifyObserversFromPacDot();  // update view with images
             }

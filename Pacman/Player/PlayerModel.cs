@@ -17,7 +17,8 @@ namespace Pacman
             up,
             right,
             down,
-            left
+            left,
+            idle
         }
 
         protected direction mDir = direction.right;

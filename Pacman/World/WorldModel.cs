@@ -6,20 +6,10 @@ using System.Threading.Tasks;
 
 namespace Pacman
 {
-    /*public enum Types
-    {
-        clear,//0
-        wall,//1
-        pacdot,
-        teleport,
-        bigdot,
-        start,
-    }*/
 
     static public class WorldModel
     {
         static bool mFlashWhite = false;
-        //static bool mHasWon = false;
         static int[,] map2D = new int[,] { {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
                                         {1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1 },
                                         {1, 3, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 3, 1, 1 },
@@ -53,11 +43,5 @@ namespace Pacman
             get { return mFlashWhite; }
             set { mFlashWhite = value; }
         }
-
-        /*static public bool HasWon
-        {
-            get { return mHasWon; }
-            set { mHasWon = value; }
-        }*/
     }
 }

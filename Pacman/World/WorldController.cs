@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace Pacman
 {
@@ -27,11 +28,8 @@ namespace Pacman
         List<TileController> tiles;
         List<PacDotController> pacdots;
 
-        //static public object locker = new object();
-
         public WorldController()
         {
-            //model = new WorldModel();
             worldUI = new WorldUI(this);
 
             enemies = new List<EnemyController>(); 
@@ -49,8 +47,6 @@ namespace Pacman
             player.subscribeObserver(this);
             this.DrawPlayer();
             this.view.Controls.Add(player.view);
-            //WorldModel.Player = player;
-
 
             beginTile = new TileController(); //adds begintile for enemies 
             beginTile.Model.X = 9;
@@ -64,7 +60,8 @@ namespace Pacman
             lives.view.Top = 340;
             lives.view.Left = 190;
             this.view.Controls.Add(lives.view);
-            
+            player.subscribeObserver(lives);
+
             gameOver = new GameOverController(); //adds game over text
             gameOver.view.Top = 177;
             gameOver.view.Left = 111;
@@ -84,11 +81,9 @@ namespace Pacman
                     bigdots[i].subscribeObserverToBigDot(enemies[j]);                  
                 }
             }
-
         }
 
-
-        public void drawMap(bool newMap)
+        public void drawMap(bool newMap) //if bool is true, it creates NEW instances. If false, it redraws them instead.
         {
             int pacdotCount = 0;
             int bigdotCount = 0;
@@ -224,7 +219,7 @@ namespace Pacman
                                 enemies[tempCount].Model.IsRunningAway = false;
                                 enemies[tempCount].Model.Step = 1;
                                 EnemyController.blueEnemiesEaten = 0;
-                                enemies[tempCount].View.enemyImage.Image = Pacman.Properties.Resources.enemy1right0;
+                                enemies[tempCount].View.enemyImage.Image = (System.Drawing.Image)enemies[tempCount].right0;
                                 enemies[tempCount].View.enemyImage.Refresh();
                                 enemies[tempCount].notify(player.model.X, player.model.Y, player.model.X * 16, player.model.Y * 16);
                                 tempCount++;                             
@@ -241,7 +236,6 @@ namespace Pacman
                                 EnemyController blinky = new EnemyController(beginTile);
                                 enemies.Add(blinky); //add to the enemies list
                                 player.subscribeObserver(blinky);
-                                blinky.subscribeObserverToEnemy(lives);
                                 blinky.subscribeObserverToEnemy(player);
                                 blinky.subscribeObserverToEnemy(score);
                                 blinky.View.Top = rows * 16;
@@ -260,13 +254,17 @@ namespace Pacman
         public void DrawPlayer()
         {
             player.model.Counter = 0;
+            player.model.Y = 15;
             player.model.X = 9;
-            player.model.Y = 15;//11;
-            player.view.Top = 240;//176;
-            player.view.Left = 144;
+            //player.view.Left = 144;
+            //player.view.Top = 240;
+            player.view.Location = new Point(player.model.X*16, player.model.Y*16);
             player.model.IsDead = false;
             player.model.AlreadyMoving = false;
-            player.model.Direction = PlayerModel.direction.right;
+            player.model.Direction = PlayerModel.direction.idle;
+            player.view.pictureBox1.Image = Pacman.Properties.Resources.pacmanfull;
+            player.view.pictureBox1.Refresh();
+
             player.ready.Model.gameStarted = false;
             player.ready.view.Visible = true;
         }
@@ -276,7 +274,7 @@ namespace Pacman
             get { return worldUI; }
         }
 
-        public void notify(bool reDrawEnemies) //if redrawenemies is true it will MOVE the enemies and not make new instances
+        public void notify(bool reDrawEnemies) //if redraw enemies is true it will MOVE the enemies and not make new instances
         {
             DrawPlayer(); //redraws the player as well
             DrawEnemies(reDrawEnemies);
@@ -299,7 +297,7 @@ namespace Pacman
             }
         }
 
-        public void notify() //is called normally only by gameover
+        public void notify() //is called by gameover
         {
             gameOver.view.gameOverLabel.Refresh();
             Thread.Sleep(3000);           

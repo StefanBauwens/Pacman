@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -46,27 +49,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BigDotController.cs" />
-    <Compile Include="BigDotModel.cs" />
-    <Compile Include="BigDotUI.cs">
+    <Compile Include="BigDot\BigDotController.cs" />
+    <Compile Include="BigDot\BigDotModel.cs" />
+    <Compile Include="BigDot\BigDotUI.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="BigDotUI.Designer.cs">
+    <Compile Include="BigDot\BigDotUI.Designer.cs">
       <DependentUpon>BigDotUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="DoorTileController.cs" />
-    <Compile Include="DoorTileUI.cs">
+    <Compile Include="DoorTile\DoorTileController.cs" />
+    <Compile Include="DoorTile\DoorTileUI.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="DoorTileUI.Designer.cs">
+    <Compile Include="DoorTile\DoorTileUI.Designer.cs">
       <DependentUpon>DoorTileUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="EnemyController.cs" />
-    <Compile Include="EnemyModel.cs" />
-    <Compile Include="EnemyUI.cs">
+    <Compile Include="Enemy\EnemyController.cs" />
+    <Compile Include="Enemy\EnemyModel.cs" />
+    <Compile Include="Enemy\EnemyUI.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="EnemyUI.Designer.cs">
+    <Compile Include="Enemy\EnemyUI.Designer.cs">
       <DependentUpon>EnemyUI.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
@@ -75,37 +78,37 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="LivesController.cs" />
-    <Compile Include="LivesModel.cs" />
-    <Compile Include="LivesUI.cs">
+    <Compile Include="Lives\LivesController.cs" />
+    <Compile Include="Lives\LivesModel.cs" />
+    <Compile Include="Lives\LivesUI.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="LivesUI.Designer.cs">
+    <Compile Include="Lives\LivesUI.Designer.cs">
       <DependentUpon>LivesUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="GameOverController.cs" />
-    <Compile Include="GameOverModel.cs" />
-    <Compile Include="GameOverUI.cs">
+    <Compile Include="GameOver\GameOverController.cs" />
+    <Compile Include="GameOver\GameOverModel.cs" />
+    <Compile Include="GameOver\GameOverUI.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GameOverUI.Designer.cs">
+    <Compile Include="GameOver\GameOverUI.Designer.cs">
       <DependentUpon>GameOverUI.cs</DependentUpon>
     </Compile>
     <Compile Include="LoadFont.cs" />
-    <Compile Include="PacDotController.cs" />
-    <Compile Include="PacDotModel.cs" />
-    <Compile Include="PacDotUI.cs">
+    <Compile Include="PacDot\PacDotController.cs" />
+    <Compile Include="PacDot\PacDotModel.cs" />
+    <Compile Include="PacDot\PacDotUI.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="PacDotUI.Designer.cs">
+    <Compile Include="PacDot\PacDotUI.Designer.cs">
       <DependentUpon>PacDotUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="PlayerController.cs" />
-    <Compile Include="PlayerModel.cs" />
-    <Compile Include="PlayerUI.cs">
+    <Compile Include="Player\PlayerController.cs" />
+    <Compile Include="Player\PlayerModel.cs" />
+    <Compile Include="Player\PlayerUI.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="PlayerUI.Designer.cs">
+    <Compile Include="Player\PlayerUI.Designer.cs">
       <DependentUpon>PlayerUI.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -115,60 +118,60 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="ReadyController.cs" />
-    <Compile Include="ReadyModel.cs" />
-    <Compile Include="ReadyUI.cs">
+    <Compile Include="Ready\ReadyController.cs" />
+    <Compile Include="Ready\ReadyModel.cs" />
+    <Compile Include="Ready\ReadyUI.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ReadyUI.Designer.cs">
+    <Compile Include="Ready\ReadyUI.Designer.cs">
       <DependentUpon>ReadyUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="ScoreController.cs" />
-    <Compile Include="ScoreModel.cs" />
-    <Compile Include="ScoreUI.cs">
+    <Compile Include="Score\ScoreController.cs" />
+    <Compile Include="Score\ScoreModel.cs" />
+    <Compile Include="Score\ScoreUI.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ScoreUI.Designer.cs">
+    <Compile Include="Score\ScoreUI.Designer.cs">
       <DependentUpon>ScoreUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="TileController.cs" />
-    <Compile Include="TileModel.cs" />
-    <Compile Include="TileUI.cs">
+    <Compile Include="Tile\TileController.cs" />
+    <Compile Include="Tile\TileModel.cs" />
+    <Compile Include="Tile\TileUI.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="TileUI.Designer.cs">
+    <Compile Include="Tile\TileUI.Designer.cs">
       <DependentUpon>TileUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="WorldController.cs" />
-    <Compile Include="WorldModel.cs" />
-    <Compile Include="WorldUI.cs">
+    <Compile Include="World\WorldController.cs" />
+    <Compile Include="World\WorldModel.cs" />
+    <Compile Include="World\WorldUI.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="WorldUI.Designer.cs">
+    <Compile Include="World\WorldUI.Designer.cs">
       <DependentUpon>WorldUI.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="BigDotUI.resx">
+    <EmbeddedResource Include="BigDot\BigDotUI.resx">
       <DependentUpon>BigDotUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DoorTileUI.resx">
+    <EmbeddedResource Include="DoorTile\DoorTileUI.resx">
       <DependentUpon>DoorTileUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EnemyUI.resx">
+    <EmbeddedResource Include="Enemy\EnemyUI.resx">
       <DependentUpon>EnemyUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LivesUI.resx">
+    <EmbeddedResource Include="Lives\LivesUI.resx">
       <DependentUpon>LivesUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GameOverUI.resx">
+    <EmbeddedResource Include="GameOver\GameOverUI.resx">
       <DependentUpon>GameOverUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PacDotUI.resx">
+    <EmbeddedResource Include="PacDot\PacDotUI.resx">
       <DependentUpon>PacDotUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PlayerUI.resx">
+    <EmbeddedResource Include="Player\PlayerUI.resx">
       <DependentUpon>PlayerUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -176,16 +179,16 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="ReadyUI.resx">
+    <EmbeddedResource Include="Ready\ReadyUI.resx">
       <DependentUpon>ReadyUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ScoreUI.resx">
+    <EmbeddedResource Include="Score\ScoreUI.resx">
       <DependentUpon>ScoreUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TileUI.resx">
+    <EmbeddedResource Include="Tile\TileUI.resx">
       <DependentUpon>TileUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WorldUI.resx">
+    <EmbeddedResource Include="World\WorldUI.resx">
       <DependentUpon>WorldUI.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
@@ -202,6 +205,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="icon.ico" />
     <Content Include="pacmanfull.png" />
     <Content Include="Properties\pacmanLives.png" />
     <None Include="Resources\pacmanfull.png" />
@@ -210,14 +214,34 @@
     <None Include="Resources\eighthundred.png" />
     <None Include="Resources\fourhundred.png" />
     <None Include="Resources\doorTileEnemies.png" />
-    <Content Include="Resources\PacMan.ttf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <None Include="Resources\enemy2down0.png" />
+    <None Include="Resources\enemy2down1.png" />
+    <None Include="Resources\enemy2left0.png" />
+    <None Include="Resources\enemy2left1.png" />
+    <None Include="Resources\enemy2right0.png" />
+    <None Include="Resources\enemy2right1.png" />
+    <None Include="Resources\enemy2up0.png" />
+    <None Include="Resources\enemy2up1.png" />
+    <None Include="Resources\enemy3down0.png" />
+    <None Include="Resources\enemy3down1.png" />
+    <None Include="Resources\enemy3left0.png" />
+    <None Include="Resources\enemy3left1.png" />
+    <None Include="Resources\enemy3right0.png" />
+    <None Include="Resources\enemy3right1.png" />
+    <None Include="Resources\enemy3up0.png" />
+    <None Include="Resources\enemy3up1.png" />
+    <None Include="Resources\enemy4down0.png" />
+    <None Include="Resources\enemy4down1.png" />
+    <None Include="Resources\enemy4left0.png" />
+    <None Include="Resources\enemy4left1.png" />
+    <None Include="Resources\enemy4right0.png" />
+    <None Include="Resources\enemy4right1.png" />
+    <None Include="Resources\enemy4up0.png" />
+    <None Include="Resources\enemy4up1.png" />
     <EmbeddedResource Include="Resources\pacmanfont.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <None Include="Resources\twohundred.png" />
-    <None Include="Resources\200.png" />
     <None Include="Resources\white1.png" />
     <None Include="Resources\white0.png" />
     <None Include="Resources\death11.png" />
@@ -232,15 +256,12 @@
     <None Include="Resources\death1.png" />
     <None Include="Resources\death0.png" />
     <None Include="Resources\wall2.png" />
-    <None Include="Resources\wallsprite.png" />
     <None Include="Resources\eyesup.png" />
     <None Include="Resources\eyesright.png" />
     <None Include="Resources\eyesleft.png" />
     <None Include="Resources\eyesdown.png" />
     <None Include="Resources\blue11.png" />
     <None Include="Resources\blue01.png" />
-    <None Include="Resources\blinky1.jpg" />
-    <None Include="Resources\black1.jpg" />
     <None Include="Resources\blue1.png" />
     <None Include="Resources\blue0.png" />
     <None Include="Resources\enemy1up1.png" />
