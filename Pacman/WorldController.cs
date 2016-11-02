@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Windows.Forms;
 
 namespace Pacman
 {
@@ -18,9 +19,13 @@ namespace Pacman
         ScoreController score;
         LivesController lives;
         GameOverController gameOver;
+
         List<BigDotController> bigdots;
 
         List<EnemyController> enemies;
+
+        List<TileController> tiles;
+        List<PacDotController> pacdots;
 
         //static public object locker = new object();
 
@@ -31,6 +36,8 @@ namespace Pacman
 
             enemies = new List<EnemyController>(); 
             bigdots = new List<BigDotController>();
+            tiles = new List<TileController>();
+            pacdots = new List<PacDotController>();
 
             //draw the world
             ready = new ReadyController(); //adds ready text
@@ -63,10 +70,11 @@ namespace Pacman
             gameOver.view.Left = 111;
             this.view.Controls.Add(gameOver.view);
             lives.subscribeObserverToLives(gameOver);
+            gameOver.SubscribeObserver(this);
             gameOver.GameOverTextVisible(false);
 
 
-            drawMap();
+            drawMap(true);
             DrawEnemies(false);
 
             for (int i = 0; i < bigdots.Count; i++) //Subscribe all the enemies to each bigdot
@@ -80,8 +88,12 @@ namespace Pacman
         }
 
 
-        public void drawMap()
+        public void drawMap(bool newMap)
         {
+            int pacdotCount = 0;
+            int bigdotCount = 0;
+            int tilesCount = 0;
+
             for (int rows = 0; rows < WorldModel.Map2D.GetLength(0); rows++)
             {
                 for (int colls = 0; colls < WorldModel.Map2D.GetLength(1); colls++)
@@ -89,63 +101,91 @@ namespace Pacman
                     switch (WorldModel.Map2D[rows, colls])
                     {
                         case 0:
-                            PacDotController pacDot = new PacDotController();
-                            player.subscribeObserver(pacDot); //subscribes to player
-                            pacDot.subscribeObserverToPacDot(score);
-                            pacDot.view.Top = rows * 16;
-                            pacDot.view.Left = colls * 16;
-                            pacDot.Model.X = colls;
-                            pacDot.Model.Y = rows;
-                            this.view.Controls.Add(pacDot.view);
+                            if (newMap)
+                            {
+                                PacDotController pacDot = new PacDotController();
+                                player.subscribeObserver(pacDot); //subscribes to player
+                                pacDot.subscribeObserverToPacDot(score);
+                                pacDot.subscribeObserverToPacDot(this); //subscribes the worldcontroller to pacdot
+                                pacDot.view.Top = rows * 16;
+                                pacDot.view.Left = colls * 16;
+                                pacDot.Model.X = colls;
+                                pacDot.Model.Y = rows;
+                                this.pacdots.Add(pacDot);
+                                this.view.Controls.Add(pacDot.view);
+                            }
+                            else
+                            {
+                                PacDotUI temp = new PacDotUI();
+                                pacdots[pacdotCount].view.pacDotImage.Image = temp.pacDotImage.Image;
+                                pacdots[pacdotCount].Model.isEaten = false;
+                                PacDotController.pacDotsEaten = 0;
+                                pacdotCount++;
+                            }
                             break;
                         case 1:
-                            TileController wall = new TileController();
-                            wall.Model.X = colls;
-                            wall.Model.Y = rows;
-                            wall.View.Top = rows * 16;
-                            wall.View.Left = colls * 16;
-                            wall.View.pictureBox1.Image = Pacman.Properties.Resources.wall2;//wallsprite;
-                            this.view.Controls.Add(wall.View);
-                            break;
-                        /*case 2:
-                            TileController blackTile = new TileController(); //adds a blacktile first for under the enemy
-                            blackTile.Model.X = colls;
-                            blackTile.Model.Y = rows;
-                            blackTile.View.Top = rows * 16;
-                            blackTile.View.Left = colls * 16;
-                            this.view.Controls.Add(blackTile.View);
+                            if (newMap)
+                            {
+                                TileController wall = new TileController();
+                                wall.Model.X = colls;
+                                wall.Model.Y = rows;
+                                wall.View.Top = rows * 16;
+                                wall.View.Left = colls * 16;
+                                wall.View.pictureBox1.Image = Pacman.Properties.Resources.wall2;//wallsprite;  
+                                this.tiles.Add(wall);
+                                this.view.Controls.Add(wall.View);
+                            }
+                            else
+                            {
+                                if (WorldModel.FlashWhite)
+                                {
+                                    tiles[tilesCount].View.pictureBox1.Image = Pacman.Properties.Resources.wall3;
+                                    tiles[tilesCount].View.pictureBox1.Refresh();
+                                }
+                                else
+                                {
+                                    tiles[tilesCount].View.pictureBox1.Image = Pacman.Properties.Resources.wall2;
+                                    tiles[tilesCount].View.pictureBox1.Refresh();
+                                }
+                                tilesCount++;
+                            }
 
-                            EnemyController blinky = new EnemyController(beginTile);
-                            enemies.Add(blinky); //add to the enemies list
-                            player.subscribeObserver(blinky);
-                            blinky.subscribeObserverToEnemy(lives);
-                            blinky.subscribeObserverToEnemy(player);
-                            blinky.subscribeObserverToEnemy(score);
-                            blinky.View.Top = rows * 16;
-                            blinky.View.Left = colls * 16;
-                            blinky.Model.X = colls;
-                            blinky.Model.Y = rows;
-                            this.view.Controls.Add(blinky.View);
-                            blinky.View.BringToFront(); //make sure enemy layer is over tiles so it's visible
-                            break;*/
+                            break;
                         case 3:
-                            BigDotController bigDot = new BigDotController();
-                            bigdots.Add(bigDot); //add to the list
-                            player.subscribeObserver(bigDot);
-                            bigDot.subscribeObserverToBigDot(score);
-                            bigDot.view.Top = rows * 16;
-                            bigDot.view.Left = colls * 16;
-                            bigDot.Model.X = colls;
-                            bigDot.Model.Y = rows;
-                            this.view.Controls.Add(bigDot.view);
+                            if (newMap)
+                            {
+                                BigDotController bigDot = new BigDotController();
+                                bigdots.Add(bigDot); //add to the list
+                                player.subscribeObserver(bigDot);
+                                bigDot.subscribeObserverToBigDot(score);
+                                bigDot.view.Top = rows * 16;
+                                bigDot.view.Left = colls * 16;
+                                bigDot.Model.X = colls;
+                                bigDot.Model.Y = rows;                               
+                                this.view.Controls.Add(bigDot.view);
+                            }
+                            else
+                            {
+                                bigdots[bigdotCount].Model.isEaten = false;
+                                bigdotCount++;
+                            }                           
                             break;
                         case 4:
-                            TileController blackTile1 = new TileController(); //adds a blacktile first for under the enemy
-                            blackTile1.Model.X = colls;
-                            blackTile1.Model.Y = rows;
-                            blackTile1.View.Top = rows * 16;
-                            blackTile1.View.Left = colls * 16;
-                            this.view.Controls.Add(blackTile1.View);
+                            if (newMap)
+                            {
+                                TileController blackTile1 = new TileController();//blacktile
+                                blackTile1.Model.X = colls;
+                                blackTile1.Model.Y = rows;
+                                blackTile1.View.Top = rows * 16;
+                                blackTile1.View.Left = colls * 16;
+                                tiles.Add(blackTile1);
+                                this.view.Controls.Add(blackTile1.View);
+                            }
+                            else
+                            {
+                                tilesCount++;
+                            }
+                            
                             break;
                         case 5:
                             DoorTileController doorTile = new DoorTileController();
@@ -238,8 +278,43 @@ namespace Pacman
 
         public void notify(bool reDrawEnemies) //if redrawenemies is true it will MOVE the enemies and not make new instances
         {
-            DrawEnemies(reDrawEnemies);
             DrawPlayer(); //redraws the player as well
+            DrawEnemies(reDrawEnemies);
+        }
+
+        public void notify(int pacdotsEaten) 
+        {
+            //Console.WriteLine("Pacdotseaten : " + pacdotsEaten + "/" + PacDotController.pacDotAmmount);
+            if (pacdotsEaten == PacDotController.pacDotAmmount)
+            {
+                for (int i = 0; i < 5; i++)//flashes wingame
+                {
+                    bool flashOrNot = (i % 2) != 0; //creates a bool that goes true then false, etc..
+                    WorldModel.FlashWhite = flashOrNot;
+                    drawMap(false); //REdraw map. Without creating new instances
+                    Thread.Sleep(500);
+                }
+                DrawEnemies(true); //start over
+                DrawPlayer();
+            }
+        }
+
+        public void notify() //is called normally only by gameover
+        {
+            gameOver.view.gameOverLabel.Refresh();
+            Thread.Sleep(3000);           
+            gameOver.view.SendToBack();
+            gameOver.view.gameOverLabel.Visible = false;
+            gameOver.Model.isGameOver = false;
+
+            lives.Model.lives = 3;
+            lives.updateLives(lives.Model.lives);
+            score.Model.score = 0;
+            score.notify(0);
+            drawMap(false);
+            DrawEnemies(true);
+            DrawPlayer();
+
         }
     }
 }

@@ -15,7 +15,7 @@ namespace Pacman
         protected PlayerModel playerModel;
         protected PlayerUI playerUI;
         public ReadyController ready;
-        protected List<dynamic> observers = new List<dynamic>();
+        public List<dynamic> observers = new List<dynamic>();
 
         public const int KEYSPEED = 30; //how long a keypress stays active
 
@@ -240,7 +240,7 @@ namespace Pacman
                 {
                     observer.notify(this.model.X, this.model.Y, this.view.Left, this.view.Top); //gives coordinates of player to observers
                 }
-            }
+            }          
         }
 
         protected void notifyWorld()

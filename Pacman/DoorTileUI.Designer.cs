@@ -28,27 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.doorTile = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.doorTile)).BeginInit();
+            this.doorTileImage = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.doorTileImage)).BeginInit();
             this.SuspendLayout();
             // 
-            // doorTile
+            // doorTileImage
             // 
-            this.doorTile.Image = global::Pacman.Properties.Resources.doorTileEnemies;
-            this.doorTile.Location = new System.Drawing.Point(0, 0);
-            this.doorTile.Name = "doorTile";
-            this.doorTile.Size = new System.Drawing.Size(22, 16);
-            this.doorTile.TabIndex = 0;
-            this.doorTile.TabStop = false;
+            this.doorTileImage.Image = global::Pacman.Properties.Resources.doorTileEnemies;
+            this.doorTileImage.Location = new System.Drawing.Point(0, 0);
+            this.doorTileImage.Name = "doorTileImage";
+            this.doorTileImage.Size = new System.Drawing.Size(16, 16);
+            this.doorTileImage.TabIndex = 0;
+            this.doorTileImage.TabStop = false;
             // 
             // DoorTileUI
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.doorTile);
+            this.Controls.Add(this.doorTileImage);
             this.Name = "DoorTileUI";
-            this.Size = new System.Drawing.Size(22, 16);
-            ((System.ComponentModel.ISupportInitialize)(this.doorTile)).EndInit();
+            this.Size = new System.Drawing.Size(16, 16);
+            ((System.ComponentModel.ISupportInitialize)(this.doorTileImage)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -56,5 +54,6 @@
         #endregion
 
         private System.Windows.Forms.PictureBox doorTile;
+        private System.Windows.Forms.PictureBox doorTileImage;
     }
 }

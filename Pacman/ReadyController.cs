@@ -10,7 +10,6 @@ namespace Pacman
     {
         ReadyModel readyModel;
         ReadyUI readyUI;
-        DoorTileController doorTile;
 
         public ReadyController()
         {
