@@ -16,24 +16,6 @@ namespace Pacman
         {
             InitializeComponent();
         }
-
-        // update view by changing images of lives (lives --> black)
-        public void updateLives(int newNrLives)
-        {
-            if (newNrLives == 2)
-            {
-                this.imageLifeRight.Image = Properties.Resources.black;
-            }
-            else if (newNrLives == 1)
-            {
-                this.imageLifeMiddle.Image = Properties.Resources.black;
-            }
-            else if (newNrLives == 0)
-            {
-                this.imageLifeLeft.Image = Properties.Resources.black;
-            }
-        }
-
         
     }
 }

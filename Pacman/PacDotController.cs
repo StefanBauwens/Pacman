@@ -12,8 +12,12 @@ namespace Pacman
         private PacDotUI pacDotUI;
         protected List<dynamic> observers = new List<dynamic>();
 
+        static public int pacDotAmmount = 0; //how many pacdots there are
+        static public int pacDotsEaten = 0;
+
         public PacDotController()
         {
+            pacDotAmmount++; //every time a new pacot is instantiated the total ammount goes up
             this.pacDotModel = new PacDotModel();
             this.pacDotUI = new PacDotUI();
         }
@@ -45,10 +49,16 @@ namespace Pacman
         {
             foreach (dynamic observer in this.observers)
             {
-                observer.notify(pacDotModel.dotPoints); //change score with value of pac dot
+                if (!(observer is WorldController))
+                {
+                    observer.notify(pacDotModel.dotPoints); //change score with value of pac dot
+                }
+                else
+                {
+                    observer.notify(pacDotsEaten);
+                }
             }
         }
-
 
         // executes when the observable is changed
         public void notify(int xCoordinate, int yCoordinate, int notUsed, int notUsed2)
@@ -56,8 +66,10 @@ namespace Pacman
             if (this.Model.X == xCoordinate && this.Model.Y == yCoordinate && !this.Model.isEaten)
             {
                 this.pacDotUI.updateImage(true);
-                notifyObserversFromPacDot();  // update view with images
                 this.Model.isEaten = true;
+                //pacDotAmmount--; //takes one off the ammount
+                pacDotsEaten++; //adds one to pacdots eaten
+                notifyObserversFromPacDot();  // update view with images
             }
         }
 

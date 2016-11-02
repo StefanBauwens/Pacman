@@ -193,6 +193,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\pacmanLives.png" />
+    <None Include="Resources\wall3.png" />
     <None Include="Resources\sixteenhundred.png" />
     <None Include="Resources\eighthundred.png" />
     <None Include="Resources\fourhundred.png" />
