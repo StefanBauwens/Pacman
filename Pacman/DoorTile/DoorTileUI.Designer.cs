@@ -52,8 +52,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.PictureBox doorTile;
         private System.Windows.Forms.PictureBox doorTileImage;
     }
 }

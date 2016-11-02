@@ -18,9 +18,6 @@ namespace Pacman
         public List<dynamic> observers = new List<dynamic>();
 
         public const int KEYSPEED = 30; //how long a keypress stays active
-
-        //bool alreadyMoving = false;
-        //int counter;
         static public int keyDelay = 0;
 
         public PlayerController(ReadyController readyC)
@@ -54,12 +51,12 @@ namespace Pacman
                     object picture = Pacman.Properties.Resources.ResourceManager.GetObject("death" + i);
                     this.view.pictureBox1.Image = (System.Drawing.Image)picture;
                     this.view.pictureBox1.Update();
-                    System.Threading.Thread.Sleep(150);                   
+                    System.Threading.Thread.Sleep(150);   
                 }
-                System.Threading.Thread.Sleep(150);
+                this.view.pictureBox1.Image = Pacman.Properties.Resources.black; //clean up screen
+                this.view.pictureBox1.Refresh();
+                this.notifyLives();
                 this.notifyWorld();
-                this.view.pictureBox1.Image = Pacman.Properties.Resources.pacmanright;
-                this.view.pictureBox1.Update();
                 this.model.IsDead = false;// pacman appears back             
             }
 
@@ -195,8 +192,12 @@ namespace Pacman
                         }
                     }
                     break;
+                default: //when idle
+                    this.view.pictureBox1.Image = Pacman.Properties.Resources.pacmanfull;
+                    this.view.pictureBox1.Refresh();
+                    this.model.Direction = PlayerModel.direction.right;
+                    break;
             }
-            //Console.WriteLine("Lastkeypressed: " + this.model.LastKeyPressed);
         }
 
         protected void animate()
@@ -208,11 +209,6 @@ namespace Pacman
             }
         }
 
-        /*protected void refreshPic()
-        {
-            this.view.pictureBox1.Refresh();
-        }*/
-
         public void notify(bool isDead)
         {
             this.model.IsDead = isDead;
@@ -223,7 +219,6 @@ namespace Pacman
                 {
                     //hide all enemies
                     observer.Model.Counter = 0;
-                    //observer.Model.Direction = EnemyModel.direction.right;
                     observer.Model.X = 18;
                     observer.Model.Y = 16;
                     observer.View.Left = -32;
@@ -236,11 +231,22 @@ namespace Pacman
         {
             foreach (dynamic observer in this.observers)
             {
-                if (!(observer is WorldController))
+                if (!(observer is WorldController) && !(observer is LivesController))
                 {
                     observer.notify(this.model.X, this.model.Y, this.view.Left, this.view.Top); //gives coordinates of player to observers
                 }
             }          
+        }
+
+        protected void notifyLives()
+        {
+            foreach (dynamic observer in this.observers)
+            {
+                if (observer is LivesController)
+                {
+                    observer.notify(this.model.IsDead);
+                }
+            }
         }
 
         protected void notifyWorld()
@@ -263,7 +269,6 @@ namespace Pacman
         public void checkKeyAFewTimes(Keys e)
         {
             this.model.LastKeyPressed = e;
-            //keyDelay = KEYSPEED;
 
             if (keyDelay > 0) //add some keydelay so it's easier to turn around a corner
             {
@@ -274,12 +279,11 @@ namespace Pacman
             {
                 key = Keys.A;
             }
-            //this.movePlayer();
         }
 
-        public void checkKey(Keys e)//KeyEventArgs e)//PreviewKeyDownEventArgs e)
+        public void checkKey(Keys e)
         {
-            switch (e)//e.KeyCode)
+            switch (e)
             {
                 case Keys.Up:
                     if ((WorldModel.Map2D[this.model.Y - 1, this.model.X] != 1) && (WorldModel.Map2D[this.model.Y - 1, this.model.X] != 5) && (this.model.AlreadyMoving == false) && this.model.Direction != PlayerModel.direction.up) //if's here so you can't change direction if you can't go in that direction.
@@ -306,7 +310,6 @@ namespace Pacman
                     }
                     break;
             }
-            //key = Keys.A; 
             //e.IsInputKey = true; //Use this only when using previewkeydown so that when using arrow keys you don't switch controls
         }
 

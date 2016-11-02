@@ -31,6 +31,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.SuspendLayout();
             // 
             // Form1
@@ -39,13 +40,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(304, 368);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "Form1";
-            //this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown_1);
-            //this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.Form1_PreviewKeyDown);
+            this.Text = "PacMan";
             this.ResumeLayout(false);
 
-            WorldController world = new WorldController();
+            WorldController world = new WorldController(); //in here are all the other controls added
             this.Controls.Add(world.view);
         }
 

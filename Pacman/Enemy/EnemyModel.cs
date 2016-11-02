@@ -8,7 +8,7 @@ namespace Pacman
 {
     public class EnemyModel
     {
-        public enum colorType { red, pink, orange, green }
+        public enum colorType { red = 1, pink, green, orange }
         public enum direction
         {
             up,
@@ -90,7 +90,6 @@ namespace Pacman
             get { return mYObserver; }
             set { mYObserver = value; }
         }
-
         
         public int Animation
         {
