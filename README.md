@@ -10,7 +10,5 @@ Gameplay video: https://www.youtube.com/watch?v=7hmreDTJaFU
 <img src="https://user-images.githubusercontent.com/22680257/30482449-5ed4a652-9a23-11e7-837d-c11b0a55647c.png" 
 alt="Screenshot from the gameplay video of Pacman" width="500" height="300" border="10"></a><br>
 
-[![Screenshot from the gameplay video of Pacman](https://user-images.githubusercontent.com/22680257/30482449-5ed4a652-9a23-11e7-837d-c11b0a55647c.png)](https://www.youtube.com/watch?v=7hmreDTJaFU)
-
 ![Example](pic2.png?raw=true "Pacman")
 
